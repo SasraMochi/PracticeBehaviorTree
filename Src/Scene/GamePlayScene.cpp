@@ -2,11 +2,10 @@
 #include "DxLib.h"
 
 void GamePlayScene::start() {
-
 }
 
 void GamePlayScene::update() {
-
+	mWorld.update();
 }
 
 void GamePlayScene::draw() const {

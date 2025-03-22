@@ -1,7 +1,7 @@
-#ifndef GAME_PLAY_SCENE_H_
-#define GAME_PLAY_SCENE_H_
+#pragma once
 
 #include"IScene.h"
+#include "World/World.h"
 
 class GamePlayScene : public IScene {
 public:
@@ -17,6 +17,9 @@ public:
 
 	//èIóπ
 	virtual void end() override;
-};
 
-#endif // !TITLE_SCENE_H_
+private:
+	World mWorld;
+
+	bool mIsEnd = false;
+};

@@ -5,6 +5,7 @@
 Player::Player()
 {
 	mpBehaviourTree = new Selector();
+	mpBehaviourTree->AddNode(Selector());
 }
 
 Player::~Player()
