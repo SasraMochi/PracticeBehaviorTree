@@ -10,6 +10,8 @@ Sequence::~Sequence()
 
 NodeResult Sequence::Run()
 {
+	Node::Run();
+
 	for (auto& node : mChildNodes)
 	{
 		NodeResult result = NodeResult::None;

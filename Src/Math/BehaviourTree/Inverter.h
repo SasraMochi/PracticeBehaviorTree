@@ -9,8 +9,5 @@ public:
 	~Inverter();
 
 public:
-
-	using Node::Run;
-
 	virtual NodeResult Run() override;
 };

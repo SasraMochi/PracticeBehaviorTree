@@ -10,6 +10,8 @@ Selector::~Selector()
 
 NodeResult Selector::Run()
 {
+	Node::Run();
+
 	NodeResult selector_result = NodeResult::Fail;
 	for (auto& node : mChildNodes)
 	{
