@@ -1,5 +1,4 @@
-#ifndef ISCENE_H_
-#define ISCENE_H_
+#pragma once
 
 #include <string>
 
@@ -35,5 +34,3 @@ protected:
 	//Ÿ‚ÌƒV[ƒ“
 	std::string next_scene_;
 };
-
-#endif // !ISCENE_H_

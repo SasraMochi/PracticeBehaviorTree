@@ -26,17 +26,6 @@ public:
 	//メッセージの送信
 	virtual void send_message(const std::string& message, void* param = nullptr) = 0;
 
-	//シーンの切り替え
-	virtual void sub_scene_change(int area_num) = 0;
-
-	//モンスターエリアの設定
-	virtual void set_monster_area(const int monster_area) = 0;
-	//モンスターエリアの取得
-	virtual int monster_area() const = 0;
-
-	//アイテムオブジェクトの配置
-	virtual void set_item_object(const int area_num) = 0;
-
 	//シーンの取得
 	virtual IScene* scene() = 0;
 };

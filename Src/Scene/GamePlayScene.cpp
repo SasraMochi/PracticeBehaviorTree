@@ -5,10 +5,14 @@ void GamePlayScene::start() {
 }
 
 void GamePlayScene::update() {
-	mWorld.update();
+	float delta_time = 1.f;
+
+	mWorld.update(delta_time);
 }
 
 void GamePlayScene::draw() const {
+	mWorld.draw();
+
 	DrawString(0, 0, "ゲームプレイシーン", GetColor(255, 255, 255));
 }
 
