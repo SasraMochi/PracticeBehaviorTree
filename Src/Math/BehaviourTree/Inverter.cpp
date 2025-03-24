@@ -10,14 +10,14 @@ Inverter::~Inverter()
 
 NodeResult Inverter::Run()
 {
-	Node::Run();
+	CheckFirstRun();
 
 	NodeResult result = NodeResult::None;
 
 	// ¬Œ÷‚©Ž¸”s‚ð•Ô‚·‚Ü‚ÅŽÀs
 	// do‚Åæ‚ÉŽÀs‚µ‚Ä‚¨‚­
 	do {
-		result = mChildNode.Run();
+		result = mChildNode->Run();
 	} while (result == NodeResult::Running);
 
 	if (result == NodeResult::Success) {

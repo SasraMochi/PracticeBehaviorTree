@@ -109,6 +109,7 @@ Vector3 Vector3::lerp_unclamped(const Vector3& a, const Vector3& b, float t) {
 	return a + (b - a) * t;
 }
 
+#if 0
 // 2つのベクトルで各成分の一番大きな値を使用してベクトルを作成します
 Vector3 Vector3::max(const Vector3& lhs, const Vector3& rhs) {
 	return Vector3{ std::max(lhs.x, rhs.x), std::max(lhs.y, rhs.y), std::max(lhs.z, rhs.z) };
@@ -118,6 +119,7 @@ Vector3 Vector3::max(const Vector3& lhs, const Vector3& rhs) {
 Vector3 Vector3::min(const Vector3& lhs, const Vector3& rhs) {
 	return Vector3{ std::min(lhs.x, rhs.x), std::min(lhs.y, rhs.y), std::min(lhs.z, rhs.z) };
 }
+#endif
 
 // 正規化する
 Vector3 Vector3::normalize(const Vector3& value) {

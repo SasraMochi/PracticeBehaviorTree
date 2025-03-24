@@ -51,11 +51,13 @@ struct Vector3 {
 	static Vector3 lerp(const Vector3& a, const Vector3& b, float t);
 	// 直線上にある 2 つのベクトル間を補間します
 	static Vector3 lerp_unclamped(const Vector3& a, const Vector3& b, float t);
+#if 0
 	// 2つのベクトルで各成分の一番大きな値を使用してベクトルを作成します
 	static Vector3 max(const Vector3& lhs, const Vector3& rhs);
 	// 2つのベクトルで各成分の一番小さな値を使用してベクトルを作成します
 	static Vector3 min(const Vector3& lhs, const Vector3& rhs);
 
+#endif
 	// 現在の位置 current から target に向けて移動します
 	static Vector3 move_towards(const Vector3& current, const Vector3& target, float max_distance_delta);
 	// magnitude を 1 としたベクトルを作成します

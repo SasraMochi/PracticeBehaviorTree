@@ -1,12 +1,12 @@
 #pragma once
 
 #include <vector>
-#include "Node.h"
+#include "INode.h"
 
-class Composite : public Node {
+class Composite : public INode {
 public:
-	virtual void AddNode(Node node);
+	virtual void AddNode(INode* node);
 
 protected:
-	std::vector<Node> mChildNodes;
+	std::vector<INode*> mChildNodes;
 };

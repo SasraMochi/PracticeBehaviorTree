@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Node.h"
+#include "INode.h"
 
-class Decorator : public Node{
+class Decorator : public INode{
 public:
-	virtual void SetNode(Node node);
+	virtual void SetNode(INode* node);
 
 protected:
-	Node mChildNode;
+	INode* mChildNode;
 };

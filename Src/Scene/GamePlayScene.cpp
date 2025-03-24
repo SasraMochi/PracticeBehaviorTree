@@ -1,7 +1,12 @@
 #include "GamePlayScene.h"
 #include "DxLib.h"
 
+#include "Actor/Enemy/Attacker.h"
+
 void GamePlayScene::start() {
+	set_next("TitleScene");
+
+	mWorld.add_actor(new Attacker());
 }
 
 void GamePlayScene::update() {

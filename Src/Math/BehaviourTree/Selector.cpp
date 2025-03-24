@@ -10,20 +10,20 @@ Selector::~Selector()
 
 NodeResult Selector::Run()
 {
-	Node::Run();
-
 	NodeResult selector_result = NodeResult::Fail;
 	for (auto& node : mChildNodes)
 	{
+		// ƒm[ƒh‚ª¬Œ÷‚©¸”s‚ğ•Ô‚·‚Ü‚ÅRun‚µ‘±‚¯‚é
 		NodeResult result = NodeResult::None;
-		if (result != NodeResult::Running) {
-			result = node.Run();
-		}
+		do {
+			node->CheckFirstRun();
+			result = node->Run();
+		} while (result == NodeResult::Running);
 
-		// ‚Ç‚ê‚©ˆê‚Â‚Å‚à¬Œ÷‚ğ•Ô‚µ‚Ä‚¢‚½‚ç•Û
+		// ‚Ç‚ê‚©ˆê‚Â‚Å‚à¬Œ÷‚ğ•Ô‚µ‚Ä‚½‚ç‘¦À‚É¬Œ÷‚ğ•Ô‚·
 		if (result == NodeResult::Success)
-			selector_result = result;
+			return NodeResult::Success;
 	}
 
-	return selector_result;
+	return NodeResult::Fail;
 }
