@@ -17,7 +17,6 @@ NodeResult Sequence::Run()
 		// ƒm[ƒh‚ª¬Œ÷‚©Ž¸”s‚ð•Ô‚·‚Ü‚ÅRun‚µ‘±‚¯‚é
 		NodeResult result = NodeResult::None;
 		do {
-			node->CheckFirstRun();
 			result = node->Run();
 		} while(result == NodeResult::Running);
 

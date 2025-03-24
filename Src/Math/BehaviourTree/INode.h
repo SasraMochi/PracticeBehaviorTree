@@ -9,11 +9,12 @@ public:
 	// 動作
 	virtual NodeResult Run() = 0;
 
-	// 初期呼び出し時かチェックする
-	void CheckFirstRun();
-
 	// リセット
 	virtual void Reset();
+
+protected:
+	// 初期呼び出し時かチェックする
+	void CheckFirstRun();
 
 private:
 	void SetRunnning();

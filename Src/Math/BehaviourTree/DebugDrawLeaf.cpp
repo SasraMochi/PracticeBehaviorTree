@@ -14,6 +14,8 @@ DebugDrawLeaf::~DebugDrawLeaf()
 
 NodeResult DebugDrawLeaf::Run()
 {
+    CheckFirstRun();
+
     std::cout << mText << std::endl;
 
     mNodeResult = NodeResult::Success;
