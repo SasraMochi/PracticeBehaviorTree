@@ -5,7 +5,7 @@
 class Game {
 public:
 	//コンストラクタ
-	Game(int screenX = 640, int screenY = 480);
+	Game();
 
 	//開始
 	void start();

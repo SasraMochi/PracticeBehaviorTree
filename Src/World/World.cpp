@@ -21,6 +21,8 @@ void World::update(float delta_time) {
 
 //描画
 void World::draw() const {
+	//フィールド描画
+	field_->draw();
 	//アクターの描画
 	actors_.draw();
 	//半透明アクターの描画
@@ -43,6 +45,11 @@ void World::set_scene(IScene* scene) {
 //シーンの取得
 IScene* World::scene() {
 	return scene_;
+}
+
+void World::set_field(Field* field)
+{
+	field_ = field;
 }
 
 //アクターの追加

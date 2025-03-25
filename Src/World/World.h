@@ -2,6 +2,7 @@
 
 #include "World/IWorld.h"
 #include "Scene/IScene.h"
+#include "World/Field.h"
 #include "Actor/ActorManager.h"
 
 //ワールドクラス
@@ -23,6 +24,9 @@ public:
 
 	//現在のシーンの取得
 	virtual IScene* scene() override;
+
+	//フィールドの登録
+	void set_field(Field* field);
 
 	//アクターを追加
 	virtual void add_actor(Actor* actor) override;
@@ -46,4 +50,6 @@ private:
 	ActorManager actors_;
 	//シーン
 	IScene* scene_{ nullptr };
+	//フィールド
+	Field* field_{ nullptr };
 };

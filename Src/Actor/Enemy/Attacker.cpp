@@ -1,13 +1,19 @@
 #include "Attacker.h"
 
+#include "Math/BehaviourTree/Inverter.h"
 #include "Math/BehaviourTree/DebugDrawLeaf.h"
+#include "Math/BehaviourTree/DebugSuccessLeaf.h"
+#include "Math/BehaviourTree/DebugFailLeaf.h"
 
 Attacker::Attacker()
 {
 	mpBehaviourTree = new Selector();
-	mpBehaviourTree->AddNode(new DebugDrawLeaf("1"));
-	mpBehaviourTree->AddNode(new DebugDrawLeaf("2"));
-	mpBehaviourTree->AddNode(new DebugDrawLeaf("3"));
+
+#if 0
+	mpBehaviourTree->AddNode(new Inverter(new DebugDrawLeaf(1)));
+	mpBehaviourTree->AddNode(new Inverter(new DebugDrawLeaf(2)));
+	mpBehaviourTree->AddNode(new DebugDrawLeaf(3));
+#endif
 }
 
 Attacker::~Attacker()

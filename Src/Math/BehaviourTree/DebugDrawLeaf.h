@@ -5,12 +5,12 @@
 
 class DebugDrawLeaf : public INode {
 public:
-	DebugDrawLeaf(std::string text);
+	DebugDrawLeaf(int text);
 
 	~DebugDrawLeaf();
 
 	virtual NodeResult Run() override;
 
 private:
-	std::string mText;
+	int mText;
 };

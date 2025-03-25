@@ -131,6 +131,7 @@ Vector2 Vector2::lerp_unclamped(const Vector2& a, const Vector2& b, float t) {
 	return a + (b - a) * t;
 }
 
+#if 0
 // 2つのベクトルで各成分の最大値を使用してベクトルを作成
 Vector2 Vector2::max(const Vector2& lhs, const Vector2& rhs) {
 	return Vector2{ std::max(lhs.x, rhs.x), std::max(lhs.y, rhs.y) };
@@ -140,6 +141,7 @@ Vector2 Vector2::max(const Vector2& lhs, const Vector2& rhs) {
 Vector2 Vector2::min(const Vector2& lhs, const Vector2& rhs) {
 	return Vector2{ std::min(lhs.x, rhs.x), std::min(lhs.y, rhs.y) };
 }
+#endif
 
 // 現在位置currentからtargetに向けて移動
 Vector2 Vector2::move_towards(const Vector2& current, const Vector2& target, float max_distance_delta) {

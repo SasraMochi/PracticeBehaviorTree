@@ -22,9 +22,11 @@ NodeResult Sequence::Run()
 
 		// Às’†‚É¸”s‚ğ•Ô‚µ‚½‚ç¸”s‚ğ•Ô‚·
 		if (result == NodeResult::Fail) {
-			return result;
+			mNodeResult = NodeResult::Fail;
+			return mNodeResult;
 		}
 	}
 
+	mNodeResult = NodeResult::Success;
 	return NodeResult::Success;
 }

@@ -2,9 +2,7 @@
 #include "Scene/TitleScene.h"
 #include "Scene/GamePlayScene.h"
 
-Game::Game(int screenX, int screenY) {
-	SetGraphMode(screenX, screenY, 32);
-	SetWindowSize(screenX, screenY);
+Game::Game() {
 }
 
 void Game::start(){

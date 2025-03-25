@@ -10,6 +10,8 @@ Selector::~Selector()
 
 NodeResult Selector::Run()
 {
+	CheckFirstRun();
+
 	NodeResult selector_result = NodeResult::Fail;
 	for (auto& node : mChildNodes)
 	{
@@ -19,10 +21,13 @@ NodeResult Selector::Run()
 			result = node->Run();
 		} while (result == NodeResult::Running);
 
-		// ‚Ç‚ê‚©ˆê‚Â‚Å‚à¬Œ÷‚ğ•Ô‚µ‚Ä‚½‚ç‘¦À‚É¬Œ÷‚ğ•Ô‚·
-		if (result == NodeResult::Success)
-			return NodeResult::Success;
+		// ‘¦À‚É¬Œ÷‚ğ•Ô‚·
+		if (result == NodeResult::Success) {
+			mNodeResult = NodeResult::Success;
+			return mNodeResult;
+		}
 	}
 
-	return NodeResult::Fail;
+	mNodeResult = NodeResult::Fail;
+	return mNodeResult;
 }

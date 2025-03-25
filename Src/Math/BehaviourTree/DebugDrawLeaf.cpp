@@ -1,8 +1,8 @@
 #include "DebugDrawLeaf.h"
 
-#include <iostream>
+#include "DxLib.h"
 
-DebugDrawLeaf::DebugDrawLeaf(std::string text)
+DebugDrawLeaf::DebugDrawLeaf(int text)
     : mText(text)
 {
 
@@ -16,7 +16,7 @@ NodeResult DebugDrawLeaf::Run()
 {
     CheckFirstRun();
 
-    std::cout << mText << std::endl;
+    printfDx("%i\n", mText);
 
     mNodeResult = NodeResult::Success;
     return mNodeResult;

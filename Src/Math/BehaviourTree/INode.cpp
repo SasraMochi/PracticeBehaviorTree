@@ -2,7 +2,7 @@
 
 void INode::CheckFirstRun()
 {
-	if (mNodeResult != NodeResult::None) return;
+	if (mNodeResult == NodeResult::Running) return;
 
 	SetRunnning();
 }
