@@ -1,5 +1,7 @@
 #include "Attacker.h"
 
+#include "DxLib.h"
+
 #include "Math/BehaviourTree/Inverter.h"
 #include "Math/BehaviourTree/DebugDrawLeaf.h"
 #include "Math/BehaviourTree/DebugSuccessLeaf.h"
@@ -28,6 +30,7 @@ void Attacker::update(float delta_time)
 
 void Attacker::draw() const
 {
+	DrawCircle(position_.x, position_.y, 32, GetColor(255, 0, 0), TRUE);
 }
 
 void Attacker::draw_transparent() const

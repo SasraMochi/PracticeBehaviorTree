@@ -2,7 +2,7 @@
 
 #include <string>
 #include <vector>
-#include "Math/Vector3.h"
+#include "Math/Vector2.h"
 
 class IWorld;	//ワールド抽象インターフェースの前方宣言
 
@@ -53,9 +53,9 @@ protected:
 	//名前
 	std::string name_;
 	//トランスフォーム
-	Vector3 transform_;
+	Vector2 position_;
 	//移動量
-	Vector3 velocity_{ 0.0f,0.0f,0.0f };
+	Vector2 velocity_{ 0.0f,0.0f };
 	//衝突判定が有効か？
 	bool enable_collider_{ true };
 	//死亡フラグ
