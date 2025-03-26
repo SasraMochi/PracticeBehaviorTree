@@ -1,5 +1,6 @@
 #pragma once
 #include "NodeResult.h"
+#include "Actor/Actor.h"
 
 class INode {
 public:
@@ -12,6 +13,9 @@ public:
 	// リセット
 	virtual void Reset();
 
+	// オーナーをセットする
+	void SetOwner(Actor* actor);
+
 protected:
 	// 初期呼び出し時かチェックする
 	void CheckFirstRun();
@@ -20,5 +24,7 @@ private:
 	void SetRunnning();
 
 protected:
+	Actor* mpOwner = nullptr;
+
 	NodeResult mNodeResult = NodeResult::None;
 };

@@ -3,15 +3,18 @@
 #include "DxLib.h"
 
 #include "Math/BehaviourTree/Inverter.h"
-#include "Math/BehaviourTree/DebugDrawLeaf.h"
-#include "Math/BehaviourTree/DebugSuccessLeaf.h"
-#include "Math/BehaviourTree/DebugFailLeaf.h"
+#include "Math/BehaviourTree/Leaf/DebugDrawLeaf.h"
+#include "Math/BehaviourTree/Leaf/DebugSuccessLeaf.h"
+#include "Math/BehaviourTree/Leaf/DebugFailLeaf.h"
 
 Attacker::Attacker()
 {
+	tag_ = "EnemyTag";
+	name_ = "Attacker";
+
 	mpBehaviourTree = new Selector();
 
-#if 0
+#if 1
 	mpBehaviourTree->AddNode(new Inverter(new DebugDrawLeaf(1)));
 	mpBehaviourTree->AddNode(new Inverter(new DebugDrawLeaf(2)));
 	mpBehaviourTree->AddNode(new DebugDrawLeaf(3));

@@ -5,7 +5,10 @@
 
 Player::Player()
 {
+	// ‰ŠúˆÊ’u‚Ìİ’è
 	position_ = { Screen::Width / 2, Screen::Height / 2 };
+	tag_ = "PlayerTag";
+	name_ = "Player";
 }
 
 Player::~Player()

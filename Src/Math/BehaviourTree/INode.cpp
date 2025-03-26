@@ -12,6 +12,11 @@ void INode::Reset()
 	mNodeResult = NodeResult::None;
 }
 
+void INode::SetOwner(Actor* actor)
+{
+	mpOwner = actor;
+}
+
 void INode::SetRunnning()
 {
 	mNodeResult = NodeResult::Running;
