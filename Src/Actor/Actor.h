@@ -5,6 +5,8 @@
 #include "Math/Vector2.h"
 
 class IWorld;	//ワールド抽象インターフェースの前方宣言
+class BlackBoard;
+class Vector2;
 
 //アクタークラス
 class Actor {
@@ -37,6 +39,8 @@ public:
 	const std::string& name() const;
 	//タグ名を取得
 	const std::string& tag() const;
+	//現在位置を取得
+	const Vector2& position() const;
 
 	//攻撃力を取得
 	float attack_power() const;
@@ -48,6 +52,8 @@ public:
 protected:
 	//ワールド
 	IWorld* world_{ nullptr };
+	//ブラックボード
+	BlackBoard* black_board_{ nullptr };
 	//タグ名
 	std::string tag_;
 	//名前

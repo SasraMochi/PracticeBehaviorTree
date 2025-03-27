@@ -1,6 +1,10 @@
 #include "Attacker.h"
 
 #include "DxLib.h"
+#include "World/IWorld.h"
+
+#include "Actor/BlackBoard.h"
+#include "Math/BehaviourTree/BehaviourTreeBulider.h"
 
 #include "Math/BehaviourTree/Inverter.h"
 #include "Math/BehaviourTree/Leaf/DebugDrawLeaf.h"
@@ -12,13 +16,11 @@ Attacker::Attacker()
 	tag_ = "EnemyTag";
 	name_ = "Attacker";
 
-	mpBehaviourTree = new Selector();
+	black_board_ = new BlackBoard();
+	black_board_->SetValue<IAgent*>("Agent", this);
+	black_board_->SetValue<Vector2>("PlayerPos", Vector2::zero());
 
-#if 1
-	mpBehaviourTree->AddNode(new Inverter(new DebugDrawLeaf(1)));
-	mpBehaviourTree->AddNode(new Inverter(new DebugDrawLeaf(2)));
-	mpBehaviourTree->AddNode(new DebugDrawLeaf(3));
-#endif
+	mpBehaviourTree = BehaviourTreeBuilder::BuildAttackerTree(black_board_);
 }
 
 Attacker::~Attacker()
@@ -28,7 +30,12 @@ Attacker::~Attacker()
 
 void Attacker::update(float delta_time)
 {
+	Vector2 pos = world_->find_actor("Player")->position();
+	black_board_->SetValue<Vector2>("PlayerPos", pos);
+
 	mpBehaviourTree->Run();
+
+	position_ += velocity_ * delta_time;
 }
 
 void Attacker::draw() const
@@ -42,4 +49,15 @@ void Attacker::draw_transparent() const
 
 void Attacker::draw_gui() const
 {
+}
+
+const Vector2& Attacker::GetPosition() const
+{
+	return position_;
+}
+
+void Attacker::MoveTowards(const Vector2& target, float speed)
+{
+	auto vector = target - position_;
+	velocity_ = vector * speed;
 }

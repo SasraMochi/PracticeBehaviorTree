@@ -5,7 +5,7 @@
 
 class DebugDrawLeaf : public INode {
 public:
-	DebugDrawLeaf(int text);
+	DebugDrawLeaf(BlackBoard* black_board, int text);
 
 	~DebugDrawLeaf();
 

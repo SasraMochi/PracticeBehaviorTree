@@ -4,7 +4,7 @@
 
 class Inverter : public Decorator {
 public:
-	Inverter(INode* node);
+	Inverter(BlackBoard* black_board, INode* node);
 
 	~Inverter();
 

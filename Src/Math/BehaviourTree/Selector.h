@@ -5,7 +5,7 @@
 
 class Selector : public Composite {
 public:
-	Selector();
+	Selector(BlackBoard* black_board);
 
 	~Selector();
 

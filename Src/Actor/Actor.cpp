@@ -34,6 +34,11 @@ const std::string& Actor::tag() const{
     return tag_;
 }
 
+const Vector2& Actor::position() const
+{
+    return position_;
+}
+
 //UŒ‚—Í‚ğæ“¾‚·‚é
 float Actor::attack_power() const{
     return attack_power_;

@@ -161,11 +161,14 @@
   <ItemGroup>
     <ClCompile Include="Src\Actor\Actor.cpp" />
     <ClCompile Include="Src\Actor\ActorManager.cpp" />
+    <ClCompile Include="Src\Actor\BlackBoard.cpp" />
     <ClCompile Include="Src\Actor\Enemy\Attacker.cpp" />
     <ClCompile Include="SRC\ACTOR\Player.cpp" />
     <ClCompile Include="Src\Game.cpp" />
     <ClCompile Include="Src\main.cpp" />
+    <ClCompile Include="Src\Math\BehaviourTree\BehaviourTreeBulider.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\Composite.cpp" />
+    <ClCompile Include="Src\Math\BehaviourTree\Leaf\ChasePlayerLeaf.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\Leaf\DebugDrawLeaf.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\Leaf\DebugFailLeaf.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\Leaf\DebugSuccessLeaf.cpp" />
@@ -191,9 +194,12 @@
     <ClInclude Include="Src\Actor\ActorManager.h" />
     <ClInclude Include="Src\Actor\BlackBoard.h" />
     <ClInclude Include="Src\Actor\Enemy\Attacker.h" />
+    <ClInclude Include="Src\Actor\IAgent.h" />
     <ClInclude Include="Src\Actor\Player.h" />
     <ClInclude Include="Src\Game.h" />
+    <ClInclude Include="Src\Math\BehaviourTree\BehaviourTreeBulider.h" />
     <ClInclude Include="Src\Math\BehaviourTree\Composite.h" />
+    <ClInclude Include="Src\Math\BehaviourTree\Leaf\ChasePlayerLeaf.h" />
     <ClInclude Include="Src\Math\BehaviourTree\Leaf\DebugDrawLeaf.h" />
     <ClInclude Include="Src\Math\BehaviourTree\Leaf\DebugFailLeaf.h" />
     <ClInclude Include="Src\Math\BehaviourTree\Leaf\DebugSuccessLeaf.h" />

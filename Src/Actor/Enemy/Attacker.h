@@ -1,23 +1,32 @@
 #pragma once
 
 #include "Actor/Actor.h"
+#include "Actor/IAgent.h"
 #include "Math/BehaviourTree/Selector.h"
 
-class Attacker : public Actor {
+#include "Math/Vector2.h"
+
+class Attacker : public Actor, public IAgent {
 public:
 	//コンストラクタ
 	Attacker();
 	//デストラクタ
 	~Attacker();
 	//更新
-	virtual void update(float delta_time);
+	void update(float delta_time);
 	//描画
-	virtual void draw() const;
+	void draw() const;
 	//半透明の描画
-	virtual void draw_transparent() const;
+	void draw_transparent() const;
 	//GUIの描画
-	virtual void draw_gui() const;
+	void draw_gui() const;
+
+public:
+	const Vector2& GetPosition() const override;
+	void MoveTowards(const Vector2& target, float speed) override;
 
 private:
-	Selector* mpBehaviourTree = nullptr;
+	INode* mpBehaviourTree = nullptr;
+
+	// Vector2 mPlayerPosition = { 0.f, 0.f };
 };

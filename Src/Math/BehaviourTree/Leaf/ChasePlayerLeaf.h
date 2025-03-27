@@ -6,9 +6,11 @@ class Player;
 
 class ChasePlayerLeaf : public INode {
 public:
-	ChasePlayerLeaf();
+	ChasePlayerLeaf(BlackBoard* black_board);
 
 	~ChasePlayerLeaf();
+
+	NodeResult Run() override;
 
 private:
 	Player* mpPlayer = nullptr;

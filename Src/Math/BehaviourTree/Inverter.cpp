@@ -2,7 +2,8 @@
 
 #include <assert.h>
 
-Inverter::Inverter(INode* node)
+Inverter::Inverter(BlackBoard* black_board, INode* node)
+	: Decorator(black_board)
 {
 	SetNode(node);
 }

@@ -1,6 +1,7 @@
 #include "Sequence.h"
 
-Sequence::Sequence()
+Sequence::Sequence(BlackBoard* black_board)
+	: Composite(black_board)
 {
 }
 

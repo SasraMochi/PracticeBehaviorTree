@@ -1,6 +1,7 @@
 #include "Selector.h"
 
-Selector::Selector()
+Selector::Selector(BlackBoard* black_board)
+	: Composite(black_board)
 {
 }
 

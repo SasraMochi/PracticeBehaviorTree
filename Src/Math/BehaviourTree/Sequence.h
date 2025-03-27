@@ -5,7 +5,7 @@
 
 class Sequence : public Composite {
 public:
-	Sequence();
+	Sequence(BlackBoard* black_board);
 
 	~Sequence();
 

@@ -2,8 +2,9 @@
 
 #include "DxLib.h"
 
-DebugDrawLeaf::DebugDrawLeaf(int text)
-    : mText(text)
+DebugDrawLeaf::DebugDrawLeaf(BlackBoard* black_board, int text)
+	: INode(black_board),
+	mText(text)
 {
 
 }
@@ -14,10 +15,10 @@ DebugDrawLeaf::~DebugDrawLeaf()
 
 NodeResult DebugDrawLeaf::Run()
 {
-    CheckFirstRun();
+	CheckFirstRun();
 
-    printfDx("%i\n", mText);
+	printfDx("%i\n", mText);
 
-    mNodeResult = NodeResult::Success;
-    return mNodeResult;
+	mNodeResult = NodeResult::Success;
+	return mNodeResult;
 }

@@ -5,6 +5,9 @@
 
 class Composite : public INode {
 public:
+	Composite(BlackBoard* black_board) : INode(black_board) {
+	};
+
 	void AddNode(INode* node);
 
 protected:

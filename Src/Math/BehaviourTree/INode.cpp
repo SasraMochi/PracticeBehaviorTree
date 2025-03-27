@@ -7,14 +7,14 @@ void INode::CheckFirstRun()
 	SetRunnning();
 }
 
+INode::INode(BlackBoard* black_board)
+	: mpBlackBoard(black_board)
+{
+}
+
 void INode::Reset()
 {
 	mNodeResult = NodeResult::None;
-}
-
-void INode::SetOwner(Actor* actor)
-{
-	mpOwner = actor;
 }
 
 void INode::SetRunnning()
