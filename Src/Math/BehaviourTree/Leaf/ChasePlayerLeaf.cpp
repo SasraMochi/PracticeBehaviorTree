@@ -20,7 +20,11 @@ NodeResult ChasePlayerLeaf::Run()
 
 	// プレイヤーの位置を取得
 	auto player_pos = mpBlackBoard->GetValue<Vector2>("PlayerPos");
-	mpBlackBoard->GetValue<IAgent*>("Agent")->MoveTowards(player_pos, 2.f);
+	auto* agent = mpBlackBoard->GetValue<IAgent*>("Agent");
+
+	auto vector = player_pos - agent->GetPosition();
+
+	agent->MoveTowards(vector.normalized(), 3.f);
 
 	return NodeResult::Success;
 }

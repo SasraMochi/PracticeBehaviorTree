@@ -6,10 +6,12 @@
 
 #include "Math/Vector2.h"
 
+class IWorld;
+
 class Attacker : public Actor, public IAgent {
 public:
 	//コンストラクタ
-	Attacker();
+	Attacker(IWorld* world);
 	//デストラクタ
 	~Attacker();
 	//更新

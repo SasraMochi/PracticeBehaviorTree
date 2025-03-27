@@ -11,8 +11,9 @@
 #include "Math/BehaviourTree/Leaf/DebugSuccessLeaf.h"
 #include "Math/BehaviourTree/Leaf/DebugFailLeaf.h"
 
-Attacker::Attacker()
+Attacker::Attacker(IWorld* world)
 {
+	world_ = world;
 	tag_ = "EnemyTag";
 	name_ = "Attacker";
 
@@ -58,6 +59,5 @@ const Vector2& Attacker::GetPosition() const
 
 void Attacker::MoveTowards(const Vector2& target, float speed)
 {
-	auto vector = target - position_;
-	velocity_ = vector * speed;
+	velocity_ = target * speed;
 }

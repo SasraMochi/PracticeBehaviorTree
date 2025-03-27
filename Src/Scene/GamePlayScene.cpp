@@ -8,7 +8,7 @@ void GamePlayScene::start() {
 	set_next("TitleScene");
 
 	mWorld.add_actor(new Player());
-	mWorld.add_actor(new Attacker());
+	mWorld.add_actor(new Attacker(&mWorld));
 	mWorld.set_field(new Field(1920, 64));
 }
 
