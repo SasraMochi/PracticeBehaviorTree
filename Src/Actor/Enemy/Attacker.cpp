@@ -6,7 +6,7 @@
 #include "Actor/BlackBoard.h"
 #include "Math/BehaviourTree/BehaviourTreeBulider.h"
 
-#include "Math/BehaviourTree/Inverter.h"
+#include "Math/BehaviourTree/Decorator/Inverter.h"
 #include "Math/BehaviourTree/Leaf/DebugDrawLeaf.h"
 #include "Math/BehaviourTree/Leaf/DebugSuccessLeaf.h"
 #include "Math/BehaviourTree/Leaf/DebugFailLeaf.h"

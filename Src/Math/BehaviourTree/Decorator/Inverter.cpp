@@ -2,10 +2,10 @@
 
 #include <assert.h>
 
-Inverter::Inverter(BlackBoard* black_board, INode* node)
+Inverter::Inverter(BlackBoard* black_board, INode* child_node)
 	: Decorator(black_board)
 {
-	set_node(node);
+	set_node(child_node);
 }
 
 Inverter::~Inverter()

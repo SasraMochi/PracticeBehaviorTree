@@ -1,6 +1,6 @@
 #pragma once
 
-#include "INode.h"
+#include "Math/BehaviourTree/INode.h"
 
 class Decorator : public INode{
 public:

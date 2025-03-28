@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "INode.h"
+#include "Math/BehaviourTree/INode.h"
 
 class Composite : public INode {
 public:

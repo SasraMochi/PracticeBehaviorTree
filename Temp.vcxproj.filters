@@ -33,19 +33,19 @@
     <ClCompile Include="Src\Scene\GamePlayScene.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Math\BehaviourTree\Sequence.cpp">
+    <ClCompile Include="Src\Math\BehaviourTree\Composite\Sequence.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Math\BehaviourTree\Selector.cpp">
+    <ClCompile Include="Src\Math\BehaviourTree\Composite\Selector.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Math\BehaviourTree\Composite.cpp">
+    <ClCompile Include="Src\Math\BehaviourTree\Composite\Composite.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Math\BehaviourTree\Decorator.cpp">
+    <ClCompile Include="Src\Math\BehaviourTree\Decorator\Decorator.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Math\BehaviourTree\Inverter.cpp">
+    <ClCompile Include="Src\Math\BehaviourTree\Decorator\Inverter.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Src\Actor\Actor.cpp">
@@ -102,6 +102,9 @@
     <ClCompile Include="Src\Math\BehaviourTree\BehaviourTreeBulider.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Math\BehaviourTree\Decorator\CheckNearPlayer.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Game.h">
@@ -128,19 +131,19 @@
     <ClInclude Include="Src\Math\BehaviourTree\NodeResult.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Math\BehaviourTree\Sequence.h">
+    <ClInclude Include="Src\Math\BehaviourTree\Composite\Sequence.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Math\BehaviourTree\Selector.h">
+    <ClInclude Include="Src\Math\BehaviourTree\Composite\Selector.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Math\BehaviourTree\Composite.h">
+    <ClInclude Include="Src\Math\BehaviourTree\Composite\Composite.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Math\BehaviourTree\Decorator.h">
+    <ClInclude Include="Src\Math\BehaviourTree\Decorator\Decorator.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Math\BehaviourTree\Inverter.h">
+    <ClInclude Include="Src\Math\BehaviourTree\Decorator\Inverter.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Src\Actor\ActorManager.h">
@@ -210,6 +213,9 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Src\Actor\IAgent.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Math\BehaviourTree\Decorator\CheckNearPlayer.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
