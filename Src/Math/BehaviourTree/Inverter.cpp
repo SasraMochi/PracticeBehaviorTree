@@ -5,21 +5,21 @@
 Inverter::Inverter(BlackBoard* black_board, INode* node)
 	: Decorator(black_board)
 {
-	SetNode(node);
+	set_node(node);
 }
 
 Inverter::~Inverter()
 {
 }
 
-NodeResult Inverter::Run()
+NodeResult Inverter::tick()
 {
-	CheckFirstRun();
+	check_first_run();
 
 	// Œ‹‰Ê‚ªo‚é‚Ü‚Å‰ñ‚µ‘±‚¯‚é
 	NodeResult result = NodeResult::None;
 	do {
-		result = mChildNode->Run();
+		result = mChildNode->tick();
 	} while (result == NodeResult::Running);
 
 	// Œ‹‰Ê‚ð”½“]‚³‚¹‚é

@@ -25,6 +25,4 @@ public:
 
 private:
 	float mSpeed = 4.f;
-	
-	Vector2 mPosition{ 0.f, 0.f };
 };

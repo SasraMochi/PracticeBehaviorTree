@@ -12,17 +12,17 @@ public:
 	virtual ~INode() = default;
 
 	// 動作
-	virtual NodeResult Run() = 0;
+	virtual NodeResult tick() = 0;
 
 	// リセット
-	virtual void Reset();
+	virtual void reset();
 
 protected:
 	// 初期呼び出し時かチェックする
-	void CheckFirstRun();
+	void check_first_run();
 
 private:
-	void SetRunnning();
+	void set_running_();
 
 protected:
 	BlackBoard* mpBlackBoard = nullptr;

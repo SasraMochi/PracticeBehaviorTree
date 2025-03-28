@@ -24,11 +24,9 @@ public:
 	void draw_gui() const;
 
 public:
-	const Vector2& GetPosition() const override;
-	void MoveTowards(const Vector2& target, float speed) override;
+	const Vector2& get_position() const override;
+	void move_towards(const Vector2& target, float speed) override;
 
 private:
 	INode* mpBehaviourTree = nullptr;
-
-	// Vector2 mPlayerPosition = { 0.f, 0.f };
 };

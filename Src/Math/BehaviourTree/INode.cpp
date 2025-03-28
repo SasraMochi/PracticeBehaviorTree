@@ -1,10 +1,10 @@
 #include "INode.h"
 
-void INode::CheckFirstRun()
+void INode::check_first_run()
 {
 	if (mNodeResult == NodeResult::Running) return;
 
-	SetRunnning();
+	set_running_();
 }
 
 INode::INode(BlackBoard* black_board)
@@ -12,12 +12,12 @@ INode::INode(BlackBoard* black_board)
 {
 }
 
-void INode::Reset()
+void INode::reset()
 {
 	mNodeResult = NodeResult::None;
 }
 
-void INode::SetRunnning()
+void INode::set_running_()
 {
 	mNodeResult = NodeResult::Running;
 }

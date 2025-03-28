@@ -1,6 +1,6 @@
 #include "Decorator.h"
 
-void Decorator::SetNode(INode* node)
+void Decorator::set_node(INode* node)
 {
 	mChildNode = node;
 }

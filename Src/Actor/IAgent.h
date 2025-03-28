@@ -6,6 +6,6 @@ class IAgent {
 public:
 	virtual ~IAgent() = default;
 
-	virtual const Vector2& GetPosition() const = 0;
-	virtual void MoveTowards(const Vector2& target, float speed) = 0;
+	virtual const Vector2& get_position() const = 0;
+	virtual void move_towards(const Vector2& target, float speed) = 0;
 };

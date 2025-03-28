@@ -8,7 +8,7 @@ public:
 	Composite(BlackBoard* black_board) : INode(black_board) {
 	};
 
-	void AddNode(INode* node);
+	void add_node(INode* node);
 
 protected:
 	std::vector<INode*> mChildNodes;

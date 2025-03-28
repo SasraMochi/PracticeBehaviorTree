@@ -51,21 +51,21 @@ public:
 
 protected:
 	//ワールド
-	IWorld* world_{ nullptr };
+	IWorld* mpWorld{ nullptr };
 	//ブラックボード
-	BlackBoard* black_board_{ nullptr };
+	BlackBoard* mpBlackBoard{ nullptr };
 	//タグ名
-	std::string tag_;
+	std::string mTag;
 	//名前
-	std::string name_;
+	std::string mName;
 	//トランスフォーム
-	Vector2 position_;
+	Vector2 mPosition;
 	//移動量
-	Vector2 velocity_{ 0.0f,0.0f };
+	Vector2 mVelocity{ 0.0f,0.0f };
 	//衝突判定が有効か？
-	bool enable_collider_{ true };
+	bool mIsEnableCollider{ true };
 	//死亡フラグ
-	bool dead_{ false };
+	bool mIsDead{ false };
 	//攻撃力
-	float attack_power_{ 0.0f };
+	float mAttackPower{ 0.0f };
 };

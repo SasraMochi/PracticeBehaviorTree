@@ -2,9 +2,9 @@
 
 #include "DxLib.h"
 
-NodeResult DebugFailLeaf::Run()
+NodeResult DebugFailLeaf::tick()
 {
-    CheckFirstRun();
+    check_first_run();
 
     printfDx("デバッグ失敗");
 

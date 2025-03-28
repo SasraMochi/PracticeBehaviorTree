@@ -19,27 +19,27 @@ void Actor::collide(Actor& other){
 }
 
 void Actor::die(){
-    dead_ = true;
+    mIsDead = true;
 }
 
 bool Actor::is_dead() const{
-    return dead_;
+    return mIsDead;
 }
 
 const std::string& Actor::name() const{
-    return name_;
+    return mName;
 }
 
 const std::string& Actor::tag() const{
-    return tag_;
+    return mTag;
 }
 
 const Vector2& Actor::position() const
 {
-    return position_;
+    return mPosition;
 }
 
 //UŒ‚—Í‚ğæ“¾‚·‚é
 float Actor::attack_power() const{
-    return attack_power_;
+    return mAttackPower;
 }

@@ -9,16 +9,16 @@ Sequence::~Sequence()
 {
 }
 
-NodeResult Sequence::Run()
+NodeResult Sequence::tick()
 {
-	CheckFirstRun();
+	check_first_run();
 
 	for (auto& node : mChildNodes)
 	{
 		// ƒm[ƒh‚ª¬Œ÷‚©¸”s‚ğ•Ô‚·‚Ü‚ÅRun‚µ‘±‚¯‚é
 		NodeResult result = NodeResult::None;
 		do {
-			result = node->Run();
+			result = node->tick();
 		} while(result == NodeResult::Running);
 
 		// Às’†‚É¸”s‚ğ•Ô‚µ‚½‚ç¸”s‚ğ•Ô‚·

@@ -6,5 +6,5 @@ class DebugSuccessLeaf : public INode{
 public:
 	DebugSuccessLeaf(BlackBoard* black_board) : INode(black_board) {}
 
-	virtual NodeResult Run() override;
+	virtual NodeResult tick() override;
 };

@@ -9,15 +9,15 @@ class BlackBoard {
 public:
 	// 要素をセット
 	template<typename T>
-	void SetValue(const std::string& key, const T& value) {
-		data_[key] = value;
+	void set_value(const std::string& key, const T& value) {
+		mData[key] = value;
 	}
 
 	// 要素を取得
 	template<typename T>
-	T GetValue(const std::string& key) const {
-		auto it = data_.find(key);
-		if (it != data_.end()) {
+	T get_value(const std::string& key) const {
+		auto it = mData.find(key);
+		if (it != mData.end()) {
 			return std::any_cast<T>(it->second);
 		}
 
@@ -25,8 +25,8 @@ public:
 	}
 
 	// キーがあるかチェック
-	bool HasKey(const std::string& key) const;
+	bool has_key(const std::string& key) const;
 
 private:
-	std::unordered_map<std::string, std::any> data_;
+	std::unordered_map<std::string, std::any> mData;
 };

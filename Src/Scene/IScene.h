@@ -30,7 +30,7 @@ public:
 
 protected:
 	//ゲームスピード
-	float game_speed_{ 1.0f };
+	float mGameSpeed{ 1.0f };
 	//次のシーン
-	std::string next_scene_;
+	std::string mNextScene;
 };

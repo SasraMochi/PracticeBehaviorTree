@@ -1,6 +1,6 @@
 #include "BlackBoard.h"
 
-bool BlackBoard::HasKey(const std::string& key) const
+bool BlackBoard::has_key(const std::string& key) const
 {
-	return data_.find(key) != data_.end();
+	return mData.find(key) != mData.end();
 }

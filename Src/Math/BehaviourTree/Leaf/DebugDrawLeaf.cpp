@@ -13,9 +13,9 @@ DebugDrawLeaf::~DebugDrawLeaf()
 {
 }
 
-NodeResult DebugDrawLeaf::Run()
+NodeResult DebugDrawLeaf::tick()
 {
-	CheckFirstRun();
+	check_first_run();
 
 	printfDx("%i\n", mText);
 

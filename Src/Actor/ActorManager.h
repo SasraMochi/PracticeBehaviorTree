@@ -47,5 +47,5 @@ public:
 
 private:
 	//アクターリスト
-	std::list<Actor*> actors_;
+	std::list<Actor*> mpActors;
 };

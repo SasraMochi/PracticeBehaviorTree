@@ -13,6 +13,6 @@
 INode* BehaviourTreeBuilder::BuildAttackerTree(BlackBoard* blackboard)
 {
 	auto selector = new Selector(blackboard);
-	selector->AddNode(new ChasePlayerLeaf(blackboard));
+	selector->add_node(new ChasePlayerLeaf(blackboard));
 	return selector;
 }

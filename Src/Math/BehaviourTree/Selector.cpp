@@ -9,9 +9,9 @@ Selector::~Selector()
 {
 }
 
-NodeResult Selector::Run()
+NodeResult Selector::tick()
 {
-	CheckFirstRun();
+	check_first_run();
 
 	NodeResult selector_result = NodeResult::Fail;
 	for (auto& node : mChildNodes)
@@ -19,7 +19,7 @@ NodeResult Selector::Run()
 		// ƒm[ƒh‚ª¬Œ÷‚©¸”s‚ğ•Ô‚·‚Ü‚ÅRun‚µ‘±‚¯‚é
 		NodeResult result = NodeResult::None;
 		do {
-			result = node->Run();
+			result = node->tick();
 		} while (result == NodeResult::Running);
 
 		// ‘¦À‚É¬Œ÷‚ğ•Ô‚·

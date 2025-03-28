@@ -13,15 +13,15 @@
 
 Attacker::Attacker(IWorld* world)
 {
-	world_ = world;
-	tag_ = "EnemyTag";
-	name_ = "Attacker";
+	mpWorld = world;
+	mTag = "EnemyTag";
+	mName = "Attacker";
 
-	black_board_ = new BlackBoard();
-	black_board_->SetValue<IAgent*>("Agent", this);
-	black_board_->SetValue<Vector2>("PlayerPos", Vector2::zero());
+	mpBlackBoard = new BlackBoard();
+	mpBlackBoard->set_value<IAgent*>("Agent", this);
+	mpBlackBoard->set_value<Vector2>("PlayerPos", Vector2::zero());
 
-	mpBehaviourTree = BehaviourTreeBuilder::BuildAttackerTree(black_board_);
+	mpBehaviourTree = BehaviourTreeBuilder::BuildAttackerTree(mpBlackBoard);
 }
 
 Attacker::~Attacker()
@@ -31,17 +31,17 @@ Attacker::~Attacker()
 
 void Attacker::update(float delta_time)
 {
-	Vector2 pos = world_->find_actor("Player")->position();
-	black_board_->SetValue<Vector2>("PlayerPos", pos);
+	Vector2 pos = mpWorld->find_actor("Player")->position();
+	mpBlackBoard->set_value<Vector2>("PlayerPos", pos);
 
-	mpBehaviourTree->Run();
+	mpBehaviourTree->tick();
 
-	position_ += velocity_ * delta_time;
+	mPosition += mVelocity * delta_time;
 }
 
 void Attacker::draw() const
 {
-	DrawCircle(position_.x, position_.y, 32, GetColor(255, 0, 0), TRUE);
+	DrawCircle(mPosition.x, mPosition.y, 32, GetColor(255, 0, 0), TRUE);
 }
 
 void Attacker::draw_transparent() const
@@ -52,12 +52,12 @@ void Attacker::draw_gui() const
 {
 }
 
-const Vector2& Attacker::GetPosition() const
+const Vector2& Attacker::get_position() const
 {
-	return position_;
+	return mPosition;
 }
 
-void Attacker::MoveTowards(const Vector2& target, float speed)
+void Attacker::move_towards(const Vector2& target, float speed)
 {
-	velocity_ = target * speed;
+	mVelocity = target * speed;
 }

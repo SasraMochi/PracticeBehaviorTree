@@ -9,5 +9,5 @@ public:
 	~Inverter();
 
 public:
-	virtual NodeResult Run() override;
+	virtual NodeResult tick() override;
 };

@@ -21,5 +21,5 @@ public:
 
 private:
 	//シーンマネージャー
-	SceneManager scene_manager_;
+	SceneManager mSceneManager;
 };

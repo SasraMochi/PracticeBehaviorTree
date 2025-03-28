@@ -18,5 +18,5 @@ public:
 	void end() override;
 
 private:
-	bool is_end_;
+	bool mIsEnd;
 };

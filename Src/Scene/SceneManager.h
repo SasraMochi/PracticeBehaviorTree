@@ -31,9 +31,9 @@ public:
 
 private:
 	//シーン
-	std::unordered_map<std::string, IScene*> scenes_;
+	std::unordered_map<std::string, IScene*> mScenes;
 	//現在のシーン
-	IScene* current_scene_;
+	IScene* mpCurrentScene;
 };
 
 #endif // !SCENE_MANAGER_H_

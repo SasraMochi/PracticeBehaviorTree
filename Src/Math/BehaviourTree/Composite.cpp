@@ -1,6 +1,6 @@
 #include "Composite.h"
 
-void Composite::AddNode(INode* node)
+void Composite::add_node(INode* node)
 {
 	mChildNodes.push_back(node);
 }

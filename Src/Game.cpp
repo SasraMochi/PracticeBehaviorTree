@@ -6,20 +6,20 @@ Game::Game() {
 }
 
 void Game::start(){
-	scene_manager_.add("TitleScene", new TitleScene());
-	scene_manager_.add("GamePlayScene", new GamePlayScene());
+	mSceneManager.add("TitleScene", new TitleScene());
+	mSceneManager.add("GamePlayScene", new GamePlayScene());
 
-	scene_manager_.change("TitleScene");
+	mSceneManager.change("TitleScene");
 }
 
 void Game::update(){
-	scene_manager_.update();
+	mSceneManager.update();
 }
 
 void Game::draw(){
-	scene_manager_.draw();
+	mSceneManager.draw();
 }
 
 void Game::end(){
-	scene_manager_.end();
+	mSceneManager.end();
 }

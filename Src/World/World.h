@@ -47,9 +47,9 @@ public:
 
 private:
 	//アクターマネージャー
-	ActorManager actors_;
+	ActorManager mActorManager;
 	//シーン
-	IScene* scene_{ nullptr };
+	IScene* mpScene{ nullptr };
 	//フィールド
-	Field* field_{ nullptr };
+	Field* mpField{ nullptr };
 };

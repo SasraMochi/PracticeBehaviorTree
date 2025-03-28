@@ -9,7 +9,7 @@ public:
 
 	~DebugDrawLeaf();
 
-	virtual NodeResult Run() override;
+	virtual NodeResult tick() override;
 
 private:
 	int mText;

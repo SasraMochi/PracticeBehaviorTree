@@ -2,14 +2,14 @@
 #include<DxLib.h>
 
 void TitleScene::start(){
-	is_end_ = false;
+	mIsEnd = false;
 
 	set_next("GamePlayScene");
 }
 
 void TitleScene::update(){
 	if (CheckHitKey(KEY_INPUT_Z) == 1) {
-		is_end_ = true;
+		mIsEnd = true;
 	}
 }
 
@@ -18,7 +18,7 @@ void TitleScene::draw() const {
 }
 
 bool TitleScene::is_end() const {
-	return is_end_;
+	return mIsEnd;
 }
 
 void TitleScene::end() {

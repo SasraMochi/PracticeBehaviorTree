@@ -6,9 +6,9 @@
 Player::Player()
 {
 	// ‰ŠúˆÊ’u‚ÌÝ’è
-	position_ = { Screen::Width / 2, Screen::Height / 2 };
-	tag_ = "PlayerTag";
-	name_ = "Player";
+	mPosition = { Screen::Width / 2, Screen::Height / 2 };
+	mTag = "PlayerTag";
+	mName = "Player";
 }
 
 Player::~Player()
@@ -26,13 +26,13 @@ void Player::update(float delta_time)
 
 	// “ü—Í‚ª‚³‚ê‚Ä‚¢‚é‚Æ‚«‚Ì‚ÝŒvŽZ
 	if (velocity.magnitude() > 0.f) {
-		position_ += velocity.normalized() * mSpeed;
+		mPosition += velocity.normalized() * mSpeed;
 	}
 }
 
 void Player::draw() const
 {
-	DrawCircle(position_.x, position_.y, 32, GetColor(0, 255, 0), TRUE);
+	DrawCircle(mPosition.x, mPosition.y, 32, GetColor(0, 255, 0), TRUE);
 }
 
 void Player::draw_transparent() const
