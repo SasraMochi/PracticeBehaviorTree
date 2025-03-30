@@ -11,7 +11,4 @@ public:
 	~ChasePlayerLeaf();
 
 	NodeResult tick() override;
-
-private:
-	Player* mpPlayer = nullptr;
 };

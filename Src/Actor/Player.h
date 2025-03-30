@@ -25,4 +25,5 @@ public:
 
 private:
 	float mSpeed = 4.f;
+	float mHealth = 100.f;
 };

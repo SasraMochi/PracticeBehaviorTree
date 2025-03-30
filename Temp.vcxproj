@@ -168,6 +168,7 @@
     <ClCompile Include="Src\main.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\BehaviourTreeBulider.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\Composite\Composite.cpp" />
+    <ClCompile Include="Src\Math\BehaviourTree\Decorator\CheckFarPlayer.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\Decorator\CheckNearPlayer.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\Leaf\ChasePlayerLeaf.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\Leaf\DebugDrawLeaf.cpp" />
@@ -178,6 +179,7 @@
     <ClCompile Include="Src\Math\BehaviourTree\Decorator\Inverter.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\Composite\Selector.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\Composite\Sequence.cpp" />
+    <ClCompile Include="Src\Math\BehaviourTree\Leaf\EscapePlayerLeaf.cpp" />
     <ClCompile Include="Src\Math\Matrix4x4.cpp" />
     <ClCompile Include="Src\Math\Quaternion.cpp" />
     <ClCompile Include="Src\Math\Transform.cpp" />
@@ -200,6 +202,7 @@
     <ClInclude Include="Src\Game.h" />
     <ClInclude Include="Src\Math\BehaviourTree\BehaviourTreeBulider.h" />
     <ClInclude Include="Src\Math\BehaviourTree\Composite\Composite.h" />
+    <ClInclude Include="Src\Math\BehaviourTree\Decorator\CheckFarPlayer.h" />
     <ClInclude Include="Src\Math\BehaviourTree\Decorator\CheckNearPlayer.h" />
     <ClInclude Include="Src\Math\BehaviourTree\Leaf\ChasePlayerLeaf.h" />
     <ClInclude Include="Src\Math\BehaviourTree\Leaf\DebugDrawLeaf.h" />
@@ -208,6 +211,7 @@
     <ClInclude Include="Src\Math\BehaviourTree\Decorator\Decorator.h" />
     <ClInclude Include="Src\Math\BehaviourTree\Decorator\Inverter.h" />
     <ClInclude Include="Src\Math\BehaviourTree\INode.h" />
+    <ClInclude Include="Src\Math\BehaviourTree\Leaf\EscapePlayerLeaf.h" />
     <ClInclude Include="Src\Math\BehaviourTree\NodeResult.h" />
     <ClInclude Include="Src\Math\BehaviourTree\Composite\Selector.h" />
     <ClInclude Include="Src\Math\BehaviourTree\Composite\Sequence.h" />

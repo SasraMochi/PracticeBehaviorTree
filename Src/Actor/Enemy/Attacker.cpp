@@ -37,6 +37,8 @@ void Attacker::update(float delta_time)
 	mpBehaviourTree->tick();
 
 	mPosition += mVelocity * delta_time;
+
+	mVelocity = Vector2::zero();
 }
 
 void Attacker::draw() const
