@@ -3,10 +3,10 @@
 #include <string>
 #include <vector>
 #include "Math/Vector2.h"
+#include "Math/MyRectangle.h"
 
 class IWorld;	//ワールド抽象インターフェースの前方宣言
 class BlackBoard;
-class Vector2;
 
 //アクタークラス
 class Actor {
@@ -62,6 +62,8 @@ protected:
 	Vector2 mPosition;
 	//移動量
 	Vector2 mVelocity{ 0.0f,0.0f };
+	// 当たり判定
+	MyRectangle mCollider;
 	//衝突判定が有効か？
 	bool mIsEnableCollider{ true };
 	//死亡フラグ

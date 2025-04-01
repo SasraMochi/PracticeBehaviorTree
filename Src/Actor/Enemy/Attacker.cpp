@@ -22,6 +22,10 @@ Attacker::Attacker(IWorld* world)
 	mpBlackBoard->set_value<Vector2>("PlayerPos", Vector2::zero());
 
 	mpBehaviourTree = BehaviourTreeBuilder::BuildAttackerTree(mpBlackBoard);
+
+	Vector2 min = mPosition - Vector2{ -30.f, -30.f };
+	Vector2 max = mPosition - Vector2{ 30.f, 30.f };
+	mCollider = MyRectangle{ min, max };
 }
 
 Attacker::~Attacker()
@@ -33,10 +37,11 @@ void Attacker::update(float delta_time)
 {
 	Vector2 pos = mpWorld->find_actor("Player")->position();
 	mpBlackBoard->set_value<Vector2>("PlayerPos", pos);
-
+	
 	mpBehaviourTree->tick();
 
 	mPosition += mVelocity * delta_time;
+	mCollider = mCollider.translate(mVelocity * delta_time);
 
 	mVelocity = Vector2::zero();
 }
@@ -52,6 +57,7 @@ void Attacker::draw_transparent() const
 
 void Attacker::draw_gui() const
 {
+	mCollider.draw_debug();
 }
 
 const Vector2& Attacker::get_position() const
@@ -62,4 +68,13 @@ const Vector2& Attacker::get_position() const
 void Attacker::move_towards(const Vector2& target, float speed)
 {
 	mVelocity = target * speed;
+}
+
+const int Attacker::get_health() const
+{
+	return mHealth.GetHealth();
+}
+
+void Attacker::attack()
+{
 }

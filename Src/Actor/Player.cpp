@@ -9,6 +9,10 @@ Player::Player()
 	mPosition = { Screen::Width / 2, Screen::Height / 2 };
 	mTag = "PlayerTag";
 	mName = "Player";
+
+	Vector2 min = mPosition - Vector2{ -30.f, -30.f };
+	Vector2 max = mPosition - Vector2{ 30.f, 30.f };
+	mCollider = MyRectangle{ min, max };
 }
 
 Player::~Player()
@@ -17,7 +21,8 @@ Player::~Player()
 
 void Player::update(float delta_time)
 {
-	Vector2 velocity{ 0.f, 0.f };
+	mVelocity = Vector2::zero();
+	Vector2 velocity = Vector2::zero();
 
 	// CheckHitKey‚ð”’l‰»‚µ‚ÄˆÚ“®•ûŒü‚ðŒvŽZ
 	// true‚Í1Afalse‚Í0‚Æ‚µ‚Ä•Ô‚³‚ê‚é
@@ -26,8 +31,12 @@ void Player::update(float delta_time)
 
 	// “ü—Í‚ª‚³‚ê‚Ä‚¢‚é‚Æ‚«‚Ì‚ÝŒvŽZ
 	if (velocity.magnitude() > 0.f) {
-		mPosition += velocity.normalized() * mSpeed;
+		mVelocity = velocity.normalized() * mSpeed;
+
+		mPosition += mVelocity * delta_time;
 	}
+
+	mCollider = mCollider.translate(mVelocity * delta_time);
 }
 
 void Player::draw() const
@@ -41,4 +50,5 @@ void Player::draw_transparent() const
 
 void Player::draw_gui() const
 {
+	mCollider.draw_debug();
 }

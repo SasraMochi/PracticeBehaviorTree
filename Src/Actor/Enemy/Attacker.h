@@ -2,6 +2,7 @@
 
 #include "Actor/Actor.h"
 #include "Actor/IAgent.h"
+#include "Actor/ActorHealth.h"
 #include "Math/BehaviourTree/Composite/Selector.h"
 
 #include "Math/Vector2.h"
@@ -27,6 +28,10 @@ public:
 	const Vector2& get_position() const override;
 	void move_towards(const Vector2& target, float speed) override;
 
+	const int get_health() const override;
+	void attack() override;
 private:
 	INode* mpBehaviourTree = nullptr;
+
+	ActorHealth mHealth{ 100 };
 };

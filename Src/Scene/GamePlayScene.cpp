@@ -20,8 +20,6 @@ void GamePlayScene::update() {
 
 void GamePlayScene::draw() const {
 	mWorld.draw();
-
-	// DrawString(0, 0, "ゲームプレイシーン", GetColor(255, 255, 255));
 }
 
 bool GamePlayScene::is_end() const {

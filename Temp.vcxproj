@@ -160,7 +160,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Src\Actor\Actor.cpp" />
+    <ClCompile Include="Src\Actor\ActorHealth.cpp" />
     <ClCompile Include="Src\Actor\ActorManager.cpp" />
+    <ClCompile Include="Src\Actor\AttackCollider.cpp" />
     <ClCompile Include="Src\Actor\BlackBoard.cpp" />
     <ClCompile Include="Src\Actor\Enemy\Attacker.cpp" />
     <ClCompile Include="SRC\ACTOR\Player.cpp" />
@@ -180,6 +182,7 @@
     <ClCompile Include="Src\Math\BehaviourTree\Composite\Selector.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\Composite\Sequence.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\Leaf\EscapePlayerLeaf.cpp" />
+    <ClCompile Include="Src\Math\MyRectangle.cpp" />
     <ClCompile Include="Src\Math\Matrix4x4.cpp" />
     <ClCompile Include="Src\Math\Quaternion.cpp" />
     <ClCompile Include="Src\Math\Transform.cpp" />
@@ -194,7 +197,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Actor\Actor.h" />
+    <ClInclude Include="Src\Actor\ActorHealth.h" />
     <ClInclude Include="Src\Actor\ActorManager.h" />
+    <ClInclude Include="Src\Actor\AttackCollider.h" />
     <ClInclude Include="Src\Actor\BlackBoard.h" />
     <ClInclude Include="Src\Actor\Enemy\Attacker.h" />
     <ClInclude Include="Src\Actor\IAgent.h" />
@@ -215,6 +220,7 @@
     <ClInclude Include="Src\Math\BehaviourTree\NodeResult.h" />
     <ClInclude Include="Src\Math\BehaviourTree\Composite\Selector.h" />
     <ClInclude Include="Src\Math\BehaviourTree\Composite\Sequence.h" />
+    <ClInclude Include="Src\Math\MyRectangle.h" />
     <ClInclude Include="Src\Math\Mathf.h" />
     <ClInclude Include="Src\Math\Matrix4x4.h" />
     <ClInclude Include="Src\Math\MyTimer.h" />
