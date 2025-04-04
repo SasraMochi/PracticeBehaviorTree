@@ -4,10 +4,9 @@
 #include "Actor/BlackBoard.h"
 #include "Actor/IAgent.h"
 
-CheckFarPlayer::CheckFarPlayer(BlackBoard* black_board, INode* child_node, const float max_distance)
-	: Decorator(black_board),
+CheckFarPlayer::CheckFarPlayer(BlackBoard* black_board, INode* true_node, INode* false_node, const float max_distance)
+	: ConditionalBranch(black_board, true_node, false_node),
 	mMaxDistance(max_distance) {
-	set_node(child_node);
 }
 
 CheckFarPlayer::~CheckFarPlayer()
@@ -15,6 +14,7 @@ CheckFarPlayer::~CheckFarPlayer()
 }
 
 NodeResult CheckFarPlayer::tick() {
+
 	check_first_run();
 
 	// プレイヤーの位置を取得
@@ -25,12 +25,11 @@ NodeResult CheckFarPlayer::tick() {
 
 	// 距離が離れていた時のみ子ノードを実行
 	if (vector.magnitude() >= mMaxDistance) {
-		auto result = mChildNode->tick();
-
-		mNodeResult = result;
-		return mNodeResult;
+		mNodeResult = mpTrueNode->tick();
+	}
+	else {
+		mNodeResult = mpFalseNode->tick();
 	}
 
-	mNodeResult = NodeResult::Fail;
 	return mNodeResult;
 }

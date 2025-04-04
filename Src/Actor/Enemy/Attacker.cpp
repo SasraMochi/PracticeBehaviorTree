@@ -4,6 +4,7 @@
 #include "World/IWorld.h"
 
 #include "Actor/BlackBoard.h"
+#include "Actor/AttackCollider.h"
 #include "Math/BehaviourTree/BehaviourTreeBulider.h"
 
 #include "Math/BehaviourTree/Decorator/Inverter.h"
@@ -37,7 +38,7 @@ void Attacker::update(float delta_time)
 {
 	Vector2 pos = mpWorld->find_actor("Player")->position();
 	mpBlackBoard->set_value<Vector2>("PlayerPos", pos);
-	
+
 	mpBehaviourTree->tick();
 
 	mPosition += mVelocity * delta_time;
@@ -77,4 +78,10 @@ const int Attacker::get_health() const
 
 void Attacker::attack()
 {
+	Vector2 min, max;
+	min = mPosition - Vector2{ 50.f, 50.f };
+	max = mPosition + Vector2{ 50.f, 50.f };
+	MyRectangle attack_collider{ min, max };
+
+	mpWorld->add_actor(new AttackCollider{ mpWorld,attack_collider, mTag, 15.f });
 }

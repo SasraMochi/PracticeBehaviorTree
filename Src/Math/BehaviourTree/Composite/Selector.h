@@ -9,6 +9,14 @@ public:
 
 	~Selector();
 
+	void reset() override;
+
 public:
 	virtual NodeResult tick() override;
+
+	void node_increment();
+
+private:
+	// Œ»İ“®‚©‚µ‚Ä‚¢‚éNode
+	int mRunningNodeIndex{ 0};
 };

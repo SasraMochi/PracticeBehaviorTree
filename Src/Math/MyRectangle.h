@@ -2,6 +2,8 @@
 
 #include "Math/Vector2.h"
 
+#include <DxLib.h>
+
 class MyRectangle {
 public:
 	// デフォルトコンストラクタ(Actorの宣言に必要?)
@@ -36,7 +38,7 @@ public:
 	const Vector2& get_max() const;
 
 	// デバッグ描画
-	void draw_debug(int is_fill = 0) const;
+	void draw_debug(int is_fill = 0, unsigned int color = GetColor(0, 0, 255)) const;
 
 private:
 	Vector2 mMin; // 矩形の左上

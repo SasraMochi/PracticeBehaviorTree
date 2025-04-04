@@ -15,7 +15,15 @@ void Actor::react(Actor& other){}
 void Actor::handle_message(const std::string& message, void* param){}
 
 void Actor::collide(Actor& other){
-    // TODO 後々処理を追加
+    //どちらのアクターも衝突判定が有効か？
+    if (mIsEnableCollider && other.mIsEnableCollider) {
+        //衝突判定をする
+        if (is_collide(other)) {
+            //衝突した場合は、お互いに衝突リアクションをする
+            react(other);
+            other.react(*this);
+        }
+    }
 }
 
 void Actor::die(){
@@ -24,6 +32,11 @@ void Actor::die(){
 
 bool Actor::is_dead() const{
     return mIsDead;
+}
+
+bool Actor::is_collide(const Actor& other) const
+{
+    return collider().intersects(other.collider());
 }
 
 const std::string& Actor::name() const{
@@ -42,4 +55,9 @@ const Vector2& Actor::position() const
 //攻撃力を取得する
 float Actor::attack_power() const{
     return mAttackPower;
+}
+
+MyRectangle Actor::collider() const
+{
+    return mCollider;
 }

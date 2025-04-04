@@ -3,6 +3,8 @@
 #include "Actor.h"
 #include "Math/Vector2.h"
 
+#include "Actor/Actor.h"
+
 class Player : public Actor{
 public:
 	// コンストラクタ
@@ -22,6 +24,13 @@ public:
 
 	//GUIの描画
 	virtual void draw_gui() const;
+
+	// 衝突リアクション
+	virtual void react(Actor& other) override;
+
+private:
+	// ダメージ
+	void damage(const int damage_value);
 
 private:
 	float mSpeed = 4.f;

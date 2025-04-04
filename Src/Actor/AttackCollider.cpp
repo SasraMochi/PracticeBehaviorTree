@@ -37,7 +37,7 @@ void AttackCollider::draw() const
 
 void AttackCollider::draw_gui() const
 {
-	mCollider.draw_debug(0);
+	mCollider.draw_debug(0, GetColor(255, 255, 0));
 }
 
 void AttackCollider::react(Actor& other)

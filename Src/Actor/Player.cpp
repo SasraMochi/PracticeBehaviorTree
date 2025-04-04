@@ -21,6 +21,7 @@ Player::~Player()
 
 void Player::update(float delta_time)
 {
+
 	mVelocity = Vector2::zero();
 	Vector2 velocity = Vector2::zero();
 
@@ -51,4 +52,20 @@ void Player::draw_transparent() const
 void Player::draw_gui() const
 {
 	mCollider.draw_debug();
+}
+
+void Player::react(Actor& other)
+{
+	if (other.tag() == "EnemyTag") {
+		damage(1);
+	}
+}
+
+void Player::damage(const int damage_value)
+{
+	mHealth -= damage_value;
+
+	if (mHealth <= 0) {
+		die();
+	}
 }

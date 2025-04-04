@@ -1,5 +1,4 @@
 #include "MyRectangle.h"
-#include <DxLib.h>
 
 MyRectangle::MyRectangle()
 	: mMin(Vector2::zero())
@@ -65,7 +64,7 @@ const Vector2& MyRectangle::get_max() const
 	return mMax;
 }
 
-void MyRectangle::draw_debug(int is_fill) const
+void MyRectangle::draw_debug(int is_fill, unsigned int color) const
 {
-	DrawBox(mMin.x, mMin.y, mMax.x, mMax.y, GetColor(0, 0, 255), is_fill);
+	DrawBox(mMin.x, mMin.y, mMax.x, mMax.y, color, is_fill);
 }

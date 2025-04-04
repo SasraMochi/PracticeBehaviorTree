@@ -35,6 +35,8 @@ public:
 	void die();
 	//死亡しているか？
 	bool is_dead() const;
+	//衝突しているか？
+	bool is_collide(const Actor& other) const;
 	//名前を取得
 	const std::string& name() const;
 	//タグ名を取得
@@ -44,6 +46,9 @@ public:
 
 	//攻撃力を取得
 	float attack_power() const;
+
+	//衝突判定データを取得
+	MyRectangle collider() const;
 
 	//コピー禁止
 	Actor(const Actor& other) = delete;

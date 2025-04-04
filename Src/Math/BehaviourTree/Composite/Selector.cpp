@@ -3,32 +3,46 @@
 Selector::Selector(BlackBoard* black_board)
 	: Composite(black_board)
 {
+	
 }
 
 Selector::~Selector()
 {
 }
 
+void Selector::reset()
+{
+	INode::reset();
+	mRunningNodeIndex = 0;
+	mChildNodes[mRunningNodeIndex]->reset();
+}
+
 NodeResult Selector::tick()
 {
 	check_first_run();
 
-	NodeResult selector_result = NodeResult::Fail;
-	for (auto& node : mChildNodes)
-	{
-		// ƒm[ƒh‚ª¬Œ÷‚©¸”s‚ğ•Ô‚·‚Ü‚ÅRun‚µ‘±‚¯‚é
-		NodeResult result = NodeResult::None;
-		do {
-			result = node->tick();
-		} while (result == NodeResult::Running);
+	mNodeResult = mChildNodes[mRunningNodeIndex]->tick();
 
-		// ‘¦À‚É¬Œ÷‚ğ•Ô‚·
-		if (result == NodeResult::Success) {
-			mNodeResult = NodeResult::Success;
-			return mNodeResult;
-		}
+	if (mNodeResult == NodeResult::Success) {
+		reset();
+		mNodeResult = NodeResult::Success;
+	}
+	else if (mNodeResult == NodeResult::Fail) {
+		// Ÿ‰ñSequence‚ÉŒü‚¯‚Äƒm[ƒh”Ô†‚ğƒŠƒZƒbƒg
+		node_increment();
+		mNodeResult = NodeResult::Running;
 	}
 
-	mNodeResult = NodeResult::Fail;
 	return mNodeResult;
+}
+
+void Selector::node_increment()
+{
+	mRunningNodeIndex++;
+	if (mRunningNodeIndex > mChildNodes.size() - 1) {
+		reset();
+		return;
+	}
+
+	mChildNodes[mRunningNodeIndex]->reset();
 }

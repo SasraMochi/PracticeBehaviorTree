@@ -2,8 +2,6 @@
 
 #include "Math/BehaviourTree/INode.h"
 
-class Player;
-
 class ChasePlayerLeaf : public INode {
 public:
 	ChasePlayerLeaf(BlackBoard* black_board);

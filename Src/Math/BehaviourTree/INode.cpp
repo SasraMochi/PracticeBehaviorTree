@@ -4,6 +4,11 @@ void INode::check_first_run()
 {
 	if (mNodeResult == NodeResult::Running) return;
 
+	if (mNodeResult == NodeResult::Success ||
+		mNodeResult == NodeResult::Fail) {
+		reset();
+	}
+
 	set_running_();
 }
 
