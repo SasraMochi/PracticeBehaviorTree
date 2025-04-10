@@ -1,7 +1,7 @@
 #include "DxLib.h"
 #include <assert.h> // 画像読み込みの読込み失敗表示用
 
-#include "Math/MyTimer.h"
+#include "Math/MySystemTimer.h"
 
 
 #include "Math/Screen.h"
@@ -68,7 +68,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     game.start(); // gameのInit準備
 
     // 独自時刻クラスの参照を得る(シングルトン型)
-    MyTimer& timer = MyTimer::GetInstance();
+    MySystemTimer& timer = MySystemTimer::GetInstance();
     ScreenFlip();
 
     timer.Init(); // 時刻計測開始

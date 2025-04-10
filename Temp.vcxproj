@@ -92,7 +92,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;C:\C++\Practice_BehaviourTree\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\C++\Practice_BehaviourTree\Src;C:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
@@ -110,7 +110,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;C:\C++\Practice_BehaviourTree\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\C++\Practice_BehaviourTree\Src;C:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
@@ -128,7 +128,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;C:\C++\Practice_BehaviourTree\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\C++\Practice_BehaviourTree\Src;C:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
@@ -146,7 +146,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;C:\C++\Practice_BehaviourTree\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\C++\Practice_BehaviourTree\Src;C:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
@@ -187,6 +187,7 @@
     <ClCompile Include="Src\Math\BehaviourTree\Leaf\WaitLeaf.cpp" />
     <ClCompile Include="Src\Math\MyRectangle.cpp" />
     <ClCompile Include="Src\Math\Matrix4x4.cpp" />
+    <ClCompile Include="Src\Math\MyTimer.cpp" />
     <ClCompile Include="Src\Math\Quaternion.cpp" />
     <ClCompile Include="Src\Math\Transform.cpp" />
     <ClCompile Include="Src\Math\Vector2.cpp" />
@@ -195,6 +196,7 @@
     <ClCompile Include="Src\Scene\IScene.cpp" />
     <ClCompile Include="Src\Scene\SceneManager.cpp" />
     <ClCompile Include="Src\Scene\TitleScene.cpp" />
+    <ClCompile Include="Src\UI\BarGauge.cpp" />
     <ClCompile Include="Src\World\Field.cpp" />
     <ClCompile Include="Src\World\World.cpp" />
   </ItemGroup>
@@ -229,6 +231,7 @@
     <ClInclude Include="Src\Math\MyRectangle.h" />
     <ClInclude Include="Src\Math\Mathf.h" />
     <ClInclude Include="Src\Math\Matrix4x4.h" />
+    <ClInclude Include="Src\Math\MySystemTimer.h" />
     <ClInclude Include="Src\Math\MyTimer.h" />
     <ClInclude Include="Src\Math\Quaternion.h" />
     <ClInclude Include="Src\Math\Screen.h" />
@@ -241,6 +244,7 @@
     <ClInclude Include="Src\Scene\SceneManager.h" />
     <ClInclude Include="Src\Scene\SceneNull.h" />
     <ClInclude Include="Src\Scene\TitleScene.h" />
+    <ClInclude Include="Src\UI\BarGauge.h" />
     <ClInclude Include="Src\World\Field.h" />
     <ClInclude Include="Src\World\IWorld.h" />
     <ClInclude Include="Src\World\World.h" />

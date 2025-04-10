@@ -4,7 +4,8 @@
 #include <string>
 
 // 2Dベクトル
-struct Vector2 {
+class Vector2 {
+public:
 	// ベクトルのx成分
 	float x{ 0.0f };
 	// ベクトルのy成分
@@ -27,6 +28,10 @@ struct Vector2 {
 	static Vector2 left();
 	// Vector2(1, 0) と同じ意味
 	static Vector2 right();
+
+	// x,yをint型で取得
+	int int_x() const;
+	int int_y() const;
 
 	// ベクトルの長さ（読み取り専用）
 	float magnitude() const;

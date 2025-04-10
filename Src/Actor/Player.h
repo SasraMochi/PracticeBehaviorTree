@@ -1,11 +1,15 @@
 #pragma once
 
-#include "Actor.h"
+#include "Actor/Actor.h"
 #include "Math/Vector2.h"
 
-#include "Actor/Actor.h"
+#include "UI/BarGauge.h"
+
+#include "Math/MyTimer.h"
 
 class Player : public Actor{
+const float cCoolTime = 60.f;
+
 public:
 	// コンストラクタ
 	Player();
@@ -35,4 +39,8 @@ private:
 private:
 	float mSpeed = 4.f;
 	float mHealth = 100.f;
+
+	BarGauge mHealthBar;
+
+	MyTimer mCoolTimer;
 };

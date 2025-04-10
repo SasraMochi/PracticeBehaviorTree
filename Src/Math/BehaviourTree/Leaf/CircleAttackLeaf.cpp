@@ -21,7 +21,5 @@ NodeResult CircleAttackLeaf::tick()
 	auto* agent = mpBlackBoard->get_value<IAgent*>("Agent");
 	agent->attack();
 
-	printfDx("UŒ‚");
-
 	return NodeResult::Success;
 }

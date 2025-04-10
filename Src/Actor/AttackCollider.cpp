@@ -14,6 +14,8 @@ AttackCollider::AttackCollider(IWorld* world, MyRectangle& collider,
 	mpBlackBoard = nullptr;
 	mPosition = Vector2{ 0.f, 0.f };
 
+	mAttackPower = attack_power;
+
 	mCollider = collider;
 }
 

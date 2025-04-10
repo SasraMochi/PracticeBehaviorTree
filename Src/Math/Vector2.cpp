@@ -40,6 +40,16 @@ Vector2 Vector2::right() {
 	return Vector2{ 1.0f, 0.0f };
 }
 
+int Vector2::int_x() const
+{
+	return static_cast<int>(std::roundf(x));
+}
+
+int Vector2::int_y() const
+{
+	return static_cast<int>(std::roundf(y));
+}
+
 // ƒxƒNƒgƒ‹‚Ì’·‚³
 float Vector2::magnitude() const {
 	return std::sqrt(sqr_magnitude());

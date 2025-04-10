@@ -13,10 +13,12 @@
 #include "Math/BehaviourTree/Leaf/DebugFailLeaf.h"
 
 Attacker::Attacker(IWorld* world)
+	:mHealthBar{ this }
 {
 	mpWorld = world;
 	mTag = "EnemyTag";
 	mName = "Attacker";
+	mAttackPower = 1;
 
 	mpBlackBoard = new BlackBoard();
 	mpBlackBoard->set_value<IAgent*>("Agent", this);
@@ -24,8 +26,8 @@ Attacker::Attacker(IWorld* world)
 
 	mpBehaviourTree = BehaviourTreeBuilder::BuildAttackerTree(mpBlackBoard);
 
-	Vector2 min = mPosition - Vector2{ -30.f, -30.f };
-	Vector2 max = mPosition - Vector2{ 30.f, 30.f };
+	Vector2 min = mPosition - Vector2{ 30.f, 30.f };
+	Vector2 max = mPosition + Vector2{ 30.f, 30.f };
 	mCollider = MyRectangle{ min, max };
 }
 
@@ -71,7 +73,7 @@ void Attacker::move_towards(const Vector2& target, float speed)
 	mVelocity = target * speed;
 }
 
-const int Attacker::get_health() const
+const float Attacker::get_health() const
 {
 	return mHealth.GetHealth();
 }
@@ -79,9 +81,10 @@ const int Attacker::get_health() const
 void Attacker::attack()
 {
 	Vector2 min, max;
-	min = mPosition - Vector2{ 50.f, 50.f };
-	max = mPosition + Vector2{ 50.f, 50.f };
+
+	min = mPosition - Vector2{ 75.f, 75.f };
+	max = mPosition + Vector2{ 75.f, 75.f };
 	MyRectangle attack_collider{ min, max };
 
-	mpWorld->add_actor(new AttackCollider{ mpWorld,attack_collider, mTag, 15.f });
+	mpWorld->add_actor(new AttackCollider{ mpWorld,attack_collider, mTag, 15.f , 10.f });
 }
