@@ -6,17 +6,19 @@
 #include <algorithm>
 
 Player::Player()
-	: mHealthBar{ this , mHealth }
-	, mCoolTimer{ cCoolTime }
+	: mHealthBar{ this , mHealth.GetHealth() }
 {
 	// 初期位置の設定
 	mPosition = { Screen::Width / 2, Screen::Height / 2 };
 	mTag = "PlayerTag";
 	mName = "Player";
+	mAttackPower = 10;
 
 	Vector2 min = mPosition - Vector2{ 30.f, 30.f };
 	Vector2 max = mPosition + Vector2{ 30.f, 30.f };
 	mCollider = MyRectangle{ min, max };
+
+	mCoolTimer.reset(cCoolTime);
 }
 
 Player::~Player()
@@ -50,7 +52,7 @@ void Player::update(float delta_time)
 
 	mCollider = mCollider.translate(mVelocity * delta_time);
 
-	mHealthBar.update(delta_time, mHealth);
+	mHealthBar.update(delta_time, mHealth.GetHealth());
 }
 
 void Player::draw() const
@@ -73,20 +75,5 @@ void Player::react(Actor& other)
 {
 	if (other.tag() == "EnemyTag") {
 		damage(other.attack_power());
-	}
-}
-
-void Player::damage(const int damage_value)
-{
-	// 衝突判定が無効の場合はスキップ
-	if (!mIsEnableCollider) return;
-
-	mHealth -= damage_value;
-
-	mIsEnableCollider = false;
-	mCoolTimer.reset();
-
-	if (mHealth <= 0) {
-		die();
 	}
 }

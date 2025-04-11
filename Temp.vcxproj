@@ -183,7 +183,7 @@
     <ClCompile Include="Src\Math\BehaviourTree\Decorator\Inverter.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\Composite\Selector.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\Composite\Sequence.cpp" />
-    <ClCompile Include="Src\Math\BehaviourTree\Leaf\EscapePlayerLeaf.cpp" />
+    <ClCompile Include="Src\Math\BehaviourTree\Leaf\EscapeFromPlayerLeaf.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\Leaf\WaitLeaf.cpp" />
     <ClCompile Include="Src\Math\MyRectangle.cpp" />
     <ClCompile Include="Src\Math\Matrix4x4.cpp" />
@@ -222,7 +222,7 @@
     <ClInclude Include="Src\Math\BehaviourTree\Decorator\Decorator.h" />
     <ClInclude Include="Src\Math\BehaviourTree\Decorator\Inverter.h" />
     <ClInclude Include="Src\Math\BehaviourTree\INode.h" />
-    <ClInclude Include="Src\Math\BehaviourTree\Leaf\EscapePlayerLeaf.h" />
+    <ClInclude Include="Src\Math\BehaviourTree\Leaf\EscapeFromPlayerLeaf.h" />
     <ClInclude Include="Src\Math\BehaviourTree\Leaf\CircleAttackLeaf.h" />
     <ClInclude Include="Src\Math\BehaviourTree\Leaf\WaitLeaf.h" />
     <ClInclude Include="Src\Math\BehaviourTree\NodeResult.h" />

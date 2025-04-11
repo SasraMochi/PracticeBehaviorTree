@@ -7,6 +7,8 @@
 
 #include "Math/MyTimer.h"
 
+#include "Actor/ActorHealth.h"
+
 class Player : public Actor{
 const float cCoolTime = 60.f;
 
@@ -33,14 +35,7 @@ public:
 	virtual void react(Actor& other) override;
 
 private:
-	// É_ÉÅÅ[ÉW
-	void damage(const int damage_value);
-
-private:
 	float mSpeed = 4.f;
-	float mHealth = 100.f;
 
 	BarGauge mHealthBar;
-
-	MyTimer mCoolTimer;
 };

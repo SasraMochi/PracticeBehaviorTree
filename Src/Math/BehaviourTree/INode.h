@@ -22,10 +22,13 @@ protected:
 	void check_first_run();
 
 private:
+	// フラグを動作中に切り替える
 	void set_running_();
 
 protected:
+	// 参照できるブラックボード
 	BlackBoard* mpBlackBoard = nullptr;
 
+	// 状態
 	NodeResult mNodeResult = NodeResult::None;
 };

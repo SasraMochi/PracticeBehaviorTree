@@ -13,7 +13,7 @@
 #include "Math/BehaviourTree/Leaf/DebugFailLeaf.h"
 
 Attacker::Attacker(IWorld* world)
-	:mHealthBar{ this }
+	: mHealthBar{ this , mHealth.GetHealth() }
 {
 	mpWorld = world;
 	mTag = "EnemyTag";
@@ -29,6 +29,8 @@ Attacker::Attacker(IWorld* world)
 	Vector2 min = mPosition - Vector2{ 30.f, 30.f };
 	Vector2 max = mPosition + Vector2{ 30.f, 30.f };
 	mCollider = MyRectangle{ min, max };
+
+	mCoolTimer.reset(cCoolTime);
 }
 
 Attacker::~Attacker()
@@ -38,20 +40,30 @@ Attacker::~Attacker()
 
 void Attacker::update(float delta_time)
 {
+	if (!mIsEnableCollider) {
+		mCoolTimer.update(delta_time);
+
+		if (mCoolTimer.is_end()) {
+			mIsEnableCollider = true;
+		}
+	}
+
 	Vector2 pos = mpWorld->find_actor("Player")->position();
 	mpBlackBoard->set_value<Vector2>("PlayerPos", pos);
 
 	mpBehaviourTree->tick();
 
-	mPosition += mVelocity * delta_time;
-	mCollider = mCollider.translate(mVelocity * delta_time);
+	move(delta_time);
 
 	mVelocity = Vector2::zero();
+
+	mHealthBar.update(delta_time, mHealth.GetHealth());
 }
 
 void Attacker::draw() const
 {
 	DrawCircle(mPosition.x, mPosition.y, 32, GetColor(255, 0, 0), TRUE);
+	mHealthBar.draw();
 }
 
 void Attacker::draw_transparent() const
@@ -61,6 +73,13 @@ void Attacker::draw_transparent() const
 void Attacker::draw_gui() const
 {
 	mCollider.draw_debug();
+}
+
+void Attacker::react(Actor& other)
+{
+	if (other.tag() == "PlayerTag") {
+		damage(other.attack_power());
+	}
 }
 
 const Vector2& Attacker::get_position() const
@@ -87,4 +106,11 @@ void Attacker::attack()
 	MyRectangle attack_collider{ min, max };
 
 	mpWorld->add_actor(new AttackCollider{ mpWorld,attack_collider, mTag, 15.f , 10.f });
+}
+
+void Attacker::move(float delta_time)
+{
+	Vector2 velocity = mVelocity * delta_time;
+	mPosition += velocity;
+	mCollider = mCollider.translate(velocity);
 }

@@ -12,5 +12,8 @@ public:
 	NodeResult tick() override;
 
 private:
+	const bool is_near_player();
+
+private:
 	const float mMaxDistance = 5;
 };

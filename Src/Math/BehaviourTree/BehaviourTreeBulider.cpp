@@ -9,7 +9,7 @@
 #include "Math/BehaviourTree/ConditionalBranch/CheckFarPlayer.h"
 #include "Math/BehaviourTree//Leaf/WaitLeaf.h"
 #include "Math/BehaviourTree//Leaf/ChasePlayerLeaf.h"
-#include "Math/BehaviourTree//Leaf/EscapePlayerLeaf.h"
+#include "Math/BehaviourTree//Leaf/EscapeFromPlayerLeaf.h"
 #include "Math/BehaviourTree//Leaf/CircleAttackLeaf.h"
 #include "Math/BehaviourTree/Leaf/DebugSuccessLeaf.h"
 #include "Math/BehaviourTree/Leaf/DebugFailLeaf.h"

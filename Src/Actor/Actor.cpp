@@ -61,3 +61,18 @@ MyRectangle Actor::collider() const
 {
     return mCollider;
 }
+
+void Actor::damage(const float damage_value)
+{
+    // 衝突判定が無効の場合はスキップ
+    if (!mIsEnableCollider) return;
+
+    mHealth.Damage(damage_value);
+
+    mIsEnableCollider = false;
+    mCoolTimer.reset();
+
+    if (mHealth.GetIsDead()) {
+        die();
+    }
+}

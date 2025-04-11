@@ -4,6 +4,8 @@
 #include <vector>
 #include "Math/Vector2.h"
 #include "Math/MyRectangle.h"
+#include "Math/MyTimer.h"
+#include "Actor/ActorHealth.h"
 
 class IWorld;	//ワールド抽象インターフェースの前方宣言
 class BlackBoard;
@@ -50,6 +52,8 @@ public:
 	//衝突判定データを取得
 	MyRectangle collider() const;
 
+	virtual void damage(const float damage_value);
+
 	//コピー禁止
 	Actor(const Actor& other) = delete;
 	Actor& operator = (const Actor& other) = delete;
@@ -75,4 +79,8 @@ protected:
 	bool mIsDead{ false };
 	//攻撃力
 	float mAttackPower{ 0.0f };
+	// 体力
+	ActorHealth mHealth{ 100 };
+	// ダメージクールタイム
+	MyTimer mCoolTimer;
 };

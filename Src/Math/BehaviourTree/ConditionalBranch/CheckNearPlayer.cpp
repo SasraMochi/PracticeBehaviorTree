@@ -16,13 +16,7 @@ CheckNearPlayer::~CheckNearPlayer()
 NodeResult CheckNearPlayer::tick() {
 	check_first_run();
 
-	// プレイヤーの位置を取得
-	auto player_pos = mpBlackBoard->get_value<Vector2>("PlayerPos");
-	auto* agent = mpBlackBoard->get_value<IAgent*>("Agent");
-
-	auto vector = player_pos - agent->get_position();
-
-	if (vector.magnitude() < mMaxDistance) {
+	if (is_near_player()) {
 		mNodeResult = mpTrueNode->tick();
 	}
 	else {
@@ -30,4 +24,16 @@ NodeResult CheckNearPlayer::tick() {
 	}
 
 	return mNodeResult;
+}
+
+const bool CheckNearPlayer::is_near_player()
+{
+	// プレイヤーの位置を取得
+	auto player_pos = mpBlackBoard->get_value<Vector2>("PlayerPos");
+	auto* agent = mpBlackBoard->get_value<IAgent*>("Agent");
+
+	auto vector = player_pos - agent->get_position();
+
+	// 近ければtrueを返す
+	return vector.magnitude() < mMaxDistance;
 }
