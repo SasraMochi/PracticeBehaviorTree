@@ -48,7 +48,13 @@ void Attacker::update(float delta_time)
 		}
 	}
 
-	Vector2 pos = mpWorld->find_actor("Player")->position();
+	auto* p_player = mpWorld->find_actor("Player");
+
+	if (p_player == nullptr) {
+		return;
+	}
+
+	Vector2 pos = p_player->position();
 	mpBlackBoard->set_value<Vector2>("PlayerPos", pos);
 
 	mpBehaviourTree->tick();
