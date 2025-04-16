@@ -10,39 +10,26 @@ Sequence::~Sequence()
 {
 }
 
-void Sequence::reset()
+void Sequence::tick()
 {
-	INode::reset();
-	mRunningNodeIndex = 0;
-	mChildNodes[mRunningNodeIndex]->reset();
-}
+	mChildNodes[mRunningNodeIndex]->tick();
+	auto result = mChildNodes[mRunningNodeIndex]->get_node_result();
 
-NodeResult Sequence::tick()
-{
-	check_first_run();
-
-	mNodeResult = mChildNodes[mRunningNodeIndex]->tick();
-
-	if (mNodeResult == NodeResult::Fail) {
-		// 次回Sequenceに向けてノード番号をリセット
-		reset();
-		mNodeResult = NodeResult::Fail;
-	}
-	else if (mNodeResult == NodeResult::Success) {
+	if (result == NodeResult::Success) {
+		// 次回Sequenceに向けてノード番号を進める
 		node_increment();
-
-		mNodeResult = NodeResult::Running;
+		return;
 	}
 
-	return mNodeResult;
+	// もし失敗が返されたらノード終了
+	if (result == NodeResult::Fail) {
+		finalize();
+	}
+
+	mNodeResult = result;
 }
 
-void Sequence::node_increment()
+const int Sequence::get_next_index() const
 {
-	mRunningNodeIndex++;
-	if (mRunningNodeIndex > mChildNodes.size() - 1) {
-		reset();
-	}
-
-	mChildNodes[mRunningNodeIndex]->reset();
+	return mRunningNodeIndex + 1;
 }

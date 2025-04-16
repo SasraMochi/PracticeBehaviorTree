@@ -12,7 +12,7 @@ public:
 
 	virtual void init() override;
 	virtual void tick() override;
-	virtual void reset() override;
+	virtual void finalize() override;
 
 protected:
 	// ğŒ‚ğ–‚½‚µ‚Ä‚¢‚é‚©

@@ -9,14 +9,8 @@ public:
 
 	~Selector();
 
-	void init() override;
 	void tick() override;
-	void reset() override;
 
 private:
-	void node_increment();
-
-private:
-	// Œ»İ“®‚©‚µ‚Ä‚¢‚éNode
-	int mRunningNodeIndex{ 0 };
+	const int get_next_index() const override;
 };

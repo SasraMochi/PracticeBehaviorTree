@@ -1,22 +1,16 @@
 #pragma once
 
 #include <vector>
-#include "Composite.h"
+#include "Math/BehaviourTree/CompositeNode/CompositeNodeBase.h"
 
 class Sequence : public CompositeNodeBase {
 public:
-	Sequence(BlackBoard* black_board);
+	explicit Sequence(BlackBoard* black_board);
 
 	~Sequence();
 
-	void reset() override;
-
-public:
-	virtual NodeResult tick() override;
-
-	void node_increment();
+	void tick() override;
 
 private:
-	// åªç›ìÆÇ©ÇµÇƒÇ¢ÇÈÉmÅ[Éhî‘çÜ
-	int mRunningNodeIndex{ 0 };
+	const int get_next_index() const override;
 };

@@ -34,9 +34,9 @@ void BranchNode::tick()
 	mNodeResult = mpBranchNodes[mSatisfyIndex]->get_node_result();
 }
 
-void BranchNode::reset()
+void BranchNode::finalize()
 {
-	NodeBase::reset();
-	mpBranchNodes[mSatisfyIndex]->reset();
+	NodeBase::finalize();
+	mpBranchNodes[mSatisfyIndex]->finalize();
 	mSatisfyIndex = -1;
 }
