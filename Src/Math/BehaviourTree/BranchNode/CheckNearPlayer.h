@@ -2,7 +2,7 @@
 
 #include "Math/BehaviourTree/ConditionalBranch/ConditionalBranch.h"
 
-class CheckNearPlayer : public ConditionalBranch {
+class CheckNearPlayer : public BranchNode {
 public:
 	CheckNearPlayer(BlackBoard* black_board, INode* true_node, INode* false_node, const float max_distance);
 

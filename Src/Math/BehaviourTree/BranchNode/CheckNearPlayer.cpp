@@ -5,7 +5,7 @@
 #include "Actor/IAgent.h"
 
 CheckNearPlayer::CheckNearPlayer(BlackBoard* black_board, INode* true_node, INode* false_node, const float max_distance)
-	: ConditionalBranch(black_board, true_node, false_node),
+	: BranchNode(black_board, true_node, false_node),
 	mMaxDistance(max_distance) {
 }
 

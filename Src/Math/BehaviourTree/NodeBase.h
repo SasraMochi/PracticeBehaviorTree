@@ -7,7 +7,7 @@ class BlackBoard;
 /// <summary>
 /// 各ノードが継承する基底クラス
 /// </summary>
-class NodeBase : INode {
+class NodeBase : public INode {
 protected:
 	explicit NodeBase(BlackBoard* black_board) : mpBlackBoard{ black_board } {}
 	virtual ~NodeBase() = default;
