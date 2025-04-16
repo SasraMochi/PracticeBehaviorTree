@@ -1,3 +1,3 @@
 #pragma once
 
-enum class NodeResult{None, Running, Success, Fail};
+enum class NodeResult{Idle, Running, Success, Fail};
