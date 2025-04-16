@@ -3,7 +3,7 @@
 Selector::Selector(BlackBoard* black_board)
 	: CompositeNodeBase(black_board)
 {
-	
+
 }
 
 Selector::~Selector()
@@ -17,23 +17,32 @@ void Selector::reset()
 	mChildNodes[mRunningNodeIndex]->reset();
 }
 
-NodeResult Selector::tick()
+void Selector::init()
 {
-	check_first_run();
-
-	mNodeResult = mChildNodes[mRunningNodeIndex]->tick();
-
-	if (mNodeResult == NodeResult::Success) {
-		reset();
-		mNodeResult = NodeResult::Success;
+	CompositeNodeBase::init();
+	// 最初のノードを初期化
+	if (mChildNodes.size() > 0) {
+		mChildNodes[mRunningNodeIndex]->init();
 	}
-	else if (mNodeResult == NodeResult::Fail) {
+	else {
+		mNodeResult = NodeResult::Fail;
+	}
+}
+
+void Selector::tick()
+{
+	mChildNodes[mRunningNodeIndex]->tick();
+	auto result = mChildNodes[mRunningNodeIndex]->get_node_result();
+
+	if (result == NodeResult::Success) {
+		reset();
+	}
+	else if (result == NodeResult::Fail) {
 		// 次回Sequenceに向けてノード番号をリセット
 		node_increment();
-		mNodeResult = NodeResult::Running;
 	}
 
-	return mNodeResult;
+	mNodeResult = result;
 }
 
 void Selector::node_increment()
@@ -41,8 +50,8 @@ void Selector::node_increment()
 	mRunningNodeIndex++;
 	if (mRunningNodeIndex > mChildNodes.size() - 1) {
 		reset();
-		return;
 	}
-
-	mChildNodes[mRunningNodeIndex]->reset();
+	else {
+		mChildNodes[mRunningNodeIndex]->reset();
+	}
 }

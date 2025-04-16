@@ -20,10 +20,6 @@ protected:
 		mNodeResult = NodeResult::Running;
 	}
 
-	virtual void finalize() override {
-		mNodeResult = NodeResult::Idle;
-	}
-
 	NodeResult mNodeResult = NodeResult::Idle; // ノードの状態
 	BlackBoard* mpBlackBoard = nullptr; // ブラックボード
 };

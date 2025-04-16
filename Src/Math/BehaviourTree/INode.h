@@ -15,9 +15,6 @@ public:
 	// 動作
 	virtual void tick() = 0;
 
-	// 後始末
-	virtual void finalize() = 0;
-
 	// リセット
 	virtual void reset() = 0;
 

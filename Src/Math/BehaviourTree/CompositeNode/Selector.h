@@ -1,22 +1,22 @@
 #pragma once
 
 #include <vector>
-#include "Composite.h"
+#include "Math/BehaviourTree/CompositeNode/CompositeNodeBase.h"
 
 class Selector : public CompositeNodeBase {
 public:
-	Selector(BlackBoard* black_board);
+	explicit Selector(BlackBoard* black_board);
 
 	~Selector();
 
+	void init() override;
+	void tick() override;
 	void reset() override;
 
-public:
-	virtual NodeResult tick() override;
-
+private:
 	void node_increment();
 
 private:
 	// åªç›ìÆÇ©ÇµÇƒÇ¢ÇÈNode
-	int mRunningNodeIndex{ 0};
+	int mRunningNodeIndex{ 0 };
 };
