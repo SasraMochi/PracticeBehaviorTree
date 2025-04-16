@@ -10,9 +10,16 @@ public:
 	explicit BranchNode(BlackBoard* black_board, INode* true_node, INode* false_node);
 	virtual ~BranchNode();
 
+	virtual void init() override;
+	virtual void tick() override;
+	virtual void finalize() override;
 	virtual void reset() override;
 
 protected:
-	INode* mpTrueNode = nullptr;
-	INode* mpFalseNode = nullptr;
+	// 条件を満たしているか
+	virtual const bool is_condition() = 0;
+
+protected:
+	INode* mpBranchNodes[2] = { nullptr, nullptr }; // ブランチノードの配列
+	int mSatisfyIndex = -1; // 条件を満たしているノードのインデックス
 };

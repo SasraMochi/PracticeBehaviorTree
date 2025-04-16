@@ -3,7 +3,7 @@
 #include <assert.h>
 
 Inverter::Inverter(BlackBoard* black_board, INode* child_node)
-	: Decorator(black_board)
+	: DecoratorNodeBase(black_board)
 {
 	set_node(child_node);
 }
@@ -17,7 +17,7 @@ NodeResult Inverter::tick()
 	check_first_run();
 
 	// 結果が出るまで回し続ける
-	NodeResult result = NodeResult::None;
+	NodeResult result = NodeResult::Idle;
 	do {
 		result = mChildNode->tick();
 	} while (result == NodeResult::Running);
@@ -35,6 +35,6 @@ NodeResult Inverter::tick()
 	// 普通はここまで実行されることはない
 	// TODO 後々アサート呼ぶ
 	assert(!"結果が不正です");
-	mNodeResult = NodeResult::None;
+	mNodeResult = NodeResult::Idle;
 	return mNodeResult;
 }

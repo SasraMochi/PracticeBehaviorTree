@@ -3,7 +3,7 @@
 #include <vector>
 #include "Composite.h"
 
-class Selector : public Composite {
+class Selector : public CompositeNodeBase {
 public:
 	Selector(BlackBoard* black_board);
 

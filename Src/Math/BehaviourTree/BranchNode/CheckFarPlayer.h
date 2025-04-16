@@ -1,15 +1,15 @@
 #pragma once
 
-#include "Math/BehaviourTree/ConditionalBranch/ConditionalBranch.h"
+#include "Math/BehaviourTree/BranchNode/BranchNode.h"
 
-class CheckFarPlayer : public ConditionalBranch {
+class CheckFarPlayer : public BranchNode {
 public:
-	CheckFarPlayer(BlackBoard* black_board, INode* true_node, INode* false_node, const float max_distance);
+	explicit CheckFarPlayer(BlackBoard* black_board, INode* true_node, INode* false_node, const float max_distance);
 
 	~CheckFarPlayer();
 
-public:
-	NodeResult tick() override;
+private:
+	const bool is_condition() override;
 
 private:
 	const float mMaxDistance = 5;

@@ -2,7 +2,7 @@
 
 #include "Decorator.h"
 
-class Inverter : public Decorator {
+class Inverter : public DecoratorNodeBase {
 public:
 	Inverter(BlackBoard* black_board, INode* child_node);
 

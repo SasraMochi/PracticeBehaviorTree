@@ -13,20 +13,7 @@ CheckNearPlayer::~CheckNearPlayer()
 {
 }
 
-NodeResult CheckNearPlayer::tick() {
-	check_first_run();
-
-	if (is_near_player()) {
-		mNodeResult = mpTrueNode->tick();
-	}
-	else {
-		mNodeResult = mpFalseNode->tick();
-	}
-
-	return mNodeResult;
-}
-
-const bool CheckNearPlayer::is_near_player()
+const bool CheckNearPlayer::is_condition()
 {
 	// プレイヤーの位置を取得
 	auto player_pos = mpBlackBoard->get_value<Vector2>("PlayerPos");

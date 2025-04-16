@@ -1,7 +1,7 @@
 #include "Sequence.h"
 
 Sequence::Sequence(BlackBoard* black_board)
-	: Composite(black_board)
+	: CompositeNodeBase(black_board)
 {
 	
 }

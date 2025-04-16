@@ -1,6 +1,6 @@
 #include "Decorator.h"
 
-Decorator::~Decorator()
+DecoratorNodeBase::~DecoratorNodeBase()
 {
 	if (mChildNode) {
 		delete mChildNode;
@@ -8,7 +8,7 @@ Decorator::~Decorator()
 	}
 }
 
-void Decorator::set_node(INode* node)
+void DecoratorNodeBase::set_node(INode* node)
 {
 	mChildNode = node;
 }

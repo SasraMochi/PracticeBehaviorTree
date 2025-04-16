@@ -2,25 +2,47 @@
 
 BranchNode::BranchNode(BlackBoard* black_board, INode* true_node, INode* false_node)
 	: NodeBase(black_board)
-	, mpTrueNode(true_node)
-	, mpFalseNode(false_node)
 {
+	mpBranchNodes[0] = true_node;
+	mpBranchNodes[1] = false_node;
 }
 
 BranchNode::~BranchNode()
 {
-	if (mpTrueNode) {
-		delete mpTrueNode;
-		mpTrueNode = nullptr;
+	// ブランチノードの配列を解放
+	for (int i = 0; i < 2; ++i) {
+		if (mpBranchNodes[i] != nullptr) {
+			delete mpBranchNodes[i];
+			mpBranchNodes[i] = nullptr;
+		}
 	}
-	if (mpFalseNode) {
-		delete mpFalseNode;
-		mpFalseNode = nullptr;
-	}
+}
+
+void BranchNode::init()
+{
+	NodeBase::init();
+
+	if (is_condition) mSatisfyIndex = 0;
+	else mSatisfyIndex = 1;
+
+	mpBranchNodes[mSatisfyIndex]->init();
+}
+
+void BranchNode::tick()
+{
+	mpBranchNodes[mSatisfyIndex]->tick();
+	mNodeResult = mpBranchNodes[mSatisfyIndex]->get_node_result();
+}
+
+void BranchNode::finalize()
+{
+	NodeBase::finalize();
+	mpBranchNodes[mSatisfyIndex]->finalize();
 }
 
 void BranchNode::reset()
 {
-	mpTrueNode->reset();
-	mpFalseNode->reset();
+	NodeBase::reset();
+	mpBranchNodes[mSatisfyIndex]->reset();
+	mSatisfyIndex = -1;
 }
