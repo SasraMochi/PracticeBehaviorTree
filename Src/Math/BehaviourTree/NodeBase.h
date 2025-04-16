@@ -4,7 +4,9 @@
 
 class BlackBoard;
 
-// 各ノードの基底クラス
+/// <summary>
+/// 各ノードが継承する基底クラス
+/// </summary>
 class NodeBase : INode {
 protected:
 	explicit NodeBase(BlackBoard* black_board) : mpBlackBoard{ black_board } {}
