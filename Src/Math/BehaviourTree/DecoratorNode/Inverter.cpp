@@ -12,29 +12,22 @@ Inverter::~Inverter()
 {
 }
 
-NodeResult Inverter::tick()
+void Inverter::tick()
 {
-	check_first_run();
-
-	// 結果が出るまで回し続ける
-	NodeResult result = NodeResult::Idle;
-	do {
-		result = mChildNode->tick();
-	} while (result == NodeResult::Running);
-
+	// 子ノードを実行
+	mChildNode->tick();
+	// 子ノードの結果を取得
+	NodeResult result = mChildNode->get_node_result();
 	// 結果を反転させる
 	if (result == NodeResult::Success) {
 		mNodeResult = NodeResult::Fail;
-		return mNodeResult;
+		return;
 	}
 	else if (result == NodeResult::Fail) {
 		mNodeResult = NodeResult::Success;
-		return mNodeResult;
+		return;
 	}
 
-	// 普通はここまで実行されることはない
-	// TODO 後々アサート呼ぶ
-	assert(!"結果が不正です");
-	mNodeResult = NodeResult::Idle;
-	return mNodeResult;
+	// 子ノードが実行中の場合は、Inverterも実行中にする
+	mNodeResult = NodeResult::Running;
 }

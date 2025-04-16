@@ -7,6 +7,9 @@ public:
 	explicit DecoratorNodeBase(BlackBoard* black_board) : NodeBase(black_board) {}
 	virtual ~DecoratorNodeBase();
 
+	virtual void init() override;
+	virtual void finalize() override;
+
 	void set_node(INode* node);
 
 protected:
