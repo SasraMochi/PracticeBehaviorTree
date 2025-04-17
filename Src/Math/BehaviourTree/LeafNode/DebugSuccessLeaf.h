@@ -1,10 +1,17 @@
 #pragma once
 
-#include "Math/BehaviourTree/INode.h"
+#include "Math/BehaviourTree/LeafNode/LeafNodeBase.h"
 
-class DebugSuccessLeaf : public INode{
+/// <summary>
+/// 必ず失敗を返すデバッグ用葉ノード
+/// </summary>
+class DebugSuccessLeaf : public LeafNodeBase {
 public:
-	DebugSuccessLeaf(BlackBoard* black_board) : INode(black_board) {}
+	explicit DebugSuccessLeaf(BlackBoard* black_board) : LeafNodeBase(black_board) {}
 
-	virtual NodeResult tick() override;
+	~DebugSuccessLeaf() override = default;
+
+	NodeResult get_node_result() const override {
+		return NodeResult::Success;
+	}
 };

@@ -5,7 +5,7 @@
 
 #include "DxLib.h"
 CircleAttackLeaf::CircleAttackLeaf(BlackBoard* black_board)
-	: INode(black_board)
+	: LeafNodeBase(black_board)
 {
 }
 
@@ -13,13 +13,15 @@ CircleAttackLeaf::~CircleAttackLeaf()
 {
 }
 
-NodeResult CircleAttackLeaf::tick()
+void CircleAttackLeaf::tick()
 {
-	check_first_run();
-
 	// UŒ‚
 	auto* agent = mpBlackBoard->get_value<IAgent*>("Agent");
 	agent->attack();
+}
 
+NodeResult CircleAttackLeaf::get_node_result() const
+{
+	// •K‚¸¬Œ÷‚ğ•Ô‚·
 	return NodeResult::Success;
 }

@@ -3,7 +3,7 @@
 #include "Actor/Actor.h"
 #include "Actor/IAgent.h"
 #include "Actor/ActorHealth.h"
-#include "Math/BehaviourTree/Composite/Selector.h"
+#include "Math/BehaviourTree/CompositeNode/Selector.h"
 
 #include "Math/Vector2.h"
 #include "UI/BarGauge.h"

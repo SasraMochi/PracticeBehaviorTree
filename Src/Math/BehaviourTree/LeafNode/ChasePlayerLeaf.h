@@ -1,12 +1,17 @@
 #pragma once
 
-#include "Math/BehaviourTree/INode.h"
+#include "Math/BehaviourTree/LeafNode/LeafNodeBase.h"
 
-class ChasePlayerLeaf : public INode {
+/// <summary>
+/// プレイヤーを追いかける葉ノード
+/// </summary>
+class ChasePlayerLeaf : public LeafNodeBase {
 public:
-	ChasePlayerLeaf(BlackBoard* black_board);
+	explicit ChasePlayerLeaf(BlackBoard* black_board);
 
 	~ChasePlayerLeaf();
 
-	NodeResult tick() override;
+	void tick() override;
+
+	NodeResult get_node_result() const override;
 };

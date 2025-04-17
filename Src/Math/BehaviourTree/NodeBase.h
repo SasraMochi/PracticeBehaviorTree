@@ -12,12 +12,16 @@ protected:
 	explicit NodeBase(BlackBoard* black_board) : mpBlackBoard{ black_board } {}
 	virtual ~NodeBase() = default;
 
-	NodeResult get_node_result() const {
-		return mNodeResult;
-	}
-
 	virtual void init() override {
 		mNodeResult = NodeResult::Running;
+	}
+
+	virtual void tick() override {}
+
+	virtual void finalize() override {}
+
+	virtual NodeResult get_node_result() const {
+		return mNodeResult;
 	}
 
 	NodeResult mNodeResult = NodeResult::Idle; // ÉmÅ[ÉhÇÃèÛë‘

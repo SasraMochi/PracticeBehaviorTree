@@ -6,7 +6,7 @@
 
 
 ChasePlayerLeaf::ChasePlayerLeaf(BlackBoard* black_board)
-	: INode(black_board)
+	: LeafNodeBase(black_board)
 {
 }
 
@@ -14,10 +14,8 @@ ChasePlayerLeaf::~ChasePlayerLeaf()
 {
 }
 
-NodeResult ChasePlayerLeaf::tick()
+void ChasePlayerLeaf::tick()
 {
-	check_first_run();
-
 	// プレイヤーの位置を取得
 	auto player_pos = mpBlackBoard->get_value<Vector2>("PlayerPos");
 	auto* agent = mpBlackBoard->get_value<IAgent*>("Agent");
@@ -25,6 +23,10 @@ NodeResult ChasePlayerLeaf::tick()
 	auto vector = player_pos - agent->get_position();
 
 	agent->move_towards(vector.normalized(), 3.f);
+}
 
+NodeResult ChasePlayerLeaf::get_node_result() const
+{
+	// 必ず成功を返す
 	return NodeResult::Success;
 }

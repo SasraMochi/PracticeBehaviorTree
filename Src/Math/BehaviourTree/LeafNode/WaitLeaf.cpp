@@ -1,7 +1,7 @@
 #include "WaitLeaf.h"
 
 WaitLeaf::WaitLeaf(BlackBoard* black_board, const float wait_time)
-	: INode(black_board)
+	: LeafNodeBase(black_board)
 	, mWaitTime(wait_time)
 	, mWaitCount(wait_time)
 {
@@ -11,19 +11,18 @@ WaitLeaf::~WaitLeaf()
 {
 }
 
-NodeResult WaitLeaf::tick()
+void WaitLeaf::tick()
 {
 	if (mWaitCount <= 0.f) {
-		return NodeResult::Success;
+		mNodeResult = NodeResult::Success;
+		return;
 	}
 
 	mWaitCount -= 1.f;
-
-	return NodeResult::Running;
 }
 
-void WaitLeaf::reset()
+void WaitLeaf::finalize()
 {
-	INode::reset();
+	LeafNodeBase::finalize();
 	mWaitCount = mWaitTime;
 }

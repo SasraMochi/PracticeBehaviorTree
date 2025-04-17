@@ -5,10 +5,10 @@
 /// <summary>
 /// ブランチノードの基底クラス
 /// </summary>
-class BranchNode : public NodeBase {
+class BranchNodeBase : public NodeBase {
 public:
-	explicit BranchNode(BlackBoard* black_board, INode* true_node, INode* false_node);
-	virtual ~BranchNode();
+	explicit BranchNodeBase(BlackBoard* black_board, INode* true_node, INode* false_node);
+	virtual ~BranchNodeBase();
 
 	virtual void init() override;
 	virtual void tick() override;

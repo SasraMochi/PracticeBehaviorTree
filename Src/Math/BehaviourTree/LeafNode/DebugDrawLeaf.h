@@ -1,15 +1,20 @@
 #pragma once
 
 #include <string>
-#include "Math/BehaviourTree/INode.h"
+#include "Math/BehaviourTree/LeafNode/LeafNodeBase.h"
 
-class DebugDrawLeaf : public INode {
+/// <summary>
+/// 文字のデバッグ描画を行う葉ノード
+/// </summary>
+class DebugDrawLeaf : public LeafNodeBase {
 public:
-	DebugDrawLeaf(BlackBoard* black_board, int text);
+	explicit DebugDrawLeaf(BlackBoard* black_board, int text);
 
 	~DebugDrawLeaf();
 
-	virtual NodeResult tick() override;
+	void tick() override;
+
+	NodeResult get_node_result() const override;
 
 private:
 	int mText;

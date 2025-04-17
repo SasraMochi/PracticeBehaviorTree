@@ -1,15 +1,15 @@
 #pragma once
 
-#include "Math/BehaviourTree/INode.h"
+#include "Math/BehaviourTree/LeafNode/LeafNodeBase.h"
 
-class EscapeFromPlayerLeaf : public INode {
+/// <summary>
+/// プレイヤーから逃げる葉ノード
+/// </summary>
+class EscapeFromPlayerLeaf : public LeafNodeBase {
 public:
-	EscapeFromPlayerLeaf(BlackBoard* black_board);
+	explicit EscapeFromPlayerLeaf(BlackBoard* black_board);
 
 	~EscapeFromPlayerLeaf();
 
-	NodeResult tick() override;
-
-private:
-	void escape_from_player();
+	void tick() override;
 };

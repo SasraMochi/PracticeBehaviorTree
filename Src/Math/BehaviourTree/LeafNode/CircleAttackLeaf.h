@@ -1,11 +1,16 @@
 #pragma once
 
-#include "Math/BehaviourTree/INode.h"
+#include "Math/BehaviourTree/LeafNode/LeafNodeBase.h"
 
-class CircleAttackLeaf : public INode {
+/// <summary>
+/// 円形攻撃を行う葉ノード
+/// </summary>
+class CircleAttackLeaf : public LeafNodeBase {
 public:
-	CircleAttackLeaf(BlackBoard* black_board);
+	explicit CircleAttackLeaf(BlackBoard* black_board);
 	~CircleAttackLeaf();
 
-	NodeResult tick() override;
+	void tick() override;
+
+	NodeResult get_node_result() const override;
 };

@@ -7,11 +7,6 @@
 #include "Actor/AttackCollider.h"
 #include "Math/BehaviourTree/BehaviourTreeBulider.h"
 
-#include "Math/BehaviourTree/Decorator/Inverter.h"
-#include "Math/BehaviourTree/Leaf/DebugDrawLeaf.h"
-#include "Math/BehaviourTree/Leaf/DebugSuccessLeaf.h"
-#include "Math/BehaviourTree/Leaf/DebugFailLeaf.h"
-
 Attacker::Attacker(IWorld* world)
 	: mHealthBar{ this , mHealth.GetHealth() }
 {

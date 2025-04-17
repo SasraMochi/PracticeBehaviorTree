@@ -1,13 +1,13 @@
-#include "BranchNode.h"
+#include "BranchNodeBase.h"
 
-BranchNode::BranchNode(BlackBoard* black_board, INode* true_node, INode* false_node)
+BranchNodeBase::BranchNodeBase(BlackBoard* black_board, INode* true_node, INode* false_node)
 	: NodeBase(black_board)
 {
 	mpBranchNodes[0] = true_node;
 	mpBranchNodes[1] = false_node;
 }
 
-BranchNode::~BranchNode()
+BranchNodeBase::~BranchNodeBase()
 {
 	// ブランチノードの配列を解放
 	for (int i = 0; i < 2; ++i) {
@@ -18,23 +18,23 @@ BranchNode::~BranchNode()
 	}
 }
 
-void BranchNode::init()
+void BranchNodeBase::init()
 {
 	NodeBase::init();
 
-	if (is_condition) mSatisfyIndex = 0;
+	if (is_condition()) mSatisfyIndex = 0;
 	else mSatisfyIndex = 1;
 
 	mpBranchNodes[mSatisfyIndex]->init();
 }
 
-void BranchNode::tick()
+void BranchNodeBase::tick()
 {
 	mpBranchNodes[mSatisfyIndex]->tick();
 	mNodeResult = mpBranchNodes[mSatisfyIndex]->get_node_result();
 }
 
-void BranchNode::finalize()
+void BranchNodeBase::finalize()
 {
 	NodeBase::finalize();
 	mpBranchNodes[mSatisfyIndex]->finalize();

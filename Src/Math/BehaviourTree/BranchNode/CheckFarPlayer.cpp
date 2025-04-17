@@ -5,7 +5,7 @@
 #include "Actor/IAgent.h"
 
 CheckFarPlayer::CheckFarPlayer(BlackBoard* black_board, INode* true_node, INode* false_node, const float max_distance)
-	: BranchNode(black_board, true_node, false_node),
+	: BranchNodeBase(black_board, true_node, false_node),
 	mMaxDistance(max_distance) {
 }
 

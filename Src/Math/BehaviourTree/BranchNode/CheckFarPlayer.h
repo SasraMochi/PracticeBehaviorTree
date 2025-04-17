@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Math/BehaviourTree/BranchNode/BranchNode.h"
+#include "Math/BehaviourTree/BranchNode/BranchNodeBase.h"
 
-class CheckFarPlayer : public BranchNode {
+class CheckFarPlayer : public BranchNodeBase {
 public:
 	explicit CheckFarPlayer(BlackBoard* black_board, INode* true_node, INode* false_node, const float max_distance);
 

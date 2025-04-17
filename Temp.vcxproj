@@ -172,12 +172,10 @@
     <ClCompile Include="Src\Math\BehaviourTree\CompositeNode\CompositeNodeBase.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\BranchNode\CheckFarPlayer.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\BranchNode\CheckNearPlayer.cpp" />
-    <ClCompile Include="Src\Math\BehaviourTree\BranchNode\BranchNode.cpp" />
+    <ClCompile Include="Src\Math\BehaviourTree\BranchNode\BranchNodeBase.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\LeafNode\ChasePlayerLeaf.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\LeafNode\CircleAttackLeaf.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\LeafNode\DebugDrawLeaf.cpp" />
-    <ClCompile Include="Src\Math\BehaviourTree\LeafNode\DebugFailLeaf.cpp" />
-    <ClCompile Include="Src\Math\BehaviourTree\LeafNode\DebugSuccessLeaf.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\DecoratorNode\DecoratorNodeBase.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\DecoratorNode\Inverter.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\CompositeNode\Selector.cpp" />
@@ -207,7 +205,7 @@
     <ClInclude Include="Src\Game.h" />
     <ClInclude Include="Src\Math\BehaviourTree\BehaviourTreeBulider.h" />
     <ClInclude Include="Src\Math\BehaviourTree\CompositeNode\CompositeNodeBase.h" />
-    <ClInclude Include="Src\Math\BehaviourTree\BranchNode\BranchNode.h" />
+    <ClInclude Include="Src\Math\BehaviourTree\BranchNode\BranchNodeBase.h" />
     <ClInclude Include="Src\Math\BehaviourTree\BranchNode\CheckFarPlayer.h" />
     <ClInclude Include="Src\Math\BehaviourTree\BranchNode\CheckNearPlayer.h" />
     <ClInclude Include="Src\Math\BehaviourTree\LeafNode\ChasePlayerLeaf.h" />

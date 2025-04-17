@@ -5,7 +5,7 @@
 #include "Actor/IAgent.h"
 
 EscapeFromPlayerLeaf::EscapeFromPlayerLeaf(BlackBoard* black_board)
-	: INode(black_board)
+	: LeafNodeBase(black_board)
 {
 }
 
@@ -13,16 +13,7 @@ EscapeFromPlayerLeaf::~EscapeFromPlayerLeaf()
 {
 }
 
-NodeResult EscapeFromPlayerLeaf::tick()
-{
-	check_first_run();
-
-	escape_from_player();
-
-	return NodeResult::Success;
-}
-
-void EscapeFromPlayerLeaf::escape_from_player()
+void EscapeFromPlayerLeaf::tick()
 {
 	// プレイヤーの位置を取得
 	auto player_pos = mpBlackBoard->get_value<Vector2>("PlayerPos");

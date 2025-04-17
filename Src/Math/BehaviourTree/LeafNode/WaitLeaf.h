@@ -1,15 +1,17 @@
 #pragma once
 
-#include "Math/BehaviourTree/INode.h"
+#include "Math/BehaviourTree/LeafNode/LeafNodeBase.h"
 
-class WaitLeaf : public INode {
+/// <summary>
+/// 指定した時間待機する葉ノード
+/// </summary>
+class WaitLeaf : public LeafNodeBase {
 public:
-	WaitLeaf(BlackBoard* black_board, const float wait_time);
+	explicit WaitLeaf(BlackBoard* black_board, const float wait_time);
 	~WaitLeaf();
 
-	NodeResult tick() override;
-
-	void reset() override;
+	void tick() override;
+	void finalize() override;
 
 private:
 	float mWaitTime = 0.f;

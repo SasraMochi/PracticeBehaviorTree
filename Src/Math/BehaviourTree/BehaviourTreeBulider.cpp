@@ -2,19 +2,18 @@
 
 #include "Actor/BlackBoard.h"
 #include "INode.h"
-#include "Math/BehaviourTree/Composite/Selector.h"
-#include "Math/BehaviourTree/Composite/Sequence.h"
-#include "Math/BehaviourTree/Decorator/Inverter.h"
-#include "Math/BehaviourTree/ConditionalBranch/CheckNearPlayer.h"
-#include "Math/BehaviourTree/ConditionalBranch/CheckFarPlayer.h"
-#include "Math/BehaviourTree//Leaf/WaitLeaf.h"
-#include "Math/BehaviourTree//Leaf/ChasePlayerLeaf.h"
-#include "Math/BehaviourTree//Leaf/EscapeFromPlayerLeaf.h"
-#include "Math/BehaviourTree//Leaf/CircleAttackLeaf.h"
-#include "Math/BehaviourTree/Leaf/DebugSuccessLeaf.h"
-#include "Math/BehaviourTree/Leaf/DebugFailLeaf.h"
-
-#include "Leaf/DebugDrawLeaf.h"
+#include "Math/BehaviourTree/CompositeNode/Selector.h"
+#include "Math/BehaviourTree/CompositeNode/Sequence.h"
+#include "Math/BehaviourTree/DecoratorNode/Inverter.h"
+#include "Math/BehaviourTree/BranchNode/CheckNearPlayer.h"
+#include "Math/BehaviourTree/BranchNode/CheckFarPlayer.h"
+#include "Math/BehaviourTree/LeafNode/WaitLeaf.h"
+#include "Math/BehaviourTree/LeafNode/ChasePlayerLeaf.h"
+#include "Math/BehaviourTree/LeafNode/EscapeFromPlayerLeaf.h"
+#include "Math/BehaviourTree/LeafNode/CircleAttackLeaf.h"
+#include "Math/BehaviourTree/LeafNode/DebugSuccessLeaf.h"
+#include "Math/BehaviourTree/LeafNode/DebugFailLeaf.h"
+#include "Math/BehaviourTree/LeafNode/DebugDrawLeaf.h"
 
 
 INode* BehaviourTreeBuilder::BuildAttackerTree(BlackBoard* blackboard)
