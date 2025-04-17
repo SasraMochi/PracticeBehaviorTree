@@ -22,7 +22,7 @@ void ChasePlayerLeaf::tick()
 
 	auto vector = player_pos - agent->get_position();
 
-	agent->move_towards(vector.normalized(), 3.f);
+	agent->move_towards(vector.normalized(), 3.25f);
 }
 
 NodeResult ChasePlayerLeaf::get_node_result() const

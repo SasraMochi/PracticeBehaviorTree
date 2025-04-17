@@ -20,6 +20,7 @@ Attacker::Attacker(IWorld* world)
 	mpBlackBoard->set_value<Vector2>("PlayerPos", Vector2::zero());
 
 	mpBehaviourTree = BehaviourTreeBuilder::BuildAttackerTree(mpBlackBoard);
+	mpBehaviourTree->init();
 
 	Vector2 min = mPosition - Vector2{ 30.f, 30.f };
 	Vector2 max = mPosition + Vector2{ 30.f, 30.f };

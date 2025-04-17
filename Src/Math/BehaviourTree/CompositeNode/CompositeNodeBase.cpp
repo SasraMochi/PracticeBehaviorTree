@@ -10,7 +10,9 @@ CompositeNodeBase::~CompositeNodeBase()
 
 void CompositeNodeBase::init()
 {
-	CompositeNodeBase::init();
+	NodeBase::init();
+	mRunningNodeIndex = 0;
+
 	// Å‰‚Ìƒm[ƒh‚ð‰Šú‰»
 	if (mChildNodes.size() > 0) {
 		mChildNodes[mRunningNodeIndex]->init();
@@ -36,6 +38,7 @@ void CompositeNodeBase::node_increment()
 	// ‚à‚µ‚·‚×‚Ä‚ÌŽqƒm[ƒh‚ðŽŽ‚µ‚Ä‚àŽ¸”s‚µ‚½‚ç
 	if (mRunningNodeIndex > mChildNodes.size() - 1) {
 		mNodeResult = NodeResult::Fail;
+		init();
 		return;
 	}
 
