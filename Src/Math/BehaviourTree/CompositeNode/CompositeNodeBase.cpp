@@ -22,6 +22,15 @@ void CompositeNodeBase::init()
 	}
 }
 
+void CompositeNodeBase::finalize()
+{
+	NodeBase::finalize();
+
+	// Å‰‚Ìƒm[ƒh‚ð‰Šú‰»
+	mRunningNodeIndex = 0;
+	mChildNodes[mRunningNodeIndex]->init();
+}
+
 void CompositeNodeBase::add_node(INode* node)
 {
 	mChildNodes.push_back(node);
@@ -38,7 +47,7 @@ void CompositeNodeBase::node_increment()
 	// ‚à‚µ‚·‚×‚Ä‚ÌŽqƒm[ƒh‚ðŽŽ‚µ‚Ä‚àŽ¸”s‚µ‚½‚ç
 	if (mRunningNodeIndex > mChildNodes.size() - 1) {
 		mNodeResult = NodeResult::Fail;
-		init();
+		finalize();
 		return;
 	}
 

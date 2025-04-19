@@ -15,7 +15,6 @@
 #include "Math/BehaviourTree/LeafNode/DebugFailLeaf.h"
 #include "Math/BehaviourTree/LeafNode/DebugDrawLeaf.h"
 
-
 INode* BehaviourTreeBuilder::BuildAttackerTree(BlackBoard* blackboard)
 {
 	auto chase_selector = new Selector(blackboard);

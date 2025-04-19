@@ -8,16 +8,12 @@ class INode {
 public:
 	// 仮想デストラクタ
 	virtual ~INode() = default;
-
 	// 初期化
 	virtual void init() = 0;
-
 	// 動作
 	virtual void tick() = 0;
-
-	// リセット
+	// 後処理
 	virtual void finalize() = 0;
-
 	// ノードの状態を取得
 	virtual NodeResult get_node_result() const = 0;
 };

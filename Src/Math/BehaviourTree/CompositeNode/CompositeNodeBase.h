@@ -14,6 +14,7 @@ public:
 	virtual ~CompositeNodeBase();
 
 	virtual void init() override;
+	virtual void finalize() override;
 
 protected:
 	virtual const int get_next_index() const = 0;

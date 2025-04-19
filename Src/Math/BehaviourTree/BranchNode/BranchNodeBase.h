@@ -17,7 +17,7 @@ public:
 protected:
 	// 条件を満たしているか
 	virtual const bool is_condition() = 0;
-
+	
 protected:
 	INode* mpBranchNodes[2] = { nullptr, nullptr }; // ブランチノードの配列
 	int mSatisfyIndex = -1; // 条件を満たしているノードのインデックス
