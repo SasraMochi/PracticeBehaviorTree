@@ -17,7 +17,13 @@ Attacker::Attacker(IWorld* world)
 
 	mpBlackBoard = new BlackBoard();
 	mpBlackBoard->set_value<IAgent*>("Agent", this);
-	mpBlackBoard->set_value<Vector2>("PlayerPos", Vector2::zero());
+
+	auto* p_player = mpWorld->find_actor("Player");
+	if (p_player == nullptr) {
+		return;
+	}
+	Vector2 pos = p_player->position();
+	mpBlackBoard->set_value<Vector2>("PlayerPos", pos);
 
 	mpBehaviourTree = BehaviourTreeBuilder::BuildAttackerTree(mpBlackBoard);
 	mpBehaviourTree->init();

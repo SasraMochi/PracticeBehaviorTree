@@ -15,7 +15,7 @@ public:
 	virtual void finalize() override;
 
 protected:
-	// ğŒ‚ğ–‚½‚µ‚Ä‚¢‚é‚©
+	// ğŒ‚ğ–‚½‚µ‚Ä‚¢‚é‚©   
 	virtual const bool is_condition() = 0;
 	
 protected:
