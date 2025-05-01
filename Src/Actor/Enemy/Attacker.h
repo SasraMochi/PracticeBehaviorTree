@@ -4,8 +4,6 @@
 #include "Actor/IAgent.h"
 #include "Actor/ActorHealth.h"
 #include "Math/BehaviourTree/CompositeNode/Selector.h"
-
-#include "Math/Vector2.h"
 #include "UI/BarGauge.h"
 
 #include "Math/MyTimer.h"

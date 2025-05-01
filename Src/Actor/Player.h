@@ -1,12 +1,8 @@
 #pragma once
 
 #include "Actor/Actor.h"
-#include "Math/Vector2.h"
-
 #include "UI/BarGauge.h"
-
 #include "Math/MyTimer.h"
-
 #include "Actor/ActorHealth.h"
 
 class Player : public Actor{

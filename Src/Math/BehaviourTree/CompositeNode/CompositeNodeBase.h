@@ -16,13 +16,10 @@ public:
 	virtual void init() override;
 	virtual void finalize() override;
 
-protected:
-	virtual const int get_next_index() const = 0;
-	
-public:
 	void add_node(INode* node);
 
 protected:
+	virtual const int get_next_index() const = 0; // îhê∂ÉNÉâÉXÇ≈é¿ëï
 	void node_increment();
 
 protected:
