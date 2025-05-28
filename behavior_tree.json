@@ -1,34 +1,60 @@
 [
     {
         "children": [
-            2
+            8,
+            9,
+            10
         ],
-        "id": 1,
+        "id": 6,
         "name": "Sequence",
         "parent": -1,
         "type": 0
     },
     {
-        "false_child": 4,
-        "id": 2,
-        "limit_distance": 50.0,
+        "children": [
+            12
+        ],
+        "id": 7,
+        "name": "Inverter",
+        "parent": 8,
+        "type": 1
+    },
+    {
+        "false_child": 7,
+        "id": 8,
+        "limit_distance": 100.0,
         "name": "CheckNearPlayer",
-        "parent": 1,
-        "true_child": 3,
+        "parent": 6,
+        "true_child": 11,
         "type": 2
     },
     {
         "children": [],
-        "id": 3,
-        "name": "EscapeFromPlayerLeaf",
-        "parent": 2,
+        "id": 9,
+        "name": "CircleAttackLeaf",
+        "parent": 6,
         "type": 3
     },
     {
         "children": [],
-        "id": 4,
+        "id": 10,
+        "name": "WaitLeaf",
+        "parent": 6,
+        "type": 3,
+        "wait_time": 60.0
+    },
+    {
+        "children": [],
+        "id": 11,
+        "name": "AlwaysSuccessLeaf",
+        "parent": 8,
+        "type": 3
+    },
+    {
+        "children": [],
+        "id": 12,
         "name": "ChasePlayerLeaf",
-        "parent": 2,
+        "parent": 7,
         "type": 3
     }
 ]
