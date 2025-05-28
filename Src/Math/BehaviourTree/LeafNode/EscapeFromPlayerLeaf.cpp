@@ -23,3 +23,9 @@ void EscapeFromPlayerLeaf::tick()
 
 	agent->move_towards(vector.normalized(), 3.f);
 }
+
+NodeResult EscapeFromPlayerLeaf::get_node_result() const
+{
+	// •K‚¸¬Œ÷‚ğ•Ô‚·
+	return NodeResult::Success;
+}

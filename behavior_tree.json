@@ -1,0 +1,34 @@
+[
+    {
+        "children": [
+            2
+        ],
+        "id": 1,
+        "name": "Sequence",
+        "parent": -1,
+        "type": 0
+    },
+    {
+        "false_child": 4,
+        "id": 2,
+        "limit_distance": 50.0,
+        "name": "CheckNearPlayer",
+        "parent": 1,
+        "true_child": 3,
+        "type": 2
+    },
+    {
+        "children": [],
+        "id": 3,
+        "name": "EscapeFromPlayerLeaf",
+        "parent": 2,
+        "type": 3
+    },
+    {
+        "children": [],
+        "id": 4,
+        "name": "ChasePlayerLeaf",
+        "parent": 2,
+        "type": 3
+    }
+]

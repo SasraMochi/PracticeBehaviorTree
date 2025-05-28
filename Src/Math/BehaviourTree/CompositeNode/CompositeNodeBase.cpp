@@ -35,22 +35,3 @@ void CompositeNodeBase::add_node(INode* node)
 {
 	mChildNodes.push_back(node);
 }
-
-void CompositeNodeBase::node_increment()
-{
-	// 現在のノードの後始末
-	mChildNodes[mRunningNodeIndex]->finalize();
-
-	// インデックスを進める
-	mRunningNodeIndex = get_next_index();
-
-	// もしすべての子ノードを試しても失敗したら
-	if (mRunningNodeIndex > mChildNodes.size() - 1) {
-		mNodeResult = NodeResult::Fail;
-		finalize();
-		return;
-	}
-
-	// 次に回すノードの初期化
-	mChildNodes[mRunningNodeIndex]->init();
-}

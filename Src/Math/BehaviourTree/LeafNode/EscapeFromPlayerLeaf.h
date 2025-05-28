@@ -12,4 +12,6 @@ public:
 	~EscapeFromPlayerLeaf();
 
 	void tick() override;
+
+	NodeResult get_node_result() const override;
 };

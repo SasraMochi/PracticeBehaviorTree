@@ -203,6 +203,7 @@
     <ClInclude Include="Src\Actor\IAgent.h" />
     <ClInclude Include="Src\Actor\Player.h" />
     <ClInclude Include="Src\Game.h" />
+    <ClInclude Include="Src\json.hpp" />
     <ClInclude Include="Src\Math\BehaviourTree\BehaviourTreeBulider.h" />
     <ClInclude Include="Src\Math\BehaviourTree\CompositeNode\CompositeNodeBase.h" />
     <ClInclude Include="Src\Math\BehaviourTree\BranchNode\BranchNodeBase.h" />
@@ -210,8 +211,8 @@
     <ClInclude Include="Src\Math\BehaviourTree\BranchNode\CheckNearPlayer.h" />
     <ClInclude Include="Src\Math\BehaviourTree\LeafNode\ChasePlayerLeaf.h" />
     <ClInclude Include="Src\Math\BehaviourTree\LeafNode\DebugDrawLeaf.h" />
-    <ClInclude Include="Src\Math\BehaviourTree\LeafNode\DebugFailLeaf.h" />
-    <ClInclude Include="Src\Math\BehaviourTree\LeafNode\DebugSuccessLeaf.h" />
+    <ClInclude Include="Src\Math\BehaviourTree\LeafNode\AlwaysFailLeaf.h" />
+    <ClInclude Include="Src\Math\BehaviourTree\LeafNode\AlwaysSuccessLeaf.h" />
     <ClInclude Include="Src\Math\BehaviourTree\DecoratorNode\DecoratorNodeBase.h" />
     <ClInclude Include="Src\Math\BehaviourTree\DecoratorNode\Inverter.h" />
     <ClInclude Include="Src\Math\BehaviourTree\INode.h" />

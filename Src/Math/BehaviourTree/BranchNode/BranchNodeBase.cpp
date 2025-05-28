@@ -22,8 +22,14 @@ void BranchNodeBase::init()
 {
 	NodeBase::init();
 
-	if (is_condition()) mSatisfyIndex = 0;
-	else mSatisfyIndex = 1;
+	if (is_condition())
+	{
+		mSatisfyIndex = 0;
+	}
+	else
+	{
+		mSatisfyIndex = 1;
+	}
 
 	mpBranchNodes[mSatisfyIndex]->init();
 }

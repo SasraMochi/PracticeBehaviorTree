@@ -13,4 +13,5 @@ public:
 
 private:
 	const int get_next_index() const override;
+	void node_increment() override;
 };

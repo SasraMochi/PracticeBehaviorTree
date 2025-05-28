@@ -19,8 +19,9 @@ public:
 	void add_node(INode* node);
 
 protected:
-	virtual const int get_next_index() const = 0; // 派生クラスで実装
-	void node_increment();
+	// 派生クラスで実装
+	virtual const int get_next_index() const = 0;
+	virtual void node_increment() = 0;
 
 protected:
 	// 子ノード群
