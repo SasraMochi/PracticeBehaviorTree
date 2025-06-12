@@ -72,19 +72,19 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\C++\Practive_BehaviourTree_git\Src;C:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;$(IncludePath)</IncludePath>
+    <IncludePath>C:\C++\Practive_BehaviourTree_git\Src;C:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;C:\C++\Practive_BehaviourTree_git\Lib\imgui;C:\C++\Practive_BehaviourTree_git\Lib\imnodes;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\C++\Practive_BehaviourTree_git\Src;C:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;$(IncludePath)</IncludePath>
+    <IncludePath>C:\C++\Practive_BehaviourTree_git\Src;C:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;C:\C++\Practive_BehaviourTree_git\Lib\imgui;C:\C++\Practive_BehaviourTree_git\Lib\imnodes;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\C++\Practive_BehaviourTree_git\Src;C:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;$(IncludePath)</IncludePath>
+    <IncludePath>C:\C++\Practive_BehaviourTree_git\Src;C:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;C:\C++\Practive_BehaviourTree_git\Lib\imgui;C:\C++\Practive_BehaviourTree_git\Lib\imnodes;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\C++\Practive_BehaviourTree_git\Src;C:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;$(IncludePath)</IncludePath>
+    <IncludePath>C:\C++\Practive_BehaviourTree_git\Src;C:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;C:\C++\Practive_BehaviourTree_git\Lib\imgui;C:\C++\Practive_BehaviourTree_git\Lib\imnodes;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -92,7 +92,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\C++\Practice_BehaviourTree\Src;C:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\C++\Practice_BehaviourTree\Src;C:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;C:\C++\Practive_BehaviourTree_git\Lib\imgui;C:\C++\Practive_BehaviourTree_git\Lib\imnodes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
@@ -110,7 +110,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\C++\Practice_BehaviourTree\Src;C:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\C++\Practice_BehaviourTree\Src;C:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;C:\C++\Practive_BehaviourTree_git\Lib\imgui;C:\C++\Practive_BehaviourTree_git\Lib\imnodes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
@@ -128,7 +128,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\C++\Practice_BehaviourTree\Src;C:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\C++\Practice_BehaviourTree\Src;C:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;C:\C++\Practive_BehaviourTree_git\Lib\imgui;C:\C++\Practive_BehaviourTree_git\Lib\imnodes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
@@ -146,7 +146,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\C++\Practice_BehaviourTree\Src;C:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\C++\Practice_BehaviourTree\Src;C:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;C:\C++\Practive_BehaviourTree_git\Lib\imgui;C:\C++\Practive_BehaviourTree_git\Lib\imnodes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
@@ -159,6 +159,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Lib\imgui\backends\imgui_impl_dx11.cpp" />
+    <ClCompile Include="Lib\imgui\backends\imgui_impl_win32.cpp" />
+    <ClCompile Include="Lib\imgui\imgui.cpp" />
+    <ClCompile Include="Lib\imgui\imgui_demo.cpp" />
+    <ClCompile Include="Lib\imgui\imgui_draw.cpp" />
+    <ClCompile Include="Lib\imgui\imgui_tables.cpp" />
+    <ClCompile Include="Lib\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="Lib\imnodes\imnodes.cpp" />
     <ClCompile Include="Src\Actor\Actor.cpp" />
     <ClCompile Include="Src\Actor\ActorHealth.cpp" />
     <ClCompile Include="Src\Actor\ActorManager.cpp" />
@@ -168,6 +176,7 @@
     <ClCompile Include="SRC\ACTOR\Player.cpp" />
     <ClCompile Include="Src\Game.cpp" />
     <ClCompile Include="Src\main.cpp" />
+    <ClCompile Include="Src\Math\BehaviourTree\BehaviorTreeUtility.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\BehaviourTreeBulider.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\CompositeNode\CompositeNodeBase.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\BranchNode\CheckFarPlayer.cpp" />
@@ -194,6 +203,16 @@
     <ClCompile Include="Src\World\World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Lib\imgui\backends\imgui_impl_dx11.h" />
+    <ClInclude Include="Lib\imgui\backends\imgui_impl_win32.h" />
+    <ClInclude Include="Lib\imgui\imconfig.h" />
+    <ClInclude Include="Lib\imgui\imgui.h" />
+    <ClInclude Include="Lib\imgui\imgui_internal.h" />
+    <ClInclude Include="Lib\imgui\imstb_rectpack.h" />
+    <ClInclude Include="Lib\imgui\imstb_textedit.h" />
+    <ClInclude Include="Lib\imgui\imstb_truetype.h" />
+    <ClInclude Include="Lib\imnodes\imnodes.h" />
+    <ClInclude Include="Lib\imnodes\imnodes_internal.h" />
     <ClInclude Include="Src\Actor\Actor.h" />
     <ClInclude Include="Src\Actor\ActorHealth.h" />
     <ClInclude Include="Src\Actor\ActorManager.h" />
@@ -204,6 +223,7 @@
     <ClInclude Include="Src\Actor\Player.h" />
     <ClInclude Include="Src\Game.h" />
     <ClInclude Include="Src\json.hpp" />
+    <ClInclude Include="Src\Math\BehaviourTree\BehaviorTreeUtility.h" />
     <ClInclude Include="Src\Math\BehaviourTree\BehaviourTreeBulider.h" />
     <ClInclude Include="Src\Math\BehaviourTree\CompositeNode\CompositeNodeBase.h" />
     <ClInclude Include="Src\Math\BehaviourTree\BranchNode\BranchNodeBase.h" />
@@ -231,6 +251,7 @@
     <ClInclude Include="Src\Math\Screen.h" />
     <ClInclude Include="Src\Math\Singleton.h" />
     <ClInclude Include="Src\Math\Vector2.h" />
+    <ClInclude Include="Src\nameof.hpp" />
     <ClInclude Include="Src\Scene\GamePlayScene.h" />
     <ClInclude Include="Src\Scene\IScene.h" />
     <ClInclude Include="Src\Scene\SceneManager.h" />
