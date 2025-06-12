@@ -6,6 +6,14 @@
 #include "Math/Screen.h"
 #include "Game.h"
 
+#if _DEBUG
+#include "imgui.h"
+#include <Backends/imgui_impl_win32.h>
+#include <Backends/imgui_impl_dx11.h>
+
+#include "imnodes.h"
+#endif
+
 // FPS関連設定
 int TargetFPS = 60;
 static bool EnableFrameSkip = true;
@@ -19,11 +27,38 @@ static long fpsTicks = 0;
 static int fpsFrameCount = 0;
 static float CurrentFPS; // 現在のFPS
 
+#if _DEBUG
+ID3D11Device* g_pd3dDevice = nullptr;
+ID3D11DeviceContext* g_pd3dDeviceContext = nullptr;
+extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+
+// ImGuiにプロシージャの情報を流す
+LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp) {
+	if (ImGui_ImplWin32_WndProcHandler(hWnd, msg, wp, lp)) {
+		return true;
+	}
+
+	return 0;
+}
+#endif
+
 // 描画処理
 static void GameDraw(Game& game)
 {
 	ClearDrawScreen();
 	game.draw();
+
+#if _DEBUG
+	// ImGuiの描画
+	ImGui_ImplDX11_NewFrame();
+	ImGui_ImplWin32_NewFrame();
+	ImGui::NewFrame();
+
+	game.draw_debug();
+
+	ImGui::Render();
+	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
+#endif
 
 	ScreenFlip();
 	skipCount = 0;
@@ -51,8 +86,23 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetDrawScreen(DX_SCREEN_BACK);
 	SetUseTransColor(FALSE);
 
+#if _DEBUG
+	// ImGuiの初期化
+	ImGui::CreateContext();
+	ImNodes::CreateContext();
+	g_pd3dDevice = (ID3D11Device*)(GetUseDirect3D11Device());
+	g_pd3dDeviceContext = (ID3D11DeviceContext*)GetUseDirect3D11DeviceContext();
+	ImGui_ImplWin32_Init(GetMainWindowHandle());
+	ImGui_ImplDX11_Init(g_pd3dDevice, g_pd3dDeviceContext);
+	SetHookWinProc(WndProc);
+	ImGui::GetIO().Fonts->AddFontFromFileTTF("c:/Windows/Fonts/meiryo.ttc", 40.0f, NULL, ImGui::GetIO().Fonts->GetGlyphRangesJapanese());
+	ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard; // Enable Keyboard Controls
+	ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad; // Enable Gamepad Controls
+	// ImGui_ImplDX11_CreateDeviceObjects();
+#endif
+
 	// ゲーム初期化
-	Game game;
+	Game game(Screen::Width, Screen::Height);
 	game.start();
 
 	MySystemTimer& timer = MySystemTimer::GetInstance();
@@ -142,6 +192,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			nextFrameTicks += IntervalTicks;
 		}
 	}
+
+#if _DEBUG
+	// ImGui終了処理
+	ImGui_ImplDX11_Shutdown();
+	ImGui_ImplWin32_Shutdown();
+	ImNodes::DestroyContext();
+	ImGui::DestroyContext();
+#endif
 
 	WaitKey();
 	DxLib::DxLib_End();

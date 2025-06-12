@@ -5,7 +5,7 @@
 class Game {
 public:
 	//コンストラクタ
-	Game();
+	Game(const int screenX, const int screenY);
 
 	//開始
 	void start();
@@ -16,10 +16,13 @@ public:
 	//描画
 	void draw();
 
+	//デバッグ描画
+	void draw_debug();
+
 	//終了
 	void end();
 
 private:
 	//シーンマネージャー
-	SceneManager mSceneManager;
+	SceneManager scene_manager_;
 };

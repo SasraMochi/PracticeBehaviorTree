@@ -2,14 +2,17 @@
 #include<DxLib.h>
 
 void TitleScene::start(){
-	mIsEnd = false;
-
-	set_next("GamePlayScene");
+	is_end_ = false;
 }
 
 void TitleScene::update(){
-	if (CheckHitKey(KEY_INPUT_Z) == 1) {
-		mIsEnd = true;
+	if (CheckHitKey(KEY_INPUT_Z)) 
+	{
+		change_scene_("GamePlayScene");
+	}
+	else if (CheckHitKey(KEY_INPUT_A)) 
+	{
+		change_scene_("EditBehaviorTreeScene");
 	}
 }
 
@@ -17,10 +20,20 @@ void TitleScene::draw() const {
 	DrawString(0, 0, "タイトルシーン", GetColor(255, 255, 255));
 }
 
+void TitleScene::draw_debug()
+{
+}
+
 bool TitleScene::is_end() const {
-	return mIsEnd;
+	return is_end_;
 }
 
 void TitleScene::end() {
 
+}
+
+void TitleScene::change_scene_(std::string next_scene_name)
+{
+	set_next(next_scene_name);
+	is_end_ = true;
 }

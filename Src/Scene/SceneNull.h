@@ -12,6 +12,8 @@ public:
 	virtual void update() override {}
 	//描画
 	virtual void draw() const override {}
+	//デバッグ描画
+	virtual void draw_debug() override {}
 	//終了しているか？
 	virtual bool is_end() const override {
 		return false;

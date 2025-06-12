@@ -17,6 +17,8 @@ public:
 	void update();
 	//描画
 	void draw() const;
+	//デバッグ描画
+	void draw_debug();
 	//終了
 	void end();
 	//シーンの追加
@@ -31,9 +33,9 @@ public:
 
 private:
 	//シーン
-	std::unordered_map<std::string, IScene*> mScenes;
+	std::unordered_map<std::string, IScene*> scenes_;
 	//現在のシーン
-	IScene* mpCurrentScene;
+	IScene* current_scene_;
 };
 
 #endif // !SCENE_MANAGER_H_

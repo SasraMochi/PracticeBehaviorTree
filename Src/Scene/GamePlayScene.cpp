@@ -22,6 +22,10 @@ void GamePlayScene::draw() const {
 	mWorld.draw();
 }
 
+void GamePlayScene::draw_debug()
+{
+}
+
 bool GamePlayScene::is_end() const {
 	return false;
 }

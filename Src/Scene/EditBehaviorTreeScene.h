@@ -1,9 +1,10 @@
-#ifndef TITLE_SCENE_H_
-#define TITLE_SCENE_H_
+#ifndef EDIT_BEHAVIOR_TREE_SCENE_H_
+#define EDIT_BEHAVIOR_TREE_SCENE_H_
 
 #include"IScene.h"
+#include"Math/BehaviourTree/BehaviorTreeUtility.h"
 
-class TitleScene : public IScene {
+class EditBehaviorTreeScene : public IScene {
 public:
 	//開始
 	virtual void start() override;
@@ -21,11 +22,7 @@ public:
 	virtual void end() override;
 
 private:
-	// シーン切り替え予約
-	void change_scene_(std::string next_scene_name);
-
-private:
-	bool is_end_;
+	bool mIsEnd;
+	BehaviorTreeGraph* mpBehaviorTree;
 };
-
-#endif // !TITLE_SCENE_H_
+#endif // !EDIT_BEHAVIOR_TREE_SCENE_H_

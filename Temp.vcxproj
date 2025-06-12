@@ -194,6 +194,7 @@
     <ClCompile Include="Src\Math\MyRectangle.cpp" />
     <ClCompile Include="Src\Math\MyTimer.cpp" />
     <ClCompile Include="Src\Math\Vector2.cpp" />
+    <ClCompile Include="Src\Scene\EditBehaviorTreeScene.cpp" />
     <ClCompile Include="Src\Scene\GamePlayScene.cpp" />
     <ClCompile Include="Src\Scene\IScene.cpp" />
     <ClCompile Include="Src\Scene\SceneManager.cpp" />
@@ -252,6 +253,7 @@
     <ClInclude Include="Src\Math\Singleton.h" />
     <ClInclude Include="Src\Math\Vector2.h" />
     <ClInclude Include="Src\nameof.hpp" />
+    <ClInclude Include="Src\Scene\EditBehaviorTreeScene.h" />
     <ClInclude Include="Src\Scene\GamePlayScene.h" />
     <ClInclude Include="Src\Scene\IScene.h" />
     <ClInclude Include="Src\Scene\SceneManager.h" />
