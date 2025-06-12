@@ -1,4 +1,5 @@
 #include "EditBehaviorTreeScene.h"
+#include "DxLib.h"
 
 void EditBehaviorTreeScene::start()
 {
@@ -13,10 +14,16 @@ void EditBehaviorTreeScene::update()
 {
 	// ツリーエディターの更新
 	mpBehaviorTree->update();
+
+	if (CheckHitKey(KEY_INPUT_BACK))
+	{
+		mIsEnd = true;
+	}
 }
 
 void EditBehaviorTreeScene::draw() const
 {
+
 }
 
 void EditBehaviorTreeScene::draw_debug()
