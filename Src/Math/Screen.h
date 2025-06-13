@@ -5,8 +5,8 @@
 class Screen
 {
 public:
-    static const int Width = 1920; // •
-    static const int Height = 1080; // ‚‚³
+    static const int Width = 2560; // •
+    static const int Height = 1600; // ‚‚³
 };
 
 #endif
