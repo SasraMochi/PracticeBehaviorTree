@@ -3,6 +3,8 @@
 #include"IScene.h"
 #include "World/World.h"
 
+class BehaviorTreeGraph;
+
 class GamePlayScene : public IScene {
 public:
 	//ŠJŽn
@@ -24,4 +26,6 @@ private:
 	World mWorld;
 
 	bool mIsEnd = false;
+
+	BehaviorTreeGraph* mpBehaviorTreeGraph = nullptr;
 };

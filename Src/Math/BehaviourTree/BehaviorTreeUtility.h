@@ -108,7 +108,7 @@ private:
 	const int cTruePinBit = 1;
 	const int cFalsePinBit = 2;
 
-	const enum class NodeTuple{
+	const enum class NodeTuple {
 		Node_Id,
 		Child_Id,
 		PinType,
@@ -130,6 +130,12 @@ public:
 
 	// モード切替
 	void change_mode(bool is_edit_mode);
+
+	// ロードするJsonファイルを選択
+	void select_load_file();
+
+	// 現在ロードしているJsonファイルパスを取得
+	std::string get_loading_file() const { return mLoadFileName; }
 
 private:
 	// ノードの追加
@@ -261,6 +267,8 @@ private:
 	bool get_selected_nodes_related_links(std::vector<int>* links);
 
 private:
+	std::string mLoadFileName = "";
+
 	bool mIsEditMode = true;
 
 	std::unordered_map<int, BTNode>          mNodes;

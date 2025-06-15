@@ -15,7 +15,7 @@ class Attacker : public Actor, public IAgent {
 
 public:
 	//コンストラクタ
-	Attacker(IWorld* world);
+	Attacker(IWorld* world, std::string behavior_tree_file_path);
 	//デストラクタ
 	~Attacker();
 	//更新

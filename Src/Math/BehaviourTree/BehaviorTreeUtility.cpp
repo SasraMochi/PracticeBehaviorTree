@@ -57,21 +57,40 @@ void BehaviorTreeGraph::change_mode(bool is_edit_mode)
 	mIsEditMode = is_edit_mode;
 }
 
+void BehaviorTreeGraph::select_load_file()
+{
+#if defined(_WIN32)
+	OPENFILENAMEA ofn = { 0 };
+	char szFile[MAX_PATH] = { 0 };	// ファイルパスのサイズはWindows既定のものに
+	ofn.lStructSize = sizeof(ofn);
+	ofn.lpstrFile = szFile;
+	ofn.nMaxFile = sizeof(szFile);
+	ofn.lpstrFilter = "JSON Files\0*.json\0All Files\0*.*\0";
+	ofn.nFilterIndex = 1;
+	ofn.Flags = OFN_PATHMUSTEXIST;
+
+	if (GetOpenFileNameA(&ofn))
+	{
+		mLoadFileName = szFile;
+		import_json(szFile);
+	}
+#endif
+}
+
 void BehaviorTreeGraph::draw_toolbar()
 {
-	if (mIsEditMode)
-	{
-		// ノード追加ボタン
-		draw_add_button();
+	if (!mIsEditMode) return;
 
-		// 削除ボタン
-		draw_delete_button();
+	// ノード追加ボタン
+	draw_add_button();
 
-		ImGui::NewLine();
-		// ファイル書き出し
-		draw_export_button();
-		ImGui::SameLine();
-	}
+	// 削除ボタン
+	draw_delete_button();
+
+	ImGui::NewLine();
+	// ファイル書き出し
+	draw_export_button();
+	ImGui::SameLine();
 
 	// ファイル読み込み
 	draw_import_button();
@@ -581,21 +600,7 @@ void BehaviorTreeGraph::draw_import_button()
 {
 	if (ImGui::Button(u8"Json読込"))
 	{
-#if defined(_WIN32)
-		OPENFILENAMEA ofn = { 0 };
-		char szFile[MAX_PATH] = { 0 };	// ファイルパスのサイズはWindows既定のものに
-		ofn.lStructSize = sizeof(ofn);
-		ofn.lpstrFile = szFile;
-		ofn.nMaxFile = sizeof(szFile);
-		ofn.lpstrFilter = "JSON Files\0*.json\0All Files\0*.*\0";
-		ofn.nFilterIndex = 1;
-		ofn.Flags = OFN_PATHMUSTEXIST;
-
-		if (GetOpenFileNameA(&ofn))
-		{
-			import_json(szFile);
-		}
-#endif
+		select_load_file();
 	}
 }
 

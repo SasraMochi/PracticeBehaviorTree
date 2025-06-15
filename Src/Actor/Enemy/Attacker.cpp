@@ -7,7 +7,7 @@
 #include "Actor/AttackCollider.h"
 #include "Math/BehaviourTree/BehaviourTreeBulider.h"
 
-Attacker::Attacker(IWorld* world)
+Attacker::Attacker(IWorld* world, std::string behavior_tree_file_path)
 	: mHealthBar{ this , mHealth.GetHealth() }
 {
 	mpWorld = world;
@@ -25,7 +25,7 @@ Attacker::Attacker(IWorld* world)
 	Vector2 pos = p_player->position();
 	mpBlackBoard->set_value<Vector2>("PlayerPos", pos);
 
-	mpBehaviourTree = BehaviourTreeBuilder::BuildAttackerTree(mpBlackBoard);
+	mpBehaviourTree = BehaviourTreeBuilder::BuildAttackerTree(behavior_tree_file_path, mpBlackBoard);
 	mpBehaviourTree->init();
 
 	Vector2 min = mPosition - Vector2{ 30.f, 30.f };

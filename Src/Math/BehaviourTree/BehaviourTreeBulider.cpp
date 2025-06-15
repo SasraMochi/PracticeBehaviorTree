@@ -20,10 +20,10 @@ using json = nlohmann::json;
 
 #include <fstream>
 
-INode* BehaviourTreeBuilder::BuildAttackerTree(BlackBoard* blackboard)
+INode* BehaviourTreeBuilder::BuildAttackerTree(std::string file_path, BlackBoard* blackboard)
 {
 	// JSONƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚Ş
-	std::ifstream file("behavior_tree.json");
+	std::ifstream file(file_path);
 	if (!file.is_open())
 	{
 		throw std::runtime_error("Unable to open behavior_tree.json");

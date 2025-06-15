@@ -4,11 +4,17 @@
 #include "Actor/Player.h"
 #include "Actor/Enemy/Attacker.h"
 
+#include "Math/BehaviourTree/BehaviorTreeUtility.h"
+
 void GamePlayScene::start() {
 	set_next("TitleScene");
 
+	mpBehaviorTreeGraph = new BehaviorTreeGraph(false);
+	mpBehaviorTreeGraph->select_load_file();
+	auto behavior_tree_file_path = mpBehaviorTreeGraph->get_loading_file();
+
 	mWorld.add_actor(new Player());
-	mWorld.add_actor(new Attacker(&mWorld));
+	mWorld.add_actor(new Attacker(&mWorld, behavior_tree_file_path));
 	mWorld.set_field(new Field(1920, 64));
 }
 
@@ -24,6 +30,7 @@ void GamePlayScene::draw() const {
 
 void GamePlayScene::draw_debug()
 {
+	mpBehaviorTreeGraph->draw();
 }
 
 bool GamePlayScene::is_end() const {
