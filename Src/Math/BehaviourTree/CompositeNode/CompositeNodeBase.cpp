@@ -35,3 +35,9 @@ void CompositeNodeBase::add_node(INode* node)
 {
 	mChildNodes.push_back(node);
 }
+
+int CompositeNodeBase::get_running_node_id() const
+{
+	// Œ»İ“®‚©‚µ‚Ä‚¢‚éƒm[ƒh‚ÌID‚ğ•Ô‚·
+	return mChildNodes[mRunningNodeIndex]->get_running_node_id();
+}

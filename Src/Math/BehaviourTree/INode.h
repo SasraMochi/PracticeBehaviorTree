@@ -16,4 +16,8 @@ public:
 	virtual void finalize() = 0;
 	// ノードの状態を取得
 	virtual NodeResult get_node_result() const = 0;
+	// ノードのIDを保存
+	virtual void set_node_id(const int id) = 0;
+	// 現在動作中のノードのIDを取得
+	virtual int get_running_node_id() const = 0;
 };

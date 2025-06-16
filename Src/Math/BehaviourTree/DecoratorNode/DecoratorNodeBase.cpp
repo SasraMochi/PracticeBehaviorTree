@@ -24,3 +24,8 @@ void DecoratorNodeBase::set_node(INode* node)
 {
 	mChildNode = node;
 }
+
+int DecoratorNodeBase::get_running_node_id() const
+{
+	return mChildNode->get_running_node_id();
+}

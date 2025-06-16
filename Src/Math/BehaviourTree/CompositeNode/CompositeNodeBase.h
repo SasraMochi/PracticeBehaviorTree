@@ -18,6 +18,8 @@ public:
 
 	void add_node(INode* node);
 
+	int get_running_node_id() const override;
+
 protected:
 	// ”h¶ƒNƒ‰ƒX‚ÅÀ‘•
 	virtual const int get_next_index() const = 0;

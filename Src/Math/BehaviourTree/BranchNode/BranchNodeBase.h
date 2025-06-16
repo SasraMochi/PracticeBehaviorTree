@@ -14,6 +14,8 @@ public:
 	virtual void tick() override;
 	virtual void finalize() override;
 
+	int get_running_node_id() const override;
+
 protected:
 	// ğŒ‚ğ–‚½‚µ‚Ä‚¢‚é‚©   
 	virtual const bool is_condition() = 0;

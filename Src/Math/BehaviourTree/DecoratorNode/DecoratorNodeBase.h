@@ -12,6 +12,8 @@ public:
 
 	void set_node(INode* node);
 
+	int get_running_node_id() const override;
+
 protected:
 	INode* mChildNode = nullptr;
 };

@@ -46,3 +46,8 @@ void BranchNodeBase::finalize()
 	mpBranchNodes[mSatisfyIndex]->finalize();
 	mSatisfyIndex = -1;
 }
+
+int BranchNodeBase::get_running_node_id() const
+{
+	return mpBranchNodes[mSatisfyIndex]->get_running_node_id();
+}

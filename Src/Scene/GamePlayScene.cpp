@@ -20,13 +20,21 @@ void GamePlayScene::start() {
 }
 
 void GamePlayScene::update() {
-	if (CheckHitKey(KEY_INPUT_RETURN)) 
+	if (CheckHitKey(KEY_INPUT_RETURN))
 	{
 		mIsEnd = true;
 	}
 
 	float delta_time = 1.f;
 	mWorld.update(delta_time);
+
+	// TODO:Œã‚Å®—
+	// Œ»İ“®‚©‚µ‚Ä‚¢‚éƒm[ƒh‚ÌID‚ğæ“¾
+	const auto& attacker_actor = mWorld.find_actor("Attacker");
+	const Attacker* attacker = dynamic_cast<const Attacker*>(attacker_actor);
+	mRunnningNodeId = attacker->get_behaviortree_running_node_id();
+
+	mpBehaviorTreeGraph->set_runnning_node_id(mRunnningNodeId);
 
 	mpBehaviorTreeGraph->update();
 }

@@ -137,6 +137,9 @@ public:
 	// 現在ロードしているJsonファイルパスを取得
 	std::string get_loading_file() const { return mLoadFileName; }
 
+	// 現在動かしているノード番号を設定
+	void set_runnning_node_id(const int running_node_id) { mRunnningNodeId = running_node_id; }
+
 private:
 	// ノードの追加
 	int add_node(NodeName name);
@@ -282,4 +285,6 @@ private:
 
 	std::vector<std::string> mNodeNames;
 	int mSelectedAddNode = 0;
+
+	int mRunnningNodeId = -1;
 };

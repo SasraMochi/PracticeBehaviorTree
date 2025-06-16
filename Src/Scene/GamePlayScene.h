@@ -27,5 +27,7 @@ private:
 
 	bool mIsEnd = false;
 
+	int mRunnningNodeId = 0;
+
 	BehaviorTreeGraph* mpBehaviorTreeGraph = nullptr;
 };

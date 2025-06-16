@@ -90,6 +90,11 @@ void Attacker::react(Actor& other)
 	}
 }
 
+const int Attacker::get_behaviortree_running_node_id() const
+{
+	return mpBehaviourTree->get_running_node_id();
+}
+
 const Vector2& Attacker::get_position() const
 {
 	return mPosition;

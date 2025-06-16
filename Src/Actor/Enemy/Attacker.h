@@ -30,6 +30,9 @@ public:
 	// 衝突リアクション
 	void react(Actor& other) override;
 
+	// BehaviorTreeの中で現在動いているノードのIDを取得
+	const int get_behaviortree_running_node_id() const;
+
 public:
 	const Vector2& get_position() const override;
 	void move_towards(const Vector2& target, float speed) override;

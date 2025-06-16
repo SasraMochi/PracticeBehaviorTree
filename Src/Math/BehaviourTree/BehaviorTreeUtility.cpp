@@ -657,7 +657,21 @@ void BehaviorTreeGraph::draw_nodes()
 
 void BehaviorTreeGraph::draw_node(const BTNode& node, int node_id, bool is_selected)
 {
-	ImNodes::PushColorStyle(ImNodesCol_TitleBar, cNodeColors.at(node.type));
+	if (mRunnningNodeId == -1) 
+	{
+		ImNodes::PushColorStyle(ImNodesCol_TitleBar, cNodeColors.at(node.type));
+	}
+	else 
+	{
+		if (node_id == mRunnningNodeId) 
+		{
+			ImNodes::PushColorStyle(ImNodesCol_TitleBar, IM_COL32(255, 0, 0, 255));
+		}
+		else 
+		{
+			ImNodes::PushColorStyle(ImNodesCol_TitleBar, cNodeColors.at(node.type));
+		}
+	}
 
 	ImNodes::BeginNode(node.id);
 	{
