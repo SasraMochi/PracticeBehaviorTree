@@ -230,15 +230,22 @@ bool BehaviorTreeGraph::get_selected_nodes_related_links(std::vector<int>* links
 {
 	for (int node_id : mSelectedNodes)
 	{
-		for (const auto& link_pair : mNodeLinks)
+		get_nodes_related_links(node_id, links);
+	}
+
+	return links->size() > 0;
+}
+
+bool BehaviorTreeGraph::get_nodes_related_links(const int node_id, std::vector<int>* links)
+{
+	for (const auto& link_pair : mNodeLinks)
+	{
+		int link_id = link_pair.first;
+		int parent_id = std::get<0>(link_pair.second);
+		int child_id = std::get<1>(link_pair.second);
+		if (parent_id == node_id || child_id == node_id)
 		{
-			int link_id = link_pair.first;
-			int parent_id = std::get<0>(link_pair.second);
-			int child_id = std::get<1>(link_pair.second);
-			if (parent_id == node_id || child_id == node_id)
-			{
-				links->push_back(link_id);
-			}
+			links->push_back(link_id);
 		}
 	}
 

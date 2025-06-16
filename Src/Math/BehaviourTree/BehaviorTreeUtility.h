@@ -269,6 +269,9 @@ private:
 	// 選択中のノードに関するリンクを洗い出す
 	bool get_selected_nodes_related_links(std::vector<int>* links);
 
+	// 渡されたノードに関するリンクを洗い出す
+	bool get_nodes_related_links(const int node_id, std::vector<int>* links);
+
 private:
 	std::string mLoadFileName = "";
 
