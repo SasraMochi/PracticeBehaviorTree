@@ -15,7 +15,7 @@ void EditBehaviorTreeScene::update()
 	// ツリーエディターの更新
 	mpBehaviorTree->update();
 
-	if (CheckHitKey(KEY_INPUT_BACK))
+	if (CheckHitKey(KEY_INPUT_Q))
 	{
 		mIsEnd = true;
 	}

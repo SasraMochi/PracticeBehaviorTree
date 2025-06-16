@@ -20,7 +20,7 @@ void GamePlayScene::start() {
 }
 
 void GamePlayScene::update() {
-	if (CheckHitKey(KEY_INPUT_RETURN))
+	if (CheckHitKey(KEY_INPUT_Q))
 	{
 		mIsEnd = true;
 	}

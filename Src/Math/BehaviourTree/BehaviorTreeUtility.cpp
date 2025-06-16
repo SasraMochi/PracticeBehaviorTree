@@ -536,15 +536,6 @@ void BehaviorTreeGraph::update_input_key()
 
 void BehaviorTreeGraph::draw_add_button()
 {
-	// ノードの追加ボタン
-	if (ImGui::Button(u8"追加"))
-	{
-		NodeName node_name = get_matching_node_name(mNodeNames[mSelectedAddNode]);
-		add_node(node_name);
-	}
-
-	ImGui::SameLine();
-
 	if (!mNodeNames.empty())
 	{
 		const char* combo_preview_value = mNodeNames[mSelectedAddNode].c_str();
@@ -569,6 +560,15 @@ void BehaviorTreeGraph::draw_add_button()
 	else
 	{
 		ImGui::TextDisabled(u8"追加できるノードが見つかりませんでした");
+	}
+
+	ImGui::SameLine();
+
+	// ノードの追加ボタン
+	if (ImGui::Button(u8"追加"))
+	{
+		NodeName node_name = get_matching_node_name(mNodeNames[mSelectedAddNode]);
+		add_node(node_name);
 	}
 }
 
@@ -657,17 +657,17 @@ void BehaviorTreeGraph::draw_nodes()
 
 void BehaviorTreeGraph::draw_node(const BTNode& node, int node_id, bool is_selected)
 {
-	if (mRunnningNodeId == -1) 
+	if (mRunnningNodeId == -1)
 	{
 		ImNodes::PushColorStyle(ImNodesCol_TitleBar, cNodeColors.at(node.type));
 	}
-	else 
+	else
 	{
-		if (node_id == mRunnningNodeId) 
+		if (node_id == mRunnningNodeId)
 		{
 			ImNodes::PushColorStyle(ImNodesCol_TitleBar, IM_COL32(255, 0, 0, 255));
 		}
-		else 
+		else
 		{
 			ImNodes::PushColorStyle(ImNodesCol_TitleBar, cNodeColors.at(node.type));
 		}
