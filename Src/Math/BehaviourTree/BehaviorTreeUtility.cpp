@@ -24,10 +24,10 @@ void BehaviorTreeGraph::initialize()
 
 void BehaviorTreeGraph::update()
 {
+	if (!mIsEditMode) return;
+
 	// 選択している要素の更新
 	update_selected();
-
-	if (!mIsEditMode) return;
 
 	// リンク作成
 	update_links();

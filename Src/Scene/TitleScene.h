@@ -25,7 +25,7 @@ private:
 	void change_scene_(std::string next_scene_name);
 
 private:
-	bool is_end_;
+	bool mIsEnd;
 };
 
 #endif // !TITLE_SCENE_H_

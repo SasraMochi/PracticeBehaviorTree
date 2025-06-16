@@ -7,6 +7,7 @@
 #include "Math/BehaviourTree/BehaviorTreeUtility.h"
 
 void GamePlayScene::start() {
+	mIsEnd = false;
 	set_next("TitleScene");
 
 	mpBehaviorTreeGraph = new BehaviorTreeGraph(false);
@@ -19,9 +20,15 @@ void GamePlayScene::start() {
 }
 
 void GamePlayScene::update() {
-	float delta_time = 1.f;
+	if (CheckHitKey(KEY_INPUT_RETURN)) 
+	{
+		mIsEnd = true;
+	}
 
+	float delta_time = 1.f;
 	mWorld.update(delta_time);
+
+	mpBehaviorTreeGraph->update();
 }
 
 void GamePlayScene::draw() const {
@@ -34,9 +41,10 @@ void GamePlayScene::draw_debug()
 }
 
 bool GamePlayScene::is_end() const {
-	return false;
+	return mIsEnd;
 }
 
 void GamePlayScene::end() {
-
+	mWorld.clear();
+	delete(mpBehaviorTreeGraph);
 }

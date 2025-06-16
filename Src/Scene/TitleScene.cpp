@@ -2,7 +2,7 @@
 #include<DxLib.h>
 
 void TitleScene::start(){
-	is_end_ = false;
+	mIsEnd = false;
 }
 
 void TitleScene::update(){
@@ -25,7 +25,7 @@ void TitleScene::draw_debug()
 }
 
 bool TitleScene::is_end() const {
-	return is_end_;
+	return mIsEnd;
 }
 
 void TitleScene::end() {
@@ -35,5 +35,5 @@ void TitleScene::end() {
 void TitleScene::change_scene_(std::string next_scene_name)
 {
 	set_next(next_scene_name);
-	is_end_ = true;
+	mIsEnd = true;
 }
