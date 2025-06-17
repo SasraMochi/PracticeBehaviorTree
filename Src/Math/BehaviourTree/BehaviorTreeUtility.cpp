@@ -110,6 +110,13 @@ void BehaviorTreeGraph::draw_editor()
 	ImNodes::EndNodeEditor();
 }
 
+void BehaviorTreeGraph::set_runnning_node_id(const int running_node_id)
+{
+	mRunningLinks.clear();
+	mRunnningNodeId = running_node_id;
+	get_nodes_related_all_links(running_node_id, &mRunningLinks);
+}
+
 int BehaviorTreeGraph::add_node(NodeName name)
 {
 	// IDの重複を避ける
@@ -250,6 +257,37 @@ bool BehaviorTreeGraph::get_nodes_related_links(const int node_id, std::vector<i
 	}
 
 	return links->size() > 0;
+}
+
+bool BehaviorTreeGraph::get_nodes_related_all_links(const int node_id, std::vector<int>* links)
+{
+	// 探索済みノードを記録して無限ループを防ぐ
+	std::set<int> visited;
+	int current_id = node_id;
+
+	while (current_id != -1 && visited.find(current_id) == visited.end()) {
+		visited.insert(current_id);
+		// 現在のノードに関連するリンクを追加
+		for (const auto& link_pair : mNodeLinks) {
+			int link_id = link_pair.first;
+			int parent_id = std::get<0>(link_pair.second);
+			int child_id = std::get<1>(link_pair.second);
+			if (child_id == current_id) {
+				// すでに追加済みでなければ追加
+				if (std::find(links->begin(), links->end(), link_id) == links->end()) {
+					links->push_back(link_id);
+				}
+			}
+		}
+		// 親ノードへ
+		auto it = mNodes.find(current_id);
+		if (it != mNodes.end()) {
+			current_id = it->second.parent;
+		} else {
+			break;
+		}
+	}
+	return !links->empty();
 }
 
 bool BehaviorTreeGraph::is_link_addable(BTNode& parent_node, BTNode& child_node, bool is_true_branch)
@@ -791,6 +829,15 @@ void BehaviorTreeGraph::draw_links()
 	for (auto& pair : mNodeLinks)
 	{
 		int link_id = pair.first;
+		if (std::find(mRunningLinks.begin(), mRunningLinks.end(), link_id) != mRunningLinks.end())
+		{
+			ImNodes::PushColorStyle(ImNodesCol_Link, IM_COL32(255, 0, 0, 255));
+		}
+		else
+		{
+			ImNodes::PushColorStyle(ImNodesCol_Link, IM_COL32(0, 0, 255, 255));
+		}
+
 		int parent_id = std::get<static_cast<int>(NodeTuple::Node_Id)>(pair.second);
 		int child_id = std::get<static_cast<int>(NodeTuple::Child_Id)>(pair.second);
 		int pin_type = std::get<static_cast<int>(NodeTuple::PinType)>(pair.second);
@@ -803,6 +850,8 @@ void BehaviorTreeGraph::draw_links()
 		{
 			ImNodes::Link(link_id, (parent_id << cInputBit | cFalsePinBit), (child_id << cInputBit));
 		}
+
+		ImNodes::PopColorStyle();
 	}
 }
 

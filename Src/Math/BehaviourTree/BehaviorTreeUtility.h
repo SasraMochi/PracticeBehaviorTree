@@ -138,7 +138,7 @@ public:
 	std::string get_loading_file() const { return mLoadFileName; }
 
 	// 現在動かしているノード番号を設定
-	void set_runnning_node_id(const int running_node_id) { mRunnningNodeId = running_node_id; }
+	void set_runnning_node_id(const int running_node_id);
 
 private:
 	// ノードの追加
@@ -272,6 +272,9 @@ private:
 	// 渡されたノードに関するリンクを洗い出す
 	bool get_nodes_related_links(const int node_id, std::vector<int>* links);
 
+	// 渡されたノードに関するリンクを洗い出す(親まで含む)
+	bool get_nodes_related_all_links(const int node_id, std::vector<int>* links);
+
 private:
 	std::string mLoadFileName = "";
 
@@ -290,4 +293,6 @@ private:
 	int mSelectedAddNode = 0;
 
 	int mRunnningNodeId = -1;
+
+	std::vector<int> mRunningLinks;
 };
