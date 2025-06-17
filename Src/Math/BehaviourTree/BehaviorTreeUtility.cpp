@@ -543,7 +543,7 @@ void BehaviorTreeGraph::import_json(const std::string& file_name)
 			add_link_tuple(id, node.false_child, false);
 		}
 	}
-	mNextId = mNodes.size() + 1;
+	mNextId = static_cast<int>(mNodes.size()) + 1;
 	file.close();
 }
 
@@ -758,7 +758,7 @@ void BehaviorTreeGraph::draw_node(const BTNode& node, int node_id, bool is_selec
 {
 	if (std::find(mRunningNodes.begin(), mRunningNodes.end(), node_id) != mRunningNodes.end())
 	{
-		ImNodes::PushColorStyle(ImNodesCol_TitleBar, IM_COL32(255, 0, 0, 255));
+		ImNodes::PushColorStyle(ImNodesCol_TitleBar, cRunningColor);
 	}
 	else
 	{
@@ -878,11 +878,11 @@ void BehaviorTreeGraph::draw_links()
 		int link_id = pair.first;
 		if (std::find(mRunningLinks.begin(), mRunningLinks.end(), link_id) != mRunningLinks.end())
 		{
-			ImNodes::PushColorStyle(ImNodesCol_Link, IM_COL32(255, 0, 0, 255));
+			ImNodes::PushColorStyle(ImNodesCol_Link, cRunningColor);
 		}
 		else
 		{
-			ImNodes::PushColorStyle(ImNodesCol_Link, IM_COL32(0, 0, 255, 255));
+			ImNodes::PushColorStyle(ImNodesCol_Link, cLinkColor);
 		}
 
 		int parent_id = std::get<static_cast<int>(NodeTuple::Node_Id)>(pair.second);

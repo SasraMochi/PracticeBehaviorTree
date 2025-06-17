@@ -104,6 +104,9 @@ private:
 		{ NodeType::Leaf,      IM_COL32(32, 128, 32, 255)}
 	};
 
+	const ImU32 cRunningColor = IM_COL32(250, 50, 0, 255);
+	const ImU32 cLinkColor = IM_COL32(75, 75, 200, 200);
+
 	const int cInputBit = 16;
 	const int cTruePinBit = 1;
 	const int cFalsePinBit = 2;
@@ -170,13 +173,13 @@ private:
 	NodeName get_matching_node_name(std::string name);
 
 	// 選択しているノードの数を取得
-	const int get_selected_node_num() const { return mSelectedNodes.size(); }
+	const int get_selected_node_num() const { return static_cast<int>(mSelectedNodes.size()); }
 
 	// 選択しているノードを取得
 	const int get_selected_node(int index);
 
 	// 選択しているリンクの数を取得
-	const int get_selected_link_num() const { return mSelectedLinks.size(); }
+	const int get_selected_link_num() const { return static_cast<int>(mSelectedLinks.size()); }
 
 private:
 	// 選択している要素の更新
