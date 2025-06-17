@@ -113,8 +113,10 @@ void BehaviorTreeGraph::draw_editor()
 void BehaviorTreeGraph::set_runnning_node_id(const int running_node_id)
 {
 	mRunningLinks.clear();
+	mRunningNodes.clear();
 	mRunnningNodeId = running_node_id;
 	get_nodes_related_all_links(running_node_id, &mRunningLinks);
+	get_nodes_related_all_nodes(running_node_id, &mRunningNodes);
 }
 
 int BehaviorTreeGraph::add_node(NodeName name)
@@ -261,14 +263,12 @@ bool BehaviorTreeGraph::get_nodes_related_links(const int node_id, std::vector<i
 
 bool BehaviorTreeGraph::get_nodes_related_all_links(const int node_id, std::vector<int>* links)
 {
-	// 探索済みノードを記録して無限ループを防ぐ
-	std::set<int> visited;
 	int current_id = node_id;
 
-	while (current_id != -1 && visited.find(current_id) == visited.end()) {
-		visited.insert(current_id);
+	while (current_id != -1) {
 		// 現在のノードに関連するリンクを追加
-		for (const auto& link_pair : mNodeLinks) {
+		for (const auto& link_pair : mNodeLinks)
+		{
 			int link_id = link_pair.first;
 			int parent_id = std::get<0>(link_pair.second);
 			int child_id = std::get<1>(link_pair.second);
@@ -281,13 +281,67 @@ bool BehaviorTreeGraph::get_nodes_related_all_links(const int node_id, std::vect
 		}
 		// 親ノードへ
 		auto it = mNodes.find(current_id);
-		if (it != mNodes.end()) {
+		if (it != mNodes.end())
+		{
 			current_id = it->second.parent;
-		} else {
+		}
+		else
+		{
 			break;
 		}
 	}
 	return !links->empty();
+}
+
+bool BehaviorTreeGraph::get_nodes_related_all_nodes(const int node_id, std::vector<int>* nodes)
+{
+	int current_id = node_id;
+
+	nodes->push_back(current_id);
+
+	while (current_id != 0)
+	{
+		for (const auto& node : mNodes)
+		{
+			int id = node.first;
+			const auto node_type = node.second.type;
+
+			// 葉ノードの場合は無視
+			if (node_type == NodeType::Leaf) continue;
+
+			if (node_type == NodeType::Composite ||
+				node_type == NodeType::Decorator) {
+				for (int i = 0; i < node.second.children.size(); ++i)
+				{
+					if (get_node(node.second.children[i]).id == current_id)
+					{
+						nodes->push_back(id);
+					}
+				}
+			}
+			else 
+			{
+				if (get_node(node.second.true_child).id == current_id ||
+					get_node(node.second.false_child).id == current_id)
+				{
+					nodes->push_back(id);
+				}
+			}
+		}
+
+		// 親ノードへ
+		auto it = mNodes.find(current_id);
+		if (it != mNodes.end())
+		{
+			current_id = it->second.parent;
+		}
+		else
+		{
+			break;
+		}
+	}
+
+	return !nodes->empty();
 }
 
 bool BehaviorTreeGraph::is_link_addable(BTNode& parent_node, BTNode& child_node, bool is_true_branch)
@@ -702,20 +756,13 @@ void BehaviorTreeGraph::draw_nodes()
 
 void BehaviorTreeGraph::draw_node(const BTNode& node, int node_id, bool is_selected)
 {
-	if (mRunnningNodeId == -1)
+	if (std::find(mRunningNodes.begin(), mRunningNodes.end(), node_id) != mRunningNodes.end())
 	{
-		ImNodes::PushColorStyle(ImNodesCol_TitleBar, cNodeColors.at(node.type));
+		ImNodes::PushColorStyle(ImNodesCol_TitleBar, IM_COL32(255, 0, 0, 255));
 	}
 	else
 	{
-		if (node_id == mRunnningNodeId)
-		{
-			ImNodes::PushColorStyle(ImNodesCol_TitleBar, IM_COL32(255, 0, 0, 255));
-		}
-		else
-		{
-			ImNodes::PushColorStyle(ImNodesCol_TitleBar, cNodeColors.at(node.type));
-		}
+		ImNodes::PushColorStyle(ImNodesCol_TitleBar, cNodeColors.at(node.type));
 	}
 
 	ImNodes::BeginNode(node.id);

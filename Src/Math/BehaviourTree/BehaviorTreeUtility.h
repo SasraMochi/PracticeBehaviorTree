@@ -275,6 +275,9 @@ private:
 	// 渡されたノードに関するリンクを洗い出す(親まで含む)
 	bool get_nodes_related_all_links(const int node_id, std::vector<int>* links);
 
+	// 渡されたノードに関するノードを洗い出す(親まで含む)
+	bool get_nodes_related_all_nodes(const int node_id, std::vector<int>* nodes);
+
 private:
 	std::string mLoadFileName = "";
 
@@ -295,4 +298,5 @@ private:
 	int mRunnningNodeId = -1;
 
 	std::vector<int> mRunningLinks;
+	std::vector<int> mRunningNodes;
 };
