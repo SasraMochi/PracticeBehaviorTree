@@ -273,13 +273,19 @@ private:
 	bool get_selected_nodes_related_links(std::vector<int>* links);
 
 	// 渡されたノードに関するリンクを洗い出す
-	bool get_nodes_related_links(const int node_id, std::vector<int>* links);
+	bool get_nodes_related_links(const int node_id, std::vector<int>* links,bool contain_child = true);
 
 	// 渡されたノードに関するリンクを洗い出す(親まで含む)
 	bool get_nodes_related_all_links(const int node_id, std::vector<int>* links);
 
 	// 渡されたノードに関するノードを洗い出す(親まで含む)
 	bool get_nodes_related_all_nodes(const int node_id, std::vector<int>* nodes);
+
+	// 関連するリンクかどうか
+	bool is_related_links(const int node_id, const std::pair<int, std::tuple<int, int, int>>& node_link, bool contain_child);
+
+	// 関連するノードかどうか
+	bool is_related_nodes(const int node_id, const std::pair<const int, const BTNode>& node);
 
 private:
 	std::string mLoadFileName = "";
@@ -298,8 +304,7 @@ private:
 	std::vector<std::string> mNodeNames;
 	int mSelectedAddNode = 0;
 
-	int mRunnningNodeId = -1;
-
+	// リアルタイム表示用
 	std::vector<int> mRunningLinks;
 	std::vector<int> mRunningNodes;
 };

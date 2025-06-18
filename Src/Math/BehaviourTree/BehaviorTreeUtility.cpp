@@ -112,9 +112,10 @@ void BehaviorTreeGraph::draw_editor()
 
 void BehaviorTreeGraph::set_runnning_node_id(const int running_node_id)
 {
+	// 実行中のノード/リンクのリストを更新
 	mRunningLinks.clear();
 	mRunningNodes.clear();
-	mRunnningNodeId = running_node_id;
+
 	get_nodes_related_all_links(running_node_id, &mRunningLinks);
 	get_nodes_related_all_nodes(running_node_id, &mRunningNodes);
 }
@@ -245,16 +246,13 @@ bool BehaviorTreeGraph::get_selected_nodes_related_links(std::vector<int>* links
 	return links->size() > 0;
 }
 
-bool BehaviorTreeGraph::get_nodes_related_links(const int node_id, std::vector<int>* links)
+bool BehaviorTreeGraph::get_nodes_related_links(const int node_id, std::vector<int>* links, bool contain_child)
 {
 	for (const auto& link_pair : mNodeLinks)
 	{
-		int link_id = link_pair.first;
-		int parent_id = std::get<0>(link_pair.second);
-		int child_id = std::get<1>(link_pair.second);
-		if (parent_id == node_id || child_id == node_id)
+		if (is_related_links(node_id, link_pair, contain_child))
 		{
-			links->push_back(link_id);
+			links->push_back(link_pair.first);
 		}
 	}
 
@@ -265,30 +263,14 @@ bool BehaviorTreeGraph::get_nodes_related_all_links(const int node_id, std::vect
 {
 	int current_id = node_id;
 
-	while (current_id != -1) {
-		// 現在のノードに関連するリンクを追加
-		for (const auto& link_pair : mNodeLinks)
-		{
-			int link_id = link_pair.first;
-			int parent_id = std::get<0>(link_pair.second);
-			int child_id = std::get<1>(link_pair.second);
-			if (child_id == current_id) {
-				// すでに追加済みでなければ追加
-				if (std::find(links->begin(), links->end(), link_id) == links->end()) {
-					links->push_back(link_id);
-				}
-			}
-		}
-		// 親ノードへ
-		auto it = mNodes.find(current_id);
-		if (it != mNodes.end())
-		{
-			current_id = it->second.parent;
-		}
-		else
-		{
-			break;
-		}
+	// ルートノードに到達するまで続ける
+	while (current_id != -1)
+	{
+		get_nodes_related_links(current_id, links, false);
+
+		// 親ノードへさかのぼって再度探索
+		auto it = get_node(current_id);
+		current_id = it.parent;
 	}
 	return !links->empty();
 }
@@ -296,52 +278,78 @@ bool BehaviorTreeGraph::get_nodes_related_all_links(const int node_id, std::vect
 bool BehaviorTreeGraph::get_nodes_related_all_nodes(const int node_id, std::vector<int>* nodes)
 {
 	int current_id = node_id;
-
 	nodes->push_back(current_id);
 
-	while (current_id != 0)
+	// ルートノードに到達するまで続ける
+	while (current_id != -1)
 	{
 		for (const auto& node : mNodes)
 		{
-			int id = node.first;
-			const auto node_type = node.second.type;
-
-			// 葉ノードの場合は無視
-			if (node_type == NodeType::Leaf) continue;
-
-			if (node_type == NodeType::Composite ||
-				node_type == NodeType::Decorator) {
-				for (int i = 0; i < node.second.children.size(); ++i)
-				{
-					if (get_node(node.second.children[i]).id == current_id)
-					{
-						nodes->push_back(id);
-					}
-				}
-			}
-			else 
+			if (is_related_nodes(current_id, node))
 			{
-				if (get_node(node.second.true_child).id == current_id ||
-					get_node(node.second.false_child).id == current_id)
-				{
-					nodes->push_back(id);
-				}
+				nodes->push_back(node.first);
 			}
 		}
 
-		// 親ノードへ
-		auto it = mNodes.find(current_id);
-		if (it != mNodes.end())
-		{
-			current_id = it->second.parent;
-		}
-		else
-		{
-			break;
-		}
+		// 親ノードへさかのぼって探索
+		auto it = get_node(current_id);
+		current_id = it.parent;
 	}
 
 	return !nodes->empty();
+}
+
+bool BehaviorTreeGraph::is_related_links(const int node_id, const std::pair<int, std::tuple<int, int, int>>& node_link, bool contain_child)
+{
+	int link_id = node_link.first;
+	int parent_id = std::get<0>(node_link.second);
+	int child_id = std::get<1>(node_link.second);
+
+	if (contain_child && parent_id != node_id) return false;
+	if (child_id != node_id) return false;
+
+	return true;
+}
+
+bool BehaviorTreeGraph::is_related_nodes(const int node_id, const std::pair<const int, const BTNode>& node)
+{
+	int id = node.first;
+	const auto node_type = node.second.type;
+
+	// 葉ノードの場合は無視
+	if (node_type == NodeType::Leaf) return false;
+
+	// ブランチノードの場合
+	if (node_type == NodeType::Branch) 
+	{
+		// true, falseどちらも一致しなければfalse
+		if (!(get_node(node.second.true_child).id == node_id ||
+			get_node(node.second.false_child).id == node_id)) 
+		{
+			return false;
+		}
+	}
+
+	// それ以外のノードの場合
+	// もう少しきれいに書きたい...
+	if (node_type == NodeType::Composite ||
+		node_type == NodeType::Decorator) 
+	{
+		const auto& children = node.second.children;
+		bool found = false;
+
+		for (const auto& child : children)
+		{
+			if (get_node(child).id == node_id) 
+			{
+				found = true;
+			}
+		}
+
+		if (!found) return false;
+	}
+
+	return true;
 }
 
 bool BehaviorTreeGraph::is_link_addable(BTNode& parent_node, BTNode& child_node, bool is_true_branch)
@@ -385,17 +393,22 @@ void BehaviorTreeGraph::remove_nodes_link(int parent_id, int child_id)
 {
 	auto& parent_node = mNodes[parent_id];
 	auto& child_node = mNodes[child_id];
-	if (parent_node.type == NodeType::Branch) {
-		if (parent_node.true_child == child_id) {
+	if (parent_node.type == NodeType::Branch)
+	{
+		if (parent_node.true_child == child_id)
+		{
 			parent_node.true_child = -1;
 		}
-		else if (parent_node.false_child == child_id) {
+		else if (parent_node.false_child == child_id)
+		{
 			parent_node.false_child = -1;
 		}
 	}
-	else {
+	else
+	{
 		auto it = std::find(parent_node.children.begin(), parent_node.children.end(), child_id);
-		if (it != parent_node.children.end()) {
+		if (it != parent_node.children.end())
+		{
 			parent_node.children.erase(it);
 		}
 	}
