@@ -18,8 +18,8 @@
         "limit_distance": 100.0,
         "name": "CheckNearPlayer",
         "parent": 5,
-        "pos_x": 645.0,
-        "pos_y": 28.0,
+        "pos_x": 421.0,
+        "pos_y": 13.0,
         "true_child": 9,
         "type": 2
     },
@@ -28,8 +28,8 @@
         "id": 7,
         "name": "CircleAttackLeaf",
         "parent": 5,
-        "pos_x": 643.0,
-        "pos_y": 390.0,
+        "pos_x": 421.0,
+        "pos_y": 322.0,
         "type": 3
     },
     {
@@ -37,8 +37,8 @@
         "id": 8,
         "name": "WaitLeaf",
         "parent": 5,
-        "pos_x": 613.0,
-        "pos_y": 625.0,
+        "pos_x": 423.0,
+        "pos_y": 456.0,
         "type": 3,
         "wait_time": 60.0
     },
@@ -47,8 +47,8 @@
         "id": 9,
         "name": "AlwaysSuccessLeaf",
         "parent": 6,
-        "pos_x": 1060.708984375,
-        "pos_y": -19.7447509765625,
+        "pos_x": 678.708984375,
+        "pos_y": 31.2552490234375,
         "type": 3
     },
     {
@@ -58,8 +58,8 @@
         "id": 10,
         "name": "Inverter",
         "parent": 6,
-        "pos_x": 1051.0,
-        "pos_y": 210.0,
+        "pos_x": 697.0,
+        "pos_y": 162.0,
         "type": 1
     },
     {
@@ -67,8 +67,8 @@
         "id": 11,
         "name": "ChasePlayerLeaf",
         "parent": 10,
-        "pos_x": 1285.0,
-        "pos_y": 281.0,
+        "pos_x": 878.0,
+        "pos_y": 163.0,
         "type": 3
     }
 ]

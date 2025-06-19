@@ -316,31 +316,28 @@ bool BehaviorTreeGraph::is_related_nodes(const int node_id, const std::pair<cons
 	int id = node.first;
 	const auto node_type = node.second.type;
 
-	// 葉ノードの場合は無視
+	// 葉ノードの場合は子ノードを持たないためfalse
 	if (node_type == NodeType::Leaf) return false;
 
 	// ブランチノードの場合
-	if (node_type == NodeType::Branch) 
+	if (node_type == NodeType::Branch)
 	{
-		// true, falseどちらも一致しなければfalse
-		if (!(get_node(node.second.true_child).id == node_id ||
-			get_node(node.second.false_child).id == node_id)) 
+		// true, falseどちらもnode_idと一致しなければfalse
+		if (!(node.second.true_child == node_id || node.second.false_child == node_id))
 		{
 			return false;
 		}
 	}
 
-	// それ以外のノードの場合
-	// もう少しきれいに書きたい...
-	if (node_type == NodeType::Composite ||
-		node_type == NodeType::Decorator) 
+	// それ以外の子ノードを持つノードの場合(Composite, Decorator)
+	if (node_type == NodeType::Composite || node_type == NodeType::Decorator)
 	{
 		const auto& children = node.second.children;
 		bool found = false;
 
 		for (const auto& child : children)
 		{
-			if (get_node(child).id == node_id) 
+			if (child == node_id)
 			{
 				found = true;
 			}

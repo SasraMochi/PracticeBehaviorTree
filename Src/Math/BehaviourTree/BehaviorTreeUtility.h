@@ -164,7 +164,7 @@ private:
 
 private:
 	// ƒm[ƒh‚ÌƒŠƒ“ƒN‚ğæ“¾
-	const std::map<int, std::tuple<int, int, int>>& get_node_links() const { return mNodeLinks; }
+	const std::unordered_map<int, std::tuple<int, int, int>>& get_node_links() const { return mNodeLinks; }
 
 	// ƒm[ƒhŒQ‚ğæ“¾
 	const std::unordered_map<int, BTNode>& get_nodes() const { return mNodes; }
@@ -293,7 +293,7 @@ private:
 	bool mIsEditMode = true;
 
 	std::unordered_map<int, BTNode>          mNodes;
-	std::map<int, std::tuple<int, int, int>> mNodeLinks;
+	std::unordered_map<int, std::tuple<int, int, int>> mNodeLinks;
 
 	int mCreatedLinkId = 0;
 	int mNextId = 1;
