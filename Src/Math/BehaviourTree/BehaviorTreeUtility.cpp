@@ -305,14 +305,25 @@ bool BehaviorTreeGraph::is_related_links(const int node_id, const std::pair<int,
 	int parent_id = std::get<0>(node_link.second);
 	int child_id = std::get<1>(node_link.second);
 
-	if (contain_child && parent_id != node_id) return false;
-	if (child_id != node_id) return false;
+	if (child_id == node_id) 
+	{
+		return true;
+	}
 
-	return true;
+	if (contain_child)
+	{
+		if (parent_id == node_id)
+		{
+			return true;
+		}
+	}
+
+	return false;
 }
 
 bool BehaviorTreeGraph::is_related_nodes(const int node_id, const std::pair<const int, const BTNode>& node)
 {
+
 	int id = node.first;
 	const auto node_type = node.second.type;
 

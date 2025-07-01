@@ -1,0 +1,22 @@
+[
+    {
+        "children": [
+            11
+        ],
+        "id": 5,
+        "name": "Sequence",
+        "parent": -1,
+        "pos_x": 152.0,
+        "pos_y": 322.0,
+        "type": 0
+    },
+    {
+        "children": [],
+        "id": 11,
+        "name": "ChasePlayerLeaf",
+        "parent": 5,
+        "pos_x": 878.0,
+        "pos_y": 163.0,
+        "type": 3
+    }
+]

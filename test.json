@@ -1,0 +1,22 @@
+[
+    {
+        "children": [
+            2
+        ],
+        "id": 1,
+        "name": "Sequence",
+        "parent": -1,
+        "pos_x": 574.0,
+        "pos_y": 379.0,
+        "type": 0
+    },
+    {
+        "children": [],
+        "id": 2,
+        "name": "Sequence",
+        "parent": 1,
+        "pos_x": 817.0,
+        "pos_y": 383.0,
+        "type": 0
+    }
+]

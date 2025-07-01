@@ -20,28 +20,6 @@ using json = nlohmann::json;
 
 #include <fstream>
 
-#include "BehaviourTreeBulider.h"
-
-#include "Actor/BlackBoard.h"
-#include "INode.h"
-#include "Math/BehaviourTree/CompositeNode/Selector.h"
-#include "Math/BehaviourTree/CompositeNode/Sequence.h"
-#include "Math/BehaviourTree/DecoratorNode/Inverter.h"
-#include "Math/BehaviourTree/BranchNode/CheckNearPlayer.h"
-#include "Math/BehaviourTree/BranchNode/CheckFarPlayer.h"
-#include "Math/BehaviourTree/LeafNode/WaitLeaf.h"
-#include "Math/BehaviourTree/LeafNode/ChasePlayerLeaf.h"
-#include "Math/BehaviourTree/LeafNode/EscapeFromPlayerLeaf.h"
-#include "Math/BehaviourTree/LeafNode/CircleAttackLeaf.h"
-#include "Math/BehaviourTree/LeafNode/AlwaysSuccessLeaf.h"
-#include "Math/BehaviourTree/LeafNode/AlwaysFailLeaf.h"
-#include "Math/BehaviourTree/LeafNode/DebugDrawLeaf.h"
-
-#include "json.hpp"
-using json = nlohmann::json;
-
-#include <fstream>
-
 INode* BehaviourTreeBuilder::BuildAttackerTree(std::string file_path, BlackBoard* blackboard)
 {
 	// JSONÉtÉ@ÉCÉãÇì«Ç›çûÇﬁ
