@@ -6,13 +6,11 @@
 #include "Math/Screen.h"
 #include "Game.h"
 
-#if _DEBUG
 #include "imgui.h"
 #include <Backends/imgui_impl_win32.h>
 #include <Backends/imgui_impl_dx11.h>
 
 #include "imnodes.h"
-#endif
 
 // FPSä÷òAê›íË
 int TargetFPS = 60;
@@ -27,7 +25,6 @@ static long fpsTicks = 0;
 static int fpsFrameCount = 0;
 static float CurrentFPS; // åªç›ÇÃFPS
 
-#if _DEBUG
 ID3D11Device* g_pd3dDevice = nullptr;
 ID3D11DeviceContext* g_pd3dDeviceContext = nullptr;
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -40,7 +37,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp) {
 
 	return 0;
 }
-#endif
 
 // ï`âÊèàóù
 static void GameDraw(Game& game)
@@ -48,7 +44,6 @@ static void GameDraw(Game& game)
 	ClearDrawScreen();
 	game.draw();
 
-#if _DEBUG
 	// ImGuiÇÃï`âÊ
 	ImGui_ImplDX11_NewFrame();
 	ImGui_ImplWin32_NewFrame();
@@ -58,7 +53,6 @@ static void GameDraw(Game& game)
 
 	ImGui::Render();
 	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
-#endif
 
 	ScreenFlip();
 	skipCount = 0;
@@ -86,7 +80,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetDrawScreen(DX_SCREEN_BACK);
 	SetUseTransColor(FALSE);
 
-#if _DEBUG
 	// ImGuiÇÃèâä˙âª
 	ImGui::CreateContext();
 	ImNodes::CreateContext();
@@ -99,7 +92,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard; // Enable Keyboard Controls
 	ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad; // Enable Gamepad Controls
 	// ImGui_ImplDX11_CreateDeviceObjects();
-#endif
 
 	// ÉQÅ[ÉÄèâä˙âª
 	Game game(Screen::Width, Screen::Height);
