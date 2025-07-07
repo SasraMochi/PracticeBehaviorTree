@@ -62,11 +62,11 @@ static std::map<NodeName, NodeType> NODE_MAP = {
 /// ノードの構造体
 /// </summary>
 struct BTNode {
-	int id = 0;
-	NodeType type = NodeType::Leaf;
-	NodeName name = NodeName::WaitLeaf;
-	std::vector<int> children;
-	int parent = -1;
+	int id = 0;                             // 固有ID
+	NodeType type = NodeType::Leaf;         // ノードのタイプ
+	NodeName name = NodeName::WaitLeaf;     // ノードの名前
+	std::vector<int> children;              // 子ノードID
+	int parent = -1;                        // 親ノードID
 
 	// Branch用の変数
 	int true_child = -1;
@@ -78,13 +78,14 @@ struct BTNode {
 	// CheckFarPlayer, CheckNearPlayer用の変数
 	float limit_distance = -1.f;
 
-	std::string GetString() const {
-		return std::string(NAMEOF_ENUM(name));
-	}
-
 	// エディター上での位置
 	float pos_x = 0.f;
 	float pos_y = 0.f;
+
+	// 名前をstring型で取得
+	std::string GetString() const {
+		return std::string(NAMEOF_ENUM(name));
+	}
 };
 
 
@@ -273,7 +274,7 @@ private:
 	bool get_selected_nodes_related_links(std::vector<int>* links);
 
 	// 渡されたノードに関するリンクを洗い出す
-	bool get_nodes_related_links(const int node_id, std::vector<int>* links,bool contain_child = true);
+	bool get_nodes_related_links(const int node_id, std::vector<int>* links, bool contain_child = true);
 
 	// 渡されたノードに関するリンクを洗い出す(親まで含む)
 	bool get_nodes_related_all_links(const int node_id, std::vector<int>* links);
