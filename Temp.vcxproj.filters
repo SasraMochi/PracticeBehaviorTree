@@ -281,13 +281,7 @@
     <ClInclude Include="Src\Math\BehaviourTree\LeafNode\LeafNodeBase.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Src\json.hpp">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Math\BehaviourTree\BehaviorTreeUtility.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\nameof.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Src\Scene\EditBehaviorTreeScene.h">
