@@ -225,7 +225,6 @@
     <ClInclude Include="Src\Actor\IAgent.h" />
     <ClInclude Include="Src\Actor\Player.h" />
     <ClInclude Include="Src\Game.h" />
-    <ClInclude Include="Src\json.hpp" />
     <ClInclude Include="Src\Math\BehaviourTree\BehaviorTreeUtility.h" />
     <ClInclude Include="Src\Math\BehaviourTree\BehaviourTreeBulider.h" />
     <ClInclude Include="Src\Math\BehaviourTree\CompositeNode\CompositeNodeBase.h" />
@@ -254,7 +253,6 @@
     <ClInclude Include="Src\Math\Screen.h" />
     <ClInclude Include="Src\Math\Singleton.h" />
     <ClInclude Include="Src\Math\Vector2.h" />
-    <ClInclude Include="Src\nameof.hpp" />
     <ClInclude Include="Src\Scene\EditBehaviorTreeScene.h" />
     <ClInclude Include="Src\Scene\GamePlayScene.h" />
     <ClInclude Include="Src\Scene\IScene.h" />
