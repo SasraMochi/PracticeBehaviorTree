@@ -2,7 +2,6 @@
 
 #include "imgui.h"
 #include "imnodes.h"
-#include "nameof.hpp"
 #include "DxLib.h"
 
 #include <set>
