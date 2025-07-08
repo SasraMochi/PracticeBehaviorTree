@@ -15,7 +15,7 @@
 #include "Math/BehaviourTree/LeafNode/AlwaysFailLeaf.h"
 #include "Math/BehaviourTree/LeafNode/DebugDrawLeaf.h"
 
-#include "json.hpp"
+#include "json/json.hpp"
 using json = nlohmann::json;
 
 #include <fstream>
